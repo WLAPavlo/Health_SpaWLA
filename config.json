@@ -1,0 +1,11 @@
+{
+  "devUrl": "http://ready-for-feedback3.com/internship/luhovyi/health-spa",
+  "themeName": "fwp",
+  "proxyUrl": "https://localhost:3000",
+  "open": false,
+  "bsWatchFiles": [
+    "inc/**/*.php",
+    "parts/**/*.php",
+    "templates/**/*.php"
+  ]
+}

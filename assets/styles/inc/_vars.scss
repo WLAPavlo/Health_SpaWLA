@@ -1,0 +1,24 @@
+// Project variables
+// Note: Prefer using framework variables
+
+//$blue: #1a608b;
+//
+//$text-color: #333;
+
+//$primary-color: $blue;
+//$sub-color: $primary-color;
+
+$font: 'Open Sans', serif;
+//$sub-font: $font;
+$fa: 'Font Awesome 6 Free';
+//$fab: 'Font Awesome 6 Brands';
+
+// Font Awesome Vars
+//$fa-font-display: swap;
+
+// Project mixins
+
+// Custom fonts
+:root {
+  --content-size: 80rem;
+}

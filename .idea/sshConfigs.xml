@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="OPEN_SSH" host="ssh.pressable.com" id="2942e330-3680-4feb-9aee-dab271616305" port="22" nameFormat="DESCRIPTIVE" username="" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
