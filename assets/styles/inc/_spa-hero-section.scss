@@ -1,0 +1,217 @@
+// Variables
+$primary-pink: #e91e63;
+$primary-blue: #2c5aa0;
+$dark-blue: #1e3c72;
+$text-gray: #6c757d;
+$white: #ffffff;
+
+// Hero Section Styles
+.hero-section {
+  padding: 60px 0;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: $primary-pink;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $primary-blue;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $text-gray;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .video-container {
+    position: relative;
+    flex-direction: column;
+    margin-top: 40px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .video-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: $primary-pink;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 12px 35px rgba(233, 30, 99, 0.4);
+    }
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 20px solid $white;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 4px;
+    }
+  }
+}
+
+// Sidebar CTA Styles - Speech Bubble
+.sidebar-cta {
+  background: linear-gradient(135deg, $primary-blue 0%, $dark-blue 100%);
+  color: $white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  position: relative;
+  margin-top: 60px;
+  box-shadow: 0 15px 35px rgba(30, 60, 114, 0.2);
+
+  // Top left corner arrow
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 60px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid $primary-blue;
+  }
+
+  // Bottom right corner arrow
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 60px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid $dark-blue;
+  }
+
+  .cta-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .cta-button {
+    margin-top: 30px;
+  }
+
+  .btn-cta {
+    background: rgba(255, 255, 255, 0.2);
+    color: $white;
+    padding: 12px 24px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+}
+
+// Grid Layout
+.grid-x {
+  align-items: flex-start;
+}
+
+.cell {
+  &.large-8 {
+    padding-right: 30px;
+  }
+
+  &.large-4 {
+    padding-left: 15px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    .video-play-button {
+      width: 60px;
+      height: 60px;
+
+      &::after {
+        border-left: 15px solid $white;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+      }
+    }
+  }
+
+  .sidebar-cta {
+    margin-top: 40px;
+    padding: 30px 20px;
+
+    .cta-title {
+      font-size: 1.5rem;
+    }
+  }
+}

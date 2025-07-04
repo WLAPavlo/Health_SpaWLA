@@ -73,6 +73,7 @@ array_map(function ($filename) {
     'tiny-mce-customizations',
     'posttypes',
     'rest',
+    'spa-events-cpt', // Додано новий файл для SPA Events CPT
     //    'gutenberg-support', // !!!IMPORTANT Comment the "Disable gutenberg" filter to enable Gutenberg
     //    'woo-customizations',
     //    'divi-support',

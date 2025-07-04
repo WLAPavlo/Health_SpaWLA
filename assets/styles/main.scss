@@ -1,3 +1,7 @@
+@import 'inc/vars';
+
+//  Foundation for Sites Settings
+//  -----------------------------
 @import 'inc/settings';
 
 // Utils
@@ -99,6 +103,16 @@ comment or delete styles below */
   Home slider
 ----------------------------------------- */
 @import 'autoload/home-slider';
+
+/* -----------------------------------------
+  SPA Components
+----------------------------------------- */
+@import 'inc/spa-layout';
+@import 'inc/spa-hero-section';
+@import 'inc/spa-sidebar-cta';
+@import 'inc/spa-events';
+@import 'inc/spa-buttons';
+@import 'inc/spa-footer';
 
 /* -----------------------------------------
   Divi custom blocks

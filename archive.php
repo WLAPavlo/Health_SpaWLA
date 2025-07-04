@@ -24,11 +24,7 @@ get_header(); ?>
                 <!-- END of pagination -->
             </div>
             <!-- END of Archive Content -->
-            <!-- BEGIN of Sidebar -->
-            <div class="large-4 medium-4 small-12 cell sidebar">
-                <?php get_sidebar('right'); ?>
-            </div>
-            <!-- END of Sidebar -->
+
         </div>
     </div>
 </main>

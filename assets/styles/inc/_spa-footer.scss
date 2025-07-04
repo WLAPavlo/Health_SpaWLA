@@ -1,0 +1,232 @@
+/* -----------------------------------------
+   SPA Footer Styles
+----------------------------------------- */
+
+.spa-footer {
+  margin-top: auto;
+
+  .footer-section {
+    padding: 1.5rem;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-section-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
+    }
+  }
+
+  // Get in Touch Section
+  .get-in-touch {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid currentColor;
+      opacity: 0.8;
+    }
+  }
+
+  // Connect With Us Section
+  .connect-with-us {
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+          transform: scale(1.1);
+        }
+
+        i {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  // Main Partners Section
+  .main-partners {
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+
+      .partner-logo {
+        flex: 0 0 auto;
+
+        a,
+        img {
+          display: block;
+          transition: all 0.3s ease-in-out;
+        }
+
+        img {
+          max-height: 40px;
+          max-width: 80px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+        }
+
+        a:hover img {
+          opacity: 0.8;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@include breakpoint(medium down) {
+  .spa-footer {
+    .grid-x {
+      flex-direction: column;
+      gap: 1rem !important;
+    }
+
+    .footer-section {
+      min-height: 100px;
+      padding: 1.25rem;
+
+      .footer-section-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .connect-with-us {
+      .social-links {
+        gap: 0.75rem;
+
+        .social-link {
+          width: 28px;
+          height: 28px;
+
+          i {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .main-partners {
+      .partner-logos {
+        gap: 0.75rem;
+
+        img {
+          max-height: 32px;
+          max-width: 60px;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(small down) {
+  .spa-footer {
+    .footer-section {
+      min-height: 80px;
+      padding: 1rem;
+
+      .footer-section-title {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .connect-with-us {
+      .social-links {
+        gap: 0.5rem;
+
+        .social-link {
+          width: 24px;
+          height: 24px;
+
+          i {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .main-partners {
+      .partner-logos {
+        gap: 0.5rem;
+
+        img {
+          max-height: 24px;
+          max-width: 48px;
+        }
+      }
+    }
+  }
+}
+
+// Animation for footer sections
+.spa-footer .footer-section {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

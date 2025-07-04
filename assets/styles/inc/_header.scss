@@ -1,51 +1,72 @@
+/* -----------------------------------------
+   Header Styles for SPA Design - Exact Match
+----------------------------------------- */
+
+.header {
+  background: #0f3554; // Темно-синій фон як на зображенні
+  position: relative;
+  z-index: 100;
+  padding: 0;
+  min-height: 60px;
+}
+
+/* Hide default logo */
 .logo {
-  h1 {
-    font-size: 0;
-  }
+  display: none;
+}
 
-  a {
-    display: inline-block;
-  }
+/* Main header container */
+.menu-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 
-  img {
-    max-height: 150px;
+  .grid-x {
+    align-items: center;
+    min-height: 60px;
+    justify-content: center;
   }
 }
 
+/* Menu container improvements */
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 @include breakpoint(small down) {
-  /* TOP BAR Mobile STYLING */
-
+  /* Mobile Navigation */
   .menu-grid-container {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
-    .grid-margin-x {
-      margin-left: 0;
-      margin-right: 0;
+  .title-bar {
+    background: transparent;
+    padding: 0.5rem 0;
+    border: none;
 
-      .cell {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-      }
+    .menu-icon {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+
+      @include menu-icon(#ffffff, #ffffff, 24px, 18px, 3px);
+    }
+
+    .title-bar-title {
+      color: #ffffff;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
   }
 
-  //.title-bar {
-  //  line-height: 45px;
-  //
-  //  .menu-icon {
-  //    padding: 0;
-  //    border: none;
-  //    background-color: transparent;
-  //
-  //    //@include menu-icon($white, $white, 30px, 24px, 3px);
-  //  }
-  //}
-
   .top-bar {
     display: none;
-    background: $primary-color; /* menu list background color */
+    background: #003366;
   }
 
   .header-menu {
@@ -53,56 +74,29 @@
 
     li {
       > a {
-        background: $primary-color; /* menu item background color */
-        color: $white; /* menu item text color */
-        line-height: 45px;
+        background: transparent;
+        color: #ffffff;
+        line-height: 48px;
+        padding: 0 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
+        &:hover,
         &:focus {
-          &,
-          & + .submenu-toggle {
-            background: darken(
-              $primary-color,
-              5
-            ); /* menu item background color on hover */
-          }
+          background: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
         }
       }
 
       &.current-menu-item,
       &.current_page_ancestor,
       &.current_page_parent {
-        > a,
-        .submenu-toggle {
-          background: lighten(
-            $primary-color,
-            5
-          ); /* current/parent menu item background color */
-        }
-      }
-
-      &[aria-expanded='true'] {
-        > a,
-        .submenu-toggle {
-          background: darken(
-            $primary-color,
-            3
-          ); /* menu item background color on open dropdown */
-        }
-      }
-    }
-
-    .submenu-toggle {
-      padding: 0;
-    }
-
-    .submenu {
-      a {
-        padding-left: #{get-side($accordionmenu-padding, 'left') * 1.65};
-      }
-
-      .submenu {
-        a {
-          padding-left: #{get-side($accordionmenu-padding, 'left') * 2.3};
+        > a {
+          background: rgba(255, 255, 255, 0.15);
+          color: #ffffff;
         }
       }
     }
@@ -110,25 +104,51 @@
 }
 
 @include breakpoint(medium) {
-  /* TOP BAR STYLING */
+  /* Desktop Navigation */
+  .header {
+    padding: 0;
+  }
+
+  .title-bar {
+    display: none;
+  }
+
+  .top-bar {
+    display: block;
+    background: transparent;
+    padding: 0;
+  }
 
   .header-menu.menu {
-    /* Align menu items to the right */
-    // justify-content: flex-end;
-
-    /* Align menu items to the center */
-    // justify-content: center;
+    justify-content: center;
+    margin: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
 
     li {
-      > a {
-        /* Regular menu item style */
-        line-height: 40px;
-        color: $primary-color;
+      margin: 0;
+      flex: 0 0 auto;
 
-        &:hover {
-          /* menu item style on hover */
-          background: $primary-color;
-          color: $white;
+      > a {
+        color: #85c3f6; // Білий колір для всіх пунктів за замовчуванням
+        line-height: 1;
+        padding: 12px 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        display: block;
+        background: transparent;
+
+        &:hover,
+        &:focus {
+          color: #ffffff;
+          background: transparent;
         }
       }
 
@@ -136,30 +156,62 @@
       &.current_page_ancestor,
       &.current_page_parent {
         > a {
-          /* Style of Current page and Ancestor page */
-          background: $primary-color;
-          color: $white;
+          color: #ffffff;
+          background: transparent;
+          position: relative;
+
+          // Блакитна підкреслююча полоска знизу для активного пункту
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ffffff;
+          }
         }
       }
 
       &.has-dropdown {
         > a {
-          /* Style of item with dropdown */
-        }
-      }
+          padding-right: 2rem;
 
-      &.is-active > a {
-        /* Parent link style on dropdown hover */
-        background: $white;
-        color: $primary-color;
+          &::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6rem;
+            transition: transform 0.3s ease-in-out;
+          }
+        }
+
+        &.is-active > a {
+          color: #ffffff;
+
+          &::after {
+            transform: translateY(-50%) rotate(180deg);
+          }
+        }
       }
     }
 
-    /* Dropdown item styling */
-
+    /* Dropdown Styles */
     .submenu {
-      z-index: 11;
+      z-index: 1000;
       display: none;
+      background: #ffffff;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      min-width: 220px;
+      padding: 0.5rem 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
 
       &.js-dropdown-active {
         display: block;
@@ -167,15 +219,19 @@
 
       li {
         > a {
-          /* Regular link in dropdown */
-          background: $white;
-          color: $primary-color;
-          line-height: 30px;
+          background: transparent;
+          color: #212121;
+          line-height: 1.4;
+          padding: 0.75rem 1.25rem;
+          font-size: 0.7rem;
+          font-weight: 400;
+          text-transform: none;
+          letter-spacing: 0.5px;
 
-          &:hover {
-            /* Dropdown link on hover */
-            background: lighten($primary-color, 10);
-            color: $white;
+          &:hover,
+          &:focus {
+            background: #f5f5f5;
+            color: #003366;
           }
         }
 
@@ -183,15 +239,34 @@
         &.current_page_ancestor,
         &.current_page_parent {
           > a {
-            background: lighten($primary-color, 10);
-            color: $white;
+            background: #f5f5f5;
+            color: #003366;
           }
         }
       }
+    }
+  }
+}
 
-      .submenu {
-        /* Styles for 2nd level dropdown menu */
-      }
+/* Ensure proper grid alignment */
+.header .grid-x {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Override Foundation top-bar default styles */
+.top-bar {
+  .top-bar-left,
+  .top-bar-right {
+    flex: none;
+  }
+}
+
+/* Mobile menu specific styling */
+@include breakpoint(small down) {
+  .top-bar {
+    &.expanded {
+      display: block;
     }
   }
 }

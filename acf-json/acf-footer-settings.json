@@ -1,0 +1,514 @@
+{
+  "key": "group_footer_settings",
+  "title": "Footer Settings",
+  "fields": [
+    {
+      "key": "field_footer_get_in_touch",
+      "label": "Get in Touch Section",
+      "name": "footer_get_in_touch",
+      "type": "group",
+      "instructions": "Configure the 'Get in Touch' section in footer",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_git_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Get in touch",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_footer_git_background_color",
+          "label": "Background Color",
+          "name": "background_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#e91e63",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_git_text_color",
+          "label": "Text Color",
+          "name": "text_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#ffffff",
+          "enable_opacity": 0,
+          "return_format": "string"
+        }
+      ]
+    },
+    {
+      "key": "field_footer_connect_with_us",
+      "label": "Connect With Us Section",
+      "name": "footer_connect_with_us",
+      "type": "group",
+      "instructions": "Configure the 'Connect with us' section in footer",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_cwu_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Connect with us",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_footer_cwu_background_color",
+          "label": "Background Color",
+          "name": "background_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#1e88e5",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_cwu_text_color",
+          "label": "Text Color",
+          "name": "text_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#ffffff",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_social_links",
+          "label": "Social Links",
+          "name": "social_links",
+          "type": "repeater",
+          "instructions": "Add social media links",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "collapsed": "",
+          "min": 0,
+          "max": 0,
+          "layout": "table",
+          "button_label": "Add Social Link",
+          "sub_fields": [
+            {
+              "key": "field_footer_social_icon",
+              "label": "Icon",
+              "name": "icon",
+              "type": "select",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "fab fa-facebook-f": "Facebook",
+                "fab fa-twitter": "Twitter",
+                "fab fa-instagram": "Instagram",
+                "fab fa-linkedin-in": "LinkedIn",
+                "fab fa-youtube": "YouTube",
+                "fab fa-tiktok": "TikTok",
+                "fab fa-pinterest": "Pinterest",
+                "fab fa-snapchat": "Snapchat",
+                "fab fa-telegram": "Telegram",
+                "fab fa-whatsapp": "WhatsApp"
+              },
+              "default_value": [],
+              "allow_null": 0,
+              "multiple": 0,
+              "ui": 1,
+              "return_format": "value",
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_footer_social_url",
+              "label": "URL",
+              "name": "url",
+              "type": "url",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "https://"
+            },
+            {
+              "key": "field_footer_social_color",
+              "label": "Icon Color",
+              "name": "color",
+              "type": "color_picker",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "#ffffff",
+              "enable_opacity": 0,
+              "return_format": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_footer_main_partners",
+      "label": "Main Partners Section",
+      "name": "footer_main_partners",
+      "type": "group",
+      "instructions": "Configure the 'Main partners' section in footer",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_mp_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Main partners",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_footer_mp_background_color",
+          "label": "Background Color",
+          "name": "background_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#ffffff",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_mp_text_color",
+          "label": "Text Color",
+          "name": "text_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#1e88e5",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_mp_border_color",
+          "label": "Border Color",
+          "name": "border_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#1e88e5",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_footer_partner_logos",
+          "label": "Partner Logos",
+          "name": "partner_logos",
+          "type": "repeater",
+          "instructions": "Add partner logos",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "collapsed": "",
+          "min": 0,
+          "max": 0,
+          "layout": "table",
+          "button_label": "Add Partner Logo",
+          "sub_fields": [
+            {
+              "key": "field_footer_partner_logo",
+              "label": "Logo",
+              "name": "logo",
+              "type": "image",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "thumbnail",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
+              "key": "field_footer_partner_name",
+              "label": "Partner Name",
+              "name": "name",
+              "type": "text",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_footer_partner_url",
+              "label": "Partner URL",
+              "name": "url",
+              "type": "url",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "https://"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_footer_layout_settings",
+      "label": "Layout Settings",
+      "name": "footer_layout_settings",
+      "type": "group",
+      "instructions": "Configure footer layout and spacing",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_footer_padding_top",
+          "label": "Padding Top",
+          "name": "padding_top",
+          "type": "range",
+          "instructions": "Footer top padding in pixels",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "prepend": "",
+          "append": "px"
+        },
+        {
+          "key": "field_footer_padding_bottom",
+          "label": "Padding Bottom",
+          "name": "padding_bottom",
+          "type": "range",
+          "instructions": "Footer bottom padding in pixels",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "prepend": "",
+          "append": "px"
+        },
+        {
+          "key": "field_footer_gap_between_sections",
+          "label": "Gap Between Sections",
+          "name": "gap_between_sections",
+          "type": "range",
+          "instructions": "Space between footer sections in pixels",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": 20,
+          "min": 10,
+          "max": 50,
+          "step": 5,
+          "prepend": "",
+          "append": "px"
+        },
+        {
+          "key": "field_footer_border_radius",
+          "label": "Border Radius",
+          "name": "border_radius",
+          "type": "range",
+          "instructions": "Border radius for footer sections in pixels",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": 12,
+          "min": 0,
+          "max": 30,
+          "step": 2,
+          "prepend": "",
+          "append": "px"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "theme-general-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Footer settings for the SPA website theme"
+}
