@@ -1,13 +1,13 @@
 {
-  "key": "group_footer_settings",
+  "key": "group_footer_settings_updated",
   "title": "Footer Settings",
   "fields": [
     {
-      "key": "field_footer_get_in_touch",
-      "label": "Get in Touch Section",
-      "name": "footer_get_in_touch",
-      "type": "group",
-      "instructions": "Configure the 'Get in Touch' section in footer",
+      "key": "field_footer_sections",
+      "label": "Footer Sections",
+      "name": "footer_sections",
+      "type": "repeater",
+      "instructions": "Add footer sections (Get in touch, Main partners, etc.)",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -15,37 +15,67 @@
         "class": "",
         "id": ""
       },
+      "collapsed": "field_section_title",
+      "min": 0,
+      "max": 0,
       "layout": "block",
+      "button_label": "Add Footer Section",
       "sub_fields": [
         {
-          "key": "field_footer_git_title",
-          "label": "Title",
-          "name": "title",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
+          "key": "field_section_type",
+          "label": "Section Type",
+          "name": "section_type",
+          "type": "select",
+          "instructions": "Choose the type of footer section",
+          "required": 1,
           "conditional_logic": 0,
           "wrapper": {
-            "width": "",
+            "width": "50",
             "class": "",
             "id": ""
           },
-          "default_value": "Get in touch",
-          "placeholder": "",
+          "choices": {
+            "get_in_touch": "Get in Touch",
+            "connect_with_us": "Connect with Us",
+            "main_partners": "Main Partners"
+          },
+          "default_value": "get_in_touch",
+          "allow_null": 0,
+          "multiple": 0,
+          "ui": 1,
+          "ajax": 0,
+          "return_format": "value",
+          "placeholder": ""
+        },
+        {
+          "key": "field_section_title",
+          "label": "Section Title",
+          "name": "section_title",
+          "type": "text",
+          "instructions": "Title for this footer section",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "Get in touch",
           "prepend": "",
           "append": "",
           "maxlength": ""
         },
         {
-          "key": "field_footer_git_background_color",
+          "key": "field_section_background_color",
           "label": "Background Color",
           "name": "background_color",
           "type": "color_picker",
-          "instructions": "",
+          "instructions": "Background color for this section",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
-            "width": "50",
+            "width": "33",
             "class": "",
             "id": ""
           },
@@ -54,68 +84,40 @@
           "return_format": "string"
         },
         {
-          "key": "field_footer_git_text_color",
+          "key": "field_section_text_color",
           "label": "Text Color",
           "name": "text_color",
           "type": "color_picker",
-          "instructions": "",
+          "instructions": "Text color for this section",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
-            "width": "50",
+            "width": "33",
             "class": "",
             "id": ""
           },
           "default_value": "#ffffff",
           "enable_opacity": 0,
           "return_format": "string"
-        }
-      ]
-    },
-    {
-      "key": "field_footer_connect_with_us",
-      "label": "Connect With Us Section",
-      "name": "footer_connect_with_us",
-      "type": "group",
-      "instructions": "Configure the 'Connect with us' section in footer",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "sub_fields": [
-        {
-          "key": "field_footer_cwu_title",
-          "label": "Title",
-          "name": "title",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "Connect with us",
-          "placeholder": "",
-          "prepend": "",
-          "append": "",
-          "maxlength": ""
         },
         {
-          "key": "field_footer_cwu_background_color",
-          "label": "Background Color",
-          "name": "background_color",
+          "key": "field_section_border_color",
+          "label": "Border Color",
+          "name": "border_color",
           "type": "color_picker",
-          "instructions": "",
+          "instructions": "Border color for this section (if applicable)",
           "required": 0,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_section_type",
+                "operator": "==",
+                "value": "main_partners"
+              }
+            ]
+          ],
           "wrapper": {
-            "width": "50",
+            "width": "33",
             "class": "",
             "id": ""
           },
@@ -124,30 +126,44 @@
           "return_format": "string"
         },
         {
-          "key": "field_footer_cwu_text_color",
-          "label": "Text Color",
-          "name": "text_color",
-          "type": "color_picker",
-          "instructions": "",
+          "key": "field_section_link",
+          "label": "Section Link",
+          "name": "section_link",
+          "type": "link",
+          "instructions": "Optional link for the entire section (e.g., contact page link for 'Get in touch')",
           "required": 0,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_section_type",
+                "operator": "==",
+                "value": "get_in_touch"
+              }
+            ]
+          ],
           "wrapper": {
-            "width": "50",
+            "width": "",
             "class": "",
             "id": ""
           },
-          "default_value": "#ffffff",
-          "enable_opacity": 0,
-          "return_format": "string"
+          "return_format": "array"
         },
         {
-          "key": "field_footer_social_links",
+          "key": "field_social_links",
           "label": "Social Links",
           "name": "social_links",
           "type": "repeater",
           "instructions": "Add social media links",
           "required": 0,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_section_type",
+                "operator": "==",
+                "value": "connect_with_us"
+              }
+            ]
+          ],
           "wrapper": {
             "width": "",
             "class": "",
@@ -160,8 +176,8 @@
           "button_label": "Add Social Link",
           "sub_fields": [
             {
-              "key": "field_footer_social_icon",
-              "label": "Icon",
+              "key": "field_social_icon",
+              "label": "Social Icon",
               "name": "icon",
               "type": "select",
               "instructions": "",
@@ -193,7 +209,7 @@
               "placeholder": ""
             },
             {
-              "key": "field_footer_social_url",
+              "key": "field_social_url",
               "label": "URL",
               "name": "url",
               "type": "url",
@@ -209,7 +225,7 @@
               "placeholder": "https://"
             },
             {
-              "key": "field_footer_social_color",
+              "key": "field_social_color",
               "label": "Icon Color",
               "name": "color",
               "type": "color_picker",
@@ -226,102 +242,23 @@
               "return_format": "string"
             }
           ]
-        }
-      ]
-    },
-    {
-      "key": "field_footer_main_partners",
-      "label": "Main Partners Section",
-      "name": "footer_main_partners",
-      "type": "group",
-      "instructions": "Configure the 'Main partners' section in footer",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "sub_fields": [
-        {
-          "key": "field_footer_mp_title",
-          "label": "Title",
-          "name": "title",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "Main partners",
-          "placeholder": "",
-          "prepend": "",
-          "append": "",
-          "maxlength": ""
         },
         {
-          "key": "field_footer_mp_background_color",
-          "label": "Background Color",
-          "name": "background_color",
-          "type": "color_picker",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "50",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "#ffffff",
-          "enable_opacity": 0,
-          "return_format": "string"
-        },
-        {
-          "key": "field_footer_mp_text_color",
-          "label": "Text Color",
-          "name": "text_color",
-          "type": "color_picker",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "50",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "#1e88e5",
-          "enable_opacity": 0,
-          "return_format": "string"
-        },
-        {
-          "key": "field_footer_mp_border_color",
-          "label": "Border Color",
-          "name": "border_color",
-          "type": "color_picker",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "50",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "#1e88e5",
-          "enable_opacity": 0,
-          "return_format": "string"
-        },
-        {
-          "key": "field_footer_partner_logos",
+          "key": "field_partner_logos",
           "label": "Partner Logos",
           "name": "partner_logos",
           "type": "repeater",
           "instructions": "Add partner logos",
           "required": 0,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_section_type",
+                "operator": "==",
+                "value": "main_partners"
+              }
+            ]
+          ],
           "wrapper": {
             "width": "",
             "class": "",
@@ -334,7 +271,7 @@
           "button_label": "Add Partner Logo",
           "sub_fields": [
             {
-              "key": "field_footer_partner_logo",
+              "key": "field_partner_logo",
               "label": "Logo",
               "name": "logo",
               "type": "image",
@@ -358,7 +295,7 @@
               "mime_types": ""
             },
             {
-              "key": "field_footer_partner_name",
+              "key": "field_partner_name",
               "label": "Partner Name",
               "name": "name",
               "type": "text",
@@ -377,7 +314,7 @@
               "maxlength": ""
             },
             {
-              "key": "field_footer_partner_url",
+              "key": "field_partner_url",
               "label": "Partner URL",
               "name": "url",
               "type": "url",
@@ -424,9 +361,9 @@
             "class": "",
             "id": ""
           },
-          "default_value": 40,
+          "default_value": 60,
           "min": 0,
-          "max": 100,
+          "max": 120,
           "step": 5,
           "prepend": "",
           "append": "px"
@@ -444,9 +381,9 @@
             "class": "",
             "id": ""
           },
-          "default_value": 40,
+          "default_value": 60,
           "min": 0,
-          "max": 100,
+          "max": 120,
           "step": 5,
           "prepend": "",
           "append": "px"
@@ -464,9 +401,9 @@
             "class": "",
             "id": ""
           },
-          "default_value": 20,
+          "default_value": 30,
           "min": 10,
-          "max": 50,
+          "max": 60,
           "step": 5,
           "prepend": "",
           "append": "px"
@@ -484,9 +421,9 @@
             "class": "",
             "id": ""
           },
-          "default_value": 12,
+          "default_value": 20,
           "min": 0,
-          "max": 30,
+          "max": 40,
           "step": 2,
           "prepend": "",
           "append": "px"
@@ -510,5 +447,5 @@
   "instruction_placement": "label",
   "hide_on_screen": "",
   "active": true,
-  "description": "Footer settings for the SPA website theme"
+  "description": "Footer settings for the SPA website theme with flexible sections"
 }

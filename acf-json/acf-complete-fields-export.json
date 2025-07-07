@@ -1,0 +1,409 @@
+[
+  {
+    "key": "group_spa_home_page",
+    "title": "SPA Home Page Fields",
+    "fields": [
+      {
+        "key": "field_hero_section",
+        "label": "Hero Section",
+        "name": "hero_section",
+        "type": "wysiwyg",
+        "instructions": "Main content area with text and video",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "<h1>SPA</h1>\n<h2>HEALTH TECH ECOSYSTEM</h2>\n<h5>Fighting fit and raring to go</h5>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 1,
+        "delay": 0
+      },
+      {
+        "key": "field_sidebar_cta",
+        "label": "Sidebar CTA",
+        "name": "sidebar_cta",
+        "type": "group",
+        "instructions": "Call-to-action section in sidebar",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_cta_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "default_value": "Fighting fit and raring to go",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+          },
+          {
+            "key": "field_cta_description",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "default_value": "Join our community of health tech innovators and entrepreneurs.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "br"
+          },
+          {
+            "key": "field_cta_button",
+            "label": "Button",
+            "name": "button",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "return_format": "array"
+          },
+          {
+            "key": "field_cta_background_color",
+            "label": "Background Color",
+            "name": "background_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "50",
+              "class": "",
+              "id": ""
+            },
+            "default_value": "#2c5aa0",
+            "enable_opacity": 0,
+            "return_format": "string"
+          },
+          {
+            "key": "field_cta_text_color",
+            "label": "Text Color",
+            "name": "text_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "50",
+              "class": "",
+              "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+          }
+        ]
+      },
+      {
+        "key": "field_events_section_title",
+        "label": "Events Section Title",
+        "name": "events_section_title",
+        "type": "text",
+        "instructions": "Title for the SPA events section",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "Upcoming SPA events",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_events_section_link",
+        "label": "Events Section Link",
+        "name": "events_section_link",
+        "type": "link",
+        "instructions": "\"See All\" link for events section",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "return_format": "array"
+      },
+      {
+        "key": "field_events_background_image",
+        "label": "Events Background Image",
+        "name": "events_background_image",
+        "type": "image",
+        "instructions": "Background image for events section",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "min_width": "",
+        "min_height": "",
+        "min_size": "",
+        "max_width": "",
+        "max_height": "",
+        "max_size": "",
+        "mime_types": ""
+      },
+      {
+        "key": "field_featured_event",
+        "label": "Featured Event",
+        "name": "featured_event",
+        "type": "post_object",
+        "instructions": "Select the main featured event",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "post_type": [
+          "spa_event"
+        ],
+        "taxonomy": "",
+        "allow_null": 1,
+        "multiple": 0,
+        "return_format": "object",
+        "ui": 1
+      },
+      {
+        "key": "field_regular_events",
+        "label": "Regular Events",
+        "name": "regular_events",
+        "type": "post_object",
+        "instructions": "Select regular events to display",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "post_type": [
+          "spa_event"
+        ],
+        "taxonomy": "",
+        "allow_null": 1,
+        "multiple": 1,
+        "return_format": "object",
+        "ui": 1
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page_template",
+          "operator": "==",
+          "value": "templates/template-home.php"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for SPA Home Page template"
+  },
+  {
+    "key": "group_spa_event_fields",
+    "title": "SPA Event Fields",
+    "fields": [
+      {
+        "key": "field_event_month",
+        "label": "Event Month",
+        "name": "event_month",
+        "type": "text",
+        "instructions": "Month abbreviation (e.g., JAN, FEB, MAR)",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": "JAN",
+        "prepend": "",
+        "append": "",
+        "maxlength": 3
+      },
+      {
+        "key": "field_event_day",
+        "label": "Event Day",
+        "name": "event_day",
+        "type": "number",
+        "instructions": "Day of the month",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": "9",
+        "prepend": "",
+        "append": "",
+        "min": 1,
+        "max": 31,
+        "step": ""
+      },
+      {
+        "key": "field_event_location",
+        "label": "Event Location",
+        "name": "event_location",
+        "type": "text",
+        "instructions": "Location of the event (e.g., HELSINKI, TAMPERE)",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": "HELSINKI",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_event_subtitle",
+        "label": "Event Subtitle",
+        "name": "event_subtitle",
+        "type": "text",
+        "instructions": "Subtitle or tagline for the event",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": "Healthtech startups meet industry experts",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_event_description",
+        "label": "Event Description",
+        "name": "event_description",
+        "type": "wysiwyg",
+        "instructions": "Detailed description of the event",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "tabs": "all",
+        "toolbar": "basic",
+        "media_upload": 0,
+        "delay": 0
+      },
+      {
+        "key": "field_event_link",
+        "label": "Event Link",
+        "name": "event_link",
+        "type": "link",
+        "instructions": "Link to event details or registration",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "return_format": "array"
+      },
+      {
+        "key": "field_event_logo",
+        "label": "Event Logo",
+        "name": "event_logo",
+        "type": "image",
+        "instructions": "Logo or icon for the event (only for featured events)",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "return_format": "array",
+        "preview_size": "thumbnail",
+        "library": "all",
+        "min_width": "",
+        "min_height": "",
+        "min_size": "",
+        "max_width": "",
+        "max_height": "",
+        "max_size": "",
+        "mime_types": ""
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "spa_event"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for SPA Events custom post type"
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "key": "group_hero_section",
+  "title": "Hero Section",
+  "fields": [
+    {
+      "key": "field_hero_section_content",
+      "label": "Hero Section Content",
+      "name": "hero_section",
+      "type": "wysiwyg",
+      "instructions": "Add your main hero content here. You can include headings, text, images, and videos.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_sidebar_cta",
+      "label": "Sidebar CTA",
+      "name": "sidebar_cta",
+      "type": "group",
+      "instructions": "Configure the sidebar call-to-action section",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_sidebar_cta_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "COME JOIN US",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_sidebar_cta_description",
+          "label": "Description",
+          "name": "description",
+          "type": "textarea",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Some short text about the benefits of joining and so on. Or then something else fitting here. Some short text about the benefits of joining and so on.",
+          "placeholder": "",
+          "maxlength": "",
+          "rows": 4,
+          "new_lines": "br"
+        },
+        {
+          "key": "field_sidebar_cta_button",
+          "label": "Button",
+          "name": "button",
+          "type": "link",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array"
+        },
+        {
+          "key": "field_sidebar_cta_background_color",
+          "label": "Background Color",
+          "name": "background_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#2c5aa0",
+          "enable_opacity": 0,
+          "return_format": "string"
+        },
+        {
+          "key": "field_sidebar_cta_text_color",
+          "label": "Text Color",
+          "name": "text_color",
+          "type": "color_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "#ffffff",
+          "enable_opacity": 0,
+          "return_format": "string"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/template-home.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Hero section configuration for the home page"
+}

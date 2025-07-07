@@ -1,0 +1,80 @@
+{
+  "key": "group_stories_fields",
+  "title": "Stories Fields",
+  "fields": [
+    {
+      "key": "field_story_category",
+      "label": "Story Category",
+      "name": "story_category",
+      "type": "text",
+      "instructions": "Category label (e.g., JOBS & CAREER, WEARABLES, PRODUCTION)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "JOBS & CAREER",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_story_author",
+      "label": "Story Author",
+      "name": "story_author",
+      "type": "text",
+      "instructions": "Author name (leave empty to use WordPress author)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Sebastian Gianelli",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_story_excerpt",
+      "label": "Story Excerpt",
+      "name": "story_excerpt",
+      "type": "textarea",
+      "instructions": "Short excerpt for the story (leave empty to use WordPress excerpt)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Brief introduction goes here and should not be more than a few lines long...",
+      "maxlength": "",
+      "rows": 4,
+      "new_lines": "br"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Fields for Stories/Blog posts"
+}

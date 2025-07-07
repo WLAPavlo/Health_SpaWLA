@@ -4,92 +4,121 @@
  */
 
 // Get footer settings from ACF
-$get_in_touch = get_field('footer_get_in_touch', 'options');
-$connect_with_us = get_field('footer_connect_with_us', 'options');
-$main_partners = get_field('footer_main_partners', 'options');
+$footer_sections = get_field('footer_sections', 'options');
 $layout_settings = get_field('footer_layout_settings', 'options');
 
-// Default values if ACF fields are empty
-$get_in_touch = $get_in_touch ?: [
-    'title' => 'Get in touch',
-    'background_color' => '#e91e63',
-    'text_color' => '#ffffff'
-];
+// Separate sections by type
+$get_in_touch_section = null;
+$connect_with_us_section = null;
+$main_partners_section = null;
 
-$connect_with_us = $connect_with_us ?: [
-    'title' => 'Connect with us',
-    'background_color' => '#1e88e5',
-    'text_color' => '#ffffff',
-    'social_links' => []
-];
-
-$main_partners = $main_partners ?: [
-    'title' => 'Main partners',
-    'background_color' => '#ffffff',
-    'text_color' => '#1e88e5',
-    'border_color' => '#1e88e5',
-    'partner_logos' => []
-];
-
-$layout_settings = $layout_settings ?: [
-    'padding_top' => 40,
-    'padding_bottom' => 40,
-    'gap_between_sections' => 20,
-    'border_radius' => 12
-];
+if ($footer_sections) {
+    foreach ($footer_sections as $section) {
+        switch ($section['section_type']) {
+            case 'get_in_touch':
+                $get_in_touch_section = $section;
+                break;
+            case 'connect_with_us':
+                $connect_with_us_section = $section;
+                break;
+            case 'main_partners':
+                $main_partners_section = $section;
+                break;
+        }
+    }
+}
 ?>
 
+<!-- Бігова стрічка перед футером -->
+<div class="pre-footer-stripe">
+    <span>HEALTH TECH INNOVATION</span>
+    <span>STARTUP ECOSYSTEM</span>
+    <span>DIGITAL HEALTH SOLUTIONS</span>
+    <span>MEDICAL TECHNOLOGY</span>
+    <span>WELLNESS INNOVATION</span>
+    <span>HEALTHCARE STARTUPS</span>
+    <span>HEALTH TECH INNOVATION</span>
+    <span>STARTUP ECOSYSTEM</span>
+    <span>DIGITAL HEALTH SOLUTIONS</span>
+    <span>MEDICAL TECHNOLOGY</span>
+    <span>WELLNESS INNOVATION</span>
+    <span>HEALTHCARE STARTUPS</span>
+    <span>HEALTH TECH INNOVATION</span>
+    <span>STARTUP ECOSYSTEM</span>
+    <span>DIGITAL HEALTH SOLUTIONS</span>
+    <span>MEDICAL TECHNOLOGY</span>
+    <span>WELLNESS INNOVATION</span>
+    <span>HEALTHCARE STARTUPS</span>
+</div>
+
 <!-- BEGIN of footer -->
-<footer class="footer spa-footer" style="padding-top: <?php echo esc_attr($layout_settings['padding_top']); ?>px; padding-bottom: <?php echo esc_attr($layout_settings['padding_bottom']); ?>px;">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x align-center" style="gap: <?php echo esc_attr($layout_settings['gap_between_sections']); ?>px;">
+<footer class="footer spa-footer">
 
-            <!-- Get in Touch Section -->
-            <div class="cell small-12 medium-4 large-auto">
-                <div class="footer-section get-in-touch"
-                     style="background-color: <?php echo esc_attr($get_in_touch['background_color']); ?>;
-                         color: <?php echo esc_attr($get_in_touch['text_color']); ?>;
-                         border-radius: <?php echo esc_attr($layout_settings['border_radius']); ?>px;">
-                    <h3 class="footer-section-title"><?php echo esc_html($get_in_touch['title']); ?></h3>
+    <!-- Main Footer Content: Left Column (Get in Touch + Connect) and Right Column (Partners) -->
+    <div class="footer-main-content">
+        <!-- Left Column: Get in Touch + Connect with Us -->
+        <div class="footer-left-column">
+            <!-- Get in Touch -->
+            <?php if ($get_in_touch_section): ?>
+                <div class="footer-get-in-touch">
+                    <?php if (!empty($get_in_touch_section['section_link'])): ?>
+                        <a href="<?php echo esc_url($get_in_touch_section['section_link']['url']); ?>"
+                           class="get-in-touch-link"
+                           <?php if ($get_in_touch_section['section_link']['target']): ?>target="<?php echo esc_attr($get_in_touch_section['section_link']['target']); ?>"<?php endif; ?>>
+                            <?php echo esc_html($get_in_touch_section['section_title'] ?: 'Get in touch'); ?>
+                        </a>
+                    <?php else: ?>
+                        <span class="get-in-touch-text">
+                            <?php echo esc_html($get_in_touch_section['section_title'] ?: 'Get in touch'); ?>
+                        </span>
+                    <?php endif; ?>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <!-- Connect With Us Section -->
-            <div class="cell small-12 medium-4 large-auto">
-                <div class="footer-section connect-with-us"
-                     style="background-color: <?php echo esc_attr($connect_with_us['background_color']); ?>;
-                         color: <?php echo esc_attr($connect_with_us['text_color']); ?>;
-                         border-radius: <?php echo esc_attr($layout_settings['border_radius']); ?>px;">
-                    <h3 class="footer-section-title"><?php echo esc_html($connect_with_us['title']); ?></h3>
-
-                    <?php if (!empty($connect_with_us['social_links'])): ?>
+            <!-- Connect with Us -->
+            <?php if ($connect_with_us_section): ?>
+                <div class="footer-connect-with-us">
+                    <div class="connect-title">
+                        <?php echo esc_html($connect_with_us_section['section_title'] ?: 'Connect with us'); ?>
+                    </div>
+                    <?php if (!empty($connect_with_us_section['social_links'])): ?>
                         <div class="social-links">
-                            <?php foreach ($connect_with_us['social_links'] as $social): ?>
+                            <?php foreach ($connect_with_us_section['social_links'] as $social): ?>
+                                <?php
+                                // Determine social network type for styling
+                                $social_class = '';
+                                if (strpos($social['icon'], 'facebook') !== false) {
+                                    $social_class = 'social-facebook';
+                                } elseif (strpos($social['icon'], 'twitter') !== false) {
+                                    $social_class = 'social-twitter';
+                                } elseif (strpos($social['icon'], 'linkedin') !== false) {
+                                    $social_class = 'social-linkedin';
+                                }
+                                ?>
                                 <a href="<?php echo esc_url($social['url']); ?>"
                                    target="_blank"
                                    rel="noopener noreferrer"
-                                   class="social-link"
-                                   style="color: <?php echo esc_attr($social['color'] ?: $connect_with_us['text_color']); ?>;">
+                                   class="social-link <?php echo esc_attr($social_class); ?>"
+                                   title="<?php echo esc_attr(ucfirst(str_replace(['fab fa-', '-'], ['', ' '], $social['icon']))); ?>">
                                     <i class="<?php echo esc_attr($social['icon']); ?>"></i>
                                 </a>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
                 </div>
-            </div>
+            <?php endif; ?>
+        </div>
 
-            <!-- Main Partners Section -->
-            <div class="cell small-12 medium-4 large-auto">
-                <div class="footer-section main-partners"
-                     style="background-color: <?php echo esc_attr($main_partners['background_color']); ?>;
-                         color: <?php echo esc_attr($main_partners['text_color']); ?>;
-                         border: 2px solid <?php echo esc_attr($main_partners['border_color']); ?>;
-                         border-radius: <?php echo esc_attr($layout_settings['border_radius']); ?>px;">
-                    <h3 class="footer-section-title"><?php echo esc_html($main_partners['title']); ?></h3>
-
-                    <?php if (!empty($main_partners['partner_logos'])): ?>
+        <!-- Right Column: Main Partners -->
+        <?php if ($main_partners_section): ?>
+            <div class="footer-right-column">
+                <div class="footer-main-partners">
+                    <div class="partners-title">
+                        <?php echo esc_html($main_partners_section['section_title'] ?: 'Main partners'); ?>
+                    </div>
+                    <?php if (!empty($main_partners_section['partner_logos'])): ?>
                         <div class="partner-logos">
-                            <?php foreach ($main_partners['partner_logos'] as $partner): ?>
+                            <?php foreach ($main_partners_section['partner_logos'] as $partner): ?>
                                 <div class="partner-logo">
                                     <?php if (!empty($partner['url'])): ?>
                                     <a href="<?php echo esc_url($partner['url']); ?>"
@@ -111,7 +140,7 @@ $layout_settings = $layout_settings ?: [
                     <?php endif; ?>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     <!-- Copyright Section -->

@@ -1,248 +1,159 @@
-[
-  {
-    "key": "group_spa_events_section",
-    "title": "SPA Events Section",
-    "fields": [
-      {
-        "key": "field_events_section_title",
-        "label": "Заголовок секції",
-        "name": "events_section_title",
-        "type": "text",
-        "instructions": "Заголовок для секції подій",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "50",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "Upcoming SPA events",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
+{
+  "key": "group_spa_event_fields",
+  "title": "SPA Event Fields",
+  "fields": [
+    {
+      "key": "field_event_month",
+      "label": "Event Month",
+      "name": "event_month",
+      "type": "text",
+      "instructions": "Month abbreviation (e.g., JAN, FEB, MAR)",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_events_section_link",
-        "label": "Посилання 'See All'",
-        "name": "events_section_link",
-        "type": "link",
-        "instructions": "Посилання на сторінку всіх подій",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "50",
-          "class": "",
-          "id": ""
-        },
-        "return_format": "array"
+      "default_value": "",
+      "placeholder": "JAN",
+      "prepend": "",
+      "append": "",
+      "maxlength": 3
+    },
+    {
+      "key": "field_event_day",
+      "label": "Event Day",
+      "name": "event_day",
+      "type": "number",
+      "instructions": "Day of the month",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_events_background_image",
-        "label": "Фонове зображення секції",
-        "name": "events_background_image",
-        "type": "image",
-        "instructions": "Фонове зображення для секції подій",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "return_format": "array",
-        "preview_size": "medium",
-        "library": "all",
-        "min_width": "",
-        "min_height": "",
-        "min_size": "",
-        "max_width": "",
-        "max_height": "",
-        "max_size": "",
-        "mime_types": ""
+      "default_value": "",
+      "placeholder": "9",
+      "prepend": "",
+      "append": "",
+      "min": 1,
+      "max": 31,
+      "step": ""
+    },
+    {
+      "key": "field_event_location",
+      "label": "Event Location",
+      "name": "event_location",
+      "type": "text",
+      "instructions": "Location of the event (e.g., HELSINKI, TAMPERE)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_events_display_mode",
-        "label": "Режим відображення подій",
-        "name": "events_display_mode",
-        "type": "radio",
-        "instructions": "Виберіть як відображати події",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "choices": {
-          "manual": "Вручну вибрати події",
-          "automatic": "Автоматично (останні події)",
-          "category": "За категорією"
-        },
-        "allow_null": 0,
-        "other_choice": 0,
-        "default_value": "manual",
-        "layout": "horizontal",
-        "return_format": "value",
-        "save_other_choice": 0
+      "default_value": "",
+      "placeholder": "HELSINKI",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_subtitle",
+      "label": "Event Subtitle",
+      "name": "event_subtitle",
+      "type": "text",
+      "instructions": "Subtitle or tagline for the event",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_featured_event",
-        "label": "Головна подія",
-        "name": "featured_event",
-        "type": "post_object",
-        "instructions": "Виберіть головну подію для відображення",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": [
-          "spa_event"
-        ],
-        "taxonomy": "",
-        "allow_null": 1,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
+      "default_value": "",
+      "placeholder": "Healthtech startups meet industry experts",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_description",
+      "label": "Event Description",
+      "name": "event_description",
+      "type": "wysiwyg",
+      "instructions": "Detailed description of the event",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_regular_events",
-        "label": "Звичайні події (Вручну)",
-        "name": "regular_events",
-        "type": "post_object",
-        "instructions": "Виберіть події для відображення в нижній частині",
-        "required": 0,
-        "conditional_logic": [
-          [
-            {
-              "field": "field_events_display_mode",
-              "operator": "==",
-              "value": "manual"
-            }
-          ]
-        ],
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": [
-          "spa_event"
-        ],
-        "taxonomy": "",
-        "allow_null": 1,
-        "multiple": 1,
-        "return_format": "object",
-        "ui": 1
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_event_link",
+      "label": "Event Link",
+      "name": "event_link",
+      "type": "link",
+      "instructions": "Link to event details or registration",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_events_count",
-        "label": "Кількість подій для відображення",
-        "name": "events_count",
-        "type": "number",
-        "instructions": "Скільки подій показувати (для автоматичного режиму)",
-        "required": 0,
-        "conditional_logic": [
-          [
-            {
-              "field": "field_events_display_mode",
-              "operator": "==",
-              "value": "automatic"
-            }
-          ]
-        ],
-        "wrapper": {
-          "width": "50",
-          "class": "",
-          "id": ""
-        },
-        "default_value": 6,
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "min": 1,
-        "max": 20,
-        "step": ""
+      "return_format": "array"
+    },
+    {
+      "key": "field_event_logo",
+      "label": "Event Logo",
+      "name": "event_logo",
+      "type": "image",
+      "instructions": "Logo or icon for the event (only for featured events)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
+      "return_format": "array",
+      "preview_size": "thumbnail",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": ""
+    }
+  ],
+  "location": [
+    [
       {
-        "key": "field_events_category",
-        "label": "Категорія подій",
-        "name": "events_category",
-        "type": "taxonomy",
-        "instructions": "Виберіть категорію для фільтрації подій",
-        "required": 0,
-        "conditional_logic": [
-          [
-            {
-              "field": "field_events_display_mode",
-              "operator": "==",
-              "value": "category"
-            }
-          ]
-        ],
-        "wrapper": {
-          "width": "50",
-          "class": "",
-          "id": ""
-        },
-        "taxonomy": "spa_event_category",
-        "field_type": "select",
-        "allow_null": 1,
-        "add_term": 1,
-        "save_terms": 0,
-        "load_terms": 0,
-        "return_format": "id",
-        "multiple": 0
-      },
-      {
-        "key": "field_events_category_count",
-        "label": "Кількість подій з категорії",
-        "name": "events_category_count",
-        "type": "number",
-        "instructions": "Скільки подій показувати з вибраної категорії",
-        "required": 0,
-        "conditional_logic": [
-          [
-            {
-              "field": "field_events_display_mode",
-              "operator": "==",
-              "value": "category"
-            }
-          ]
-        ],
-        "wrapper": {
-          "width": "50",
-          "class": "",
-          "id": ""
-        },
-        "default_value": 6,
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "min": 1,
-        "max": 20,
-        "step": ""
+        "param": "post_type",
+        "operator": "==",
+        "value": "spa_event"
       }
-    ],
-    "location": [
-      [
-        {
-          "param": "page_template",
-          "operator": "==",
-          "value": "templates/template-home.php"
-        }
-      ]
-    ],
-    "menu_order": 1,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "Поля для налаштування секції SPA Events"
-  }
-]
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Fields for SPA Events custom post type"
+}
