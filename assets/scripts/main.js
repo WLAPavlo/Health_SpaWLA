@@ -227,3 +227,15 @@ $(window).on('resize', function () {
 $(window).on('scroll', function () {
   // jQuery code goes here
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const yearInput = document.querySelector('input[name="event_year"]'); // або інший селектор
+  if (yearInput) {
+    yearInput.setAttribute('min', '2015');
+
+    yearInput.addEventListener('input', function () {
+      if (parseInt(this.value) < 2015) {
+        this.value = 2015;
+      }
+    });
+  }
+});

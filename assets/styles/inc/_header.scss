@@ -10,9 +10,55 @@
   min-height: 60px;
 }
 
-/* Hide default logo */
+/* Logo visibility - show on all pages except home */
 .logo {
   display: none;
+
+  // Show logo on all pages except home template
+  body:not(.page-template-template-home) & {
+    display: block;
+
+    h1 {
+      margin: 0;
+
+      a {
+        color: #00bcd4;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: inherit;
+
+        &:hover {
+          color: #00acc1;
+        }
+      }
+
+      img {
+        max-height: 50px;
+        width: auto;
+      }
+
+      // SPA text styling
+      .spa-text {
+        color: #00bcd4;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+
+      .spa-subtitle {
+        color: #ffffff;
+        font-size: 0.875rem;
+        font-weight: 400;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        margin-left: 0.5rem;
+      }
+    }
+  }
 }
 
 /* Main header container */
@@ -24,7 +70,16 @@
   .grid-x {
     align-items: center;
     min-height: 60px;
-    justify-content: center;
+
+    // On home page - center menu
+    .page-template-template-home & {
+      justify-content: center;
+    }
+
+    // On other pages - space between logo and menu
+    body:not(.page-template-template-home) & {
+      justify-content: space-between;
+    }
   }
 }
 
@@ -32,8 +87,18 @@
 .menu-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+
+  // On home page - center menu and full width
+  .page-template-template-home & {
+    justify-content: center;
+    width: 100%;
+  }
+
+  // On other pages - flex end and auto width
+  body:not(.page-template-template-home) & {
+    justify-content: flex-end;
+    width: auto;
+  }
 }
 
 @include breakpoint(small down) {

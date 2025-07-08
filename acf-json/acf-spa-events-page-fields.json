@@ -1,0 +1,154 @@
+{
+  "key": "group_spa_events_page_fields",
+  "title": "SPA Events Page Fields",
+  "fields": [
+    {
+      "key": "field_event_time_start",
+      "label": "Event Start Time",
+      "name": "event_time_start",
+      "type": "text",
+      "instructions": "Start time (e.g., 18:00)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "18:00",
+      "placeholder": "18:00",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_time_end",
+      "label": "Event End Time",
+      "name": "event_time_end",
+      "type": "text",
+      "instructions": "End time (e.g., 21:00)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "21:00",
+      "placeholder": "21:00",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_venue_name",
+      "label": "Venue Name",
+      "name": "event_venue_name",
+      "type": "text",
+      "instructions": "Name of the venue (e.g., Ravintolasali 8)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Ravintolasali 8",
+      "placeholder": "Ravintolasali 8",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_venue_address",
+      "label": "Venue Address",
+      "name": "event_venue_address",
+      "type": "text",
+      "instructions": "Full address (e.g., 00100 HELSINKI)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "00100 HELSINKI",
+      "placeholder": "00100 HELSINKI",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_event_attendance_info",
+      "label": "Attendance Information",
+      "name": "event_attendance_info",
+      "type": "textarea",
+      "instructions": "Information about attendance, pricing, registration",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "The event is free, but seating is limited to 50.",
+      "placeholder": "",
+      "maxlength": "",
+      "rows": 3,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_event_registration_link",
+      "label": "Registration Link",
+      "name": "event_registration_link",
+      "type": "link",
+      "instructions": "Link for event registration",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array"
+    },
+    {
+      "key": "field_event_year",
+      "label": "Event Year",
+      "name": "event_year",
+      "type": "number",
+      "instructions": "Year of the event",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": 2025,
+      "placeholder": "2025",
+      "prepend": "",
+      "append": "",
+      "min": 2024,
+      "max": 2030,
+      "step": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "spa_event"
+      }
+    ]
+  ],
+  "menu_order": 1,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Additional fields for SPA Events page display"
+}

@@ -1,0 +1,42 @@
+{
+  "key": "group_events_stripe_field",
+  "title": "Events Page Settings",
+  "fields": [
+    {
+      "key": "field_events_stripe_text",
+      "label": "Events Stripe Text",
+      "name": "events_stripe_text",
+      "type": "text",
+      "instructions": "Text to display in the stripe above events list",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "HEALTH TECH INNOVATION EVENTS",
+      "placeholder": "Enter text for events stripe",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "theme-general-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Settings for Events page"
+}

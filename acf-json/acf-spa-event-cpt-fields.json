@@ -8,7 +8,7 @@
         "label": "Дата події",
         "name": "event_date",
         "type": "date_picker",
-        "instructions": "Дата проведення події",
+        "instructions": "Дата проведення події (опціонально - для автозаповнення місяця та дня)",
         "required": 1,
         "conditional_logic": 0,
         "wrapper": {
@@ -25,7 +25,7 @@
         "label": "Місяць (скорочено)",
         "name": "event_month",
         "type": "text",
-        "instructions": "Скорочена назва місяця (наприклад: JAN, FEB)",
+        "instructions": "Скорочена назва місяця (наприклад: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC)",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -44,7 +44,7 @@
         "label": "День",
         "name": "event_day",
         "type": "number",
-        "instructions": "День місяця",
+        "instructions": "День місяця (1-31)",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
