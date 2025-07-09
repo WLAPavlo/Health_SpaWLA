@@ -28,8 +28,8 @@ $white: #ffffff;
 
   // Підзаголовок "Fighting fit and raring to go"
   h5 {
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 100;
     color: $primary-blue;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -38,7 +38,7 @@ $white: #ffffff;
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: $text-gray;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -115,16 +115,6 @@ $white: #ffffff;
     &:hover {
       transform: translate(-50%, -50%) scale(1.1);
       box-shadow: 0 12px 35px rgba(233, 30, 99, 0.4);
-    }
-
-    &::after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 20px solid $white;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      margin-left: 4px;
     }
   }
 

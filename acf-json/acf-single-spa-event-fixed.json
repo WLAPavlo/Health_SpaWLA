@@ -1,0 +1,460 @@
+{
+  "key": "group_single_spa_event_fixed",
+  "title": "Single SPA Event - Fixed Structure",
+  "fields": [
+    {
+      "key": "field_event_date_picker",
+      "label": "Event Date",
+      "name": "event_date_picker",
+      "type": "date_picker",
+      "instructions": "Select the event date",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "display_format": "d/m/Y",
+      "return_format": "d/m/Y",
+      "first_day": 1
+    },
+    {
+      "key": "field_event_featured_image",
+      "label": "Event Featured Image",
+      "name": "event_featured_image",
+      "type": "image",
+      "instructions": "Main event image (recommended size: 1200x600px)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "67",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": ""
+    },
+    {
+      "key": "field_social_facebook",
+      "label": "Facebook Share",
+      "name": "social_facebook",
+      "type": "true_false",
+      "instructions": "Enable Facebook sharing",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "25",
+        "class": "",
+        "id": ""
+      },
+      "message": "Enable Facebook",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Yes",
+      "ui_off_text": "No"
+    },
+    {
+      "key": "field_social_twitter",
+      "label": "Twitter Share",
+      "name": "social_twitter",
+      "type": "true_false",
+      "instructions": "Enable Twitter sharing",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "25",
+        "class": "",
+        "id": ""
+      },
+      "message": "Enable Twitter",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Yes",
+      "ui_off_text": "No"
+    },
+    {
+      "key": "field_social_linkedin",
+      "label": "LinkedIn Share",
+      "name": "social_linkedin",
+      "type": "true_false",
+      "instructions": "Enable LinkedIn sharing",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "25",
+        "class": "",
+        "id": ""
+      },
+      "message": "Enable LinkedIn",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Yes",
+      "ui_off_text": "No"
+    },
+    {
+      "key": "field_social_email",
+      "label": "Email Share",
+      "name": "social_email",
+      "type": "true_false",
+      "instructions": "Enable Email sharing",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "25",
+        "class": "",
+        "id": ""
+      },
+      "message": "Enable Email",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Yes",
+      "ui_off_text": "No"
+    },
+    {
+      "key": "field_event_description_wysiwyg",
+      "label": "Event Description",
+      "name": "event_description_wysiwyg",
+      "type": "wysiwyg",
+      "instructions": "Main event description text",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_event_quote_text",
+      "label": "Quote Text",
+      "name": "event_quote_text",
+      "type": "textarea",
+      "instructions": "Quote or highlighted text",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "70",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "This is what a quote or highlight looks like. Android design is handling all the various screen sizes. You might share your prototype with someone who isn't using the same device you're using.",
+      "maxlength": "",
+      "rows": 4,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_quote_background_color",
+      "label": "Quote Background Color",
+      "name": "quote_background_color",
+      "type": "color_picker",
+      "instructions": "Background color for the quote",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "30",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "#00bcd4",
+      "enable_opacity": 0,
+      "return_format": "string"
+    },
+    {
+      "key": "field_event_additional_text",
+      "label": "Additional Text",
+      "name": "event_additional_text",
+      "type": "wysiwyg",
+      "instructions": "Additional text after quote (optional)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_event_location_map",
+      "label": "Event Location Map",
+      "name": "event_location_map",
+      "type": "google_map",
+      "instructions": "Select the event location on the map",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "center_lat": "60.1699",
+      "center_lng": "24.9384",
+      "zoom": 12,
+      "height": 400
+    },
+    {
+      "key": "field_when_full_date",
+      "label": "When - Full Date",
+      "name": "when_full_date",
+      "type": "text",
+      "instructions": "e.g., January 9, 2015",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "January 9, 2015",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_when_time_range",
+      "label": "When - Time Range",
+      "name": "when_time_range",
+      "type": "text",
+      "instructions": "e.g., 16:30 - 21:00",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "16:30 - 21:00",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_where_venue_name",
+      "label": "Where - Venue Name",
+      "name": "where_venue_name",
+      "type": "text",
+      "instructions": "e.g., Biomedicum Helsinki 1",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "34",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Biomedicum Helsinki 1",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_where_address_line1",
+      "label": "Where - Address Line 1",
+      "name": "where_address_line1",
+      "type": "text",
+      "instructions": "e.g., Haartmaninkatu 8",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Haartmaninkatu 8",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_where_address_line2",
+      "label": "Where - Address Line 2",
+      "name": "where_address_line2",
+      "type": "text",
+      "instructions": "e.g., 00290 Helsinki",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "00290 Helsinki",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_attendance_text",
+      "label": "Attendance Text",
+      "name": "attendance_text",
+      "type": "textarea",
+      "instructions": "e.g., The event is free, but seating is limited to 50.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "34",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "The event is free, but seating is limited to 50.",
+      "maxlength": "",
+      "rows": 3,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_signup_button_link",
+      "label": "Sign Up Button",
+      "name": "signup_button_link",
+      "type": "link",
+      "instructions": "Registration/Sign up link",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array"
+    },
+    {
+      "key": "field_supporters_title",
+      "label": "Supporters Title",
+      "name": "supporters_title",
+      "type": "text",
+      "instructions": "Title for supporters section",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "THE EVENT IS SUPPORTED BY",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_supporter_logos_repeater",
+      "label": "Supporter Logos",
+      "name": "supporter_logos_repeater",
+      "type": "repeater",
+      "instructions": "Add supporter/partner logos",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "collapsed": "",
+      "min": 0,
+      "max": 0,
+      "layout": "table",
+      "button_label": "Add Supporter",
+      "sub_fields": [
+        {
+          "key": "field_supporter_logo_image",
+          "label": "Logo",
+          "name": "logo",
+          "type": "image",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": ""
+        },
+        {
+          "key": "field_supporter_name_text",
+          "label": "Name",
+          "name": "name",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_supporter_url_link",
+          "label": "Website URL",
+          "name": "url",
+          "type": "url",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "https://"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "spa_event"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Fixed structure for Single SPA Event page matching the design exactly"
+}

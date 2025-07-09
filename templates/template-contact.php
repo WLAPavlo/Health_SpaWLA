@@ -5,6 +5,7 @@
 get_header(); ?>
 
 <main class="main-content">
+<main class="main-content">
     <section class="contact">
         <?php if (have_posts()) { ?>
             <?php while (have_posts()) {

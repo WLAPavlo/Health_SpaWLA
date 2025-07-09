@@ -1,5 +1,5 @@
 /* -----------------------------------------
-   Header Styles for SPA Design - Exact Match
+   Header Styles for SPA Design - Conditional Logo Display
 ----------------------------------------- */
 
 .header {
@@ -10,13 +10,28 @@
   min-height: 60px;
 }
 
-/* Logo visibility - show on all pages except home */
+/* Main header container */
+.menu-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  .grid-x {
+    align-items: center;
+    min-height: 60px;
+    justify-content: center; // Центруємо весь контент
+  }
+}
+
+/* Logo visibility - hide on home page, show on all other pages */
 .logo {
-  display: none;
+  margin: 0 0 15px 0;
+  display: none; // За замовчуванням приховано
 
   // Show logo on all pages except home template
   body:not(.page-template-template-home) & {
     display: block;
+    margin-right: 2rem; // Відступ між логотипом і меню
 
     h1 {
       margin: 0;
@@ -61,43 +76,27 @@
   }
 }
 
-/* Main header container */
-.menu-grid-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-
-  .grid-x {
-    align-items: center;
-    min-height: 60px;
-
-    // On home page - center menu
-    .page-template-template-home & {
-      justify-content: center;
-    }
-
-    // On other pages - space between logo and menu
-    body:not(.page-template-template-home) & {
-      justify-content: space-between;
-    }
-  }
-}
-
-/* Menu container improvements */
+/* Menu container - поруч з логотипом */
 .menu-container {
   display: flex;
   align-items: center;
+}
 
-  // On home page - center menu and full width
+/* Контейнер для логотипу і меню разом */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  // На головній сторінці - тільки меню по центру
   .page-template-template-home & {
     justify-content: center;
-    width: 100%;
   }
 
-  // On other pages - flex end and auto width
+  // На інших сторінках - логотип + меню по центру
   body:not(.page-template-template-home) & {
-    justify-content: flex-end;
-    width: auto;
+    justify-content: center;
   }
 }
 
@@ -106,6 +105,19 @@
   .menu-grid-container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .header-content {
+    justify-content: space-between;
+
+    // На головній сторінці мобільного - меню кнопка справа
+    .page-template-template-home & {
+      justify-content: flex-end;
+    }
+  }
+
+  .logo {
+    margin-right: 0;
   }
 
   .title-bar {
@@ -185,7 +197,6 @@
   }
 
   .header-menu.menu {
-    justify-content: center;
     margin: 0;
     background: transparent;
     display: flex;
@@ -311,12 +322,6 @@
       }
     }
   }
-}
-
-/* Ensure proper grid alignment */
-.header .grid-x {
-  align-items: center;
-  justify-content: center;
 }
 
 /* Override Foundation top-bar default styles */

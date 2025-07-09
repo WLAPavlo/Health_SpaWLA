@@ -39,58 +39,66 @@
   z-index: 3;
   margin: 2rem auto 0;
   max-width: 95%;
-  padding: 3rem 2rem 4rem 2rem;
+  padding: 1.5rem 2rem 1.5rem 2rem; // Зменшив верхній і нижній padding
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 
+  hr {
+    border-bottom: 1px solid #00bcd4;
+  }
+
   /* This makes the container extend below the background */
   transform: translateY(80px);
-  margin-bottom: 80px;
+  margin-bottom: 40px; // Зменшив з 80px до 40px
 
   @include breakpoint(large) {
     max-width: 90%;
-    padding: 4rem 3rem 5rem 3rem;
+    padding: 2rem 3rem 2rem 3rem; // Зменшив верхній і нижній padding
     transform: translateY(100px);
-    margin-bottom: 100px;
+    margin-bottom: 50px; // Зменшив з 100px до 50px
   }
 
   @include breakpoint(xlarge) {
     max-width: 85%;
     transform: translateY(120px);
-    margin-bottom: 120px;
+    margin-bottom: 60px; // Зменшив з 120px до 60px
   }
 
   @include breakpoint(medium down) {
     max-width: 98%;
     margin: 1.5rem auto 0;
-    padding: 2.5rem 1.5rem 3.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem; // Зменшив верхній і нижній padding
     border-radius: 15px;
     transform: translateY(60px);
-    margin-bottom: 60px;
+    margin-bottom: 30px; // Зменшив з 60px до 30px
   }
 
   @include breakpoint(small down) {
     max-width: 100%;
     margin: 1rem auto 0;
-    padding: 2rem 1rem 3rem 1rem;
+    padding: 1.5rem 1rem 1.5rem 1rem; // Зменшив верхній і нижній padding
     border-radius: 12px;
     transform: translateY(50px);
-    margin-bottom: 50px;
+    margin-bottom: 25px; // Зменшив з 50px до 25px
   }
 }
 
 /* Decorative Stripes */
 .decorative-stripe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  margin: 0.5rem 0 0.5rem 0; // Зменшені відступи з усіх боків
   height: 40px;
   background-color: #00bcd4;
   display: flex;
   align-items: center;
   overflow: hidden;
   z-index: 3;
+  border-radius: 8px;
+
+  // Для першої бігової строки - від'ємний верхній відступ для точного вирівнювання
+  &:first-child {
+    margin-top: -0.5rem;
+  }
 
   span {
     color: #ffffff;
@@ -102,6 +110,38 @@
     margin-right: 3rem;
     animation: scrollText 20s linear infinite;
   }
+
+  @include breakpoint(large) {
+    margin: 1rem 0 1rem 0; // Зменшені відступи для великих екранів
+
+    &:first-child {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @include breakpoint(xlarge) {
+    margin: 1rem 0 1rem 0; // Зменшені відступи для дуже великих екранів
+
+    &:first-child {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @include breakpoint(medium down) {
+    margin: 0.5rem 0 0.5rem 0; // Зменшені відступи для середніх екранів
+
+    &:first-child {
+      margin-top: -0.5rem;
+    }
+  }
+
+  @include breakpoint(small down) {
+    margin: 0.5rem 0 0.5rem 0; // Зменшені відступи для малих екранів
+
+    &:first-child {
+      margin-top: -0.5rem;
+    }
+  }
 }
 
 .events-stripe {
@@ -110,9 +150,7 @@
 
 .stories-stripe {
   background-color: #00bcd4;
-  position: relative;
-  top: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; // Зменшений нижній відступ
 }
 
 @keyframes scrollText {
@@ -167,13 +205,13 @@
   background-color: transparent;
   border-radius: 12px;
   padding: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; // Зменшив з 3rem до 2rem
   display: flex;
   gap: 2rem;
   align-items: flex-start;
   position: relative;
   min-height: 200px;
-  overflow: hidden; // Додано для правильного обтікання
+  overflow: hidden;
 
   .event-date-block {
     background-color: #1e88e5;
@@ -183,6 +221,8 @@
     text-align: center;
     min-width: 80px;
     flex-shrink: 0;
+    margin-top: 0; // Забираємо верхній відступ для вирівнювання
+    align-self: flex-start; // Вирівнюємо по верхньому краю
   }
 
   .event-month {
@@ -199,16 +239,142 @@
     line-height: 1;
   }
 
-  .event-content-wrapper {
+  .event-content {
     flex: 1;
+    min-width: 0;
+    /* Займатиме половину доступного простору */
+
+    .event-location {
+      font-size: 0.875rem;
+      color: #9e9e9e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e88e5;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .event-description {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #212121;
+      margin-bottom: 1rem; // Зменшив з 1.5rem до 1rem
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .event-read-more {
+      color: #e91e63;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #e91e63;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .event-logo {
+    flex: 1;
+    /* Займатиме другу половину доступного простору */
+    min-width: 0;
+    height: 200px;
+    /* Фіксована висота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  // Адаптивність для планшетів
+  @include breakpoint(medium) {
+    .event-logo {
+      height: 180px;
+    }
+  }
+
+  // Адаптивність для мобільних
+  @include breakpoint(small down) {
+    flex-direction: column;
+
+    .event-logo {
+      width: 100%;
+      height: 200px;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.regular-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem; // Зменшив з 3rem до 2rem
+
+  @include breakpoint(large) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  @include breakpoint(xlarge) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .regular-event {
+    background-color: transparent;
+    padding: 0;
     display: flex;
     gap: 2rem;
-    position: relative;
+    align-items: flex-start;
+    margin-bottom: 1.5rem; // Зменшив з 2rem до 1.5rem
+
+    .event-date-block {
+      background-color: #1e88e5;
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 80px;
+      flex-shrink: 0;
+      margin-top: 0; // Забираємо верхній відступ для вирівнювання
+      align-self: flex-start; // Вирівнюємо по верхньому краю
+
+      .event-month {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.25rem;
+      }
+
+      .event-day {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+    }
 
     .event-content {
       flex: 1;
       min-width: 0;
-      // Важливо для правильного обтікання
 
       .event-location {
         font-size: 0.875rem;
@@ -226,199 +392,17 @@
         line-height: 1.2;
       }
 
-      .event-description {
-        font-size: 1rem;
-        line-height: 1.75;
-        color: #212121;
-        margin-bottom: 1.5rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-      }
-
-      .event-read-more {
-        color: #e91e63;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.15s ease-in-out;
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        border: 2px solid #e91e63;
-        border-radius: 4px;
-
-        &:hover {
-          background-color: #e91e63;
-          color: #ffffff;
-          text-decoration: none;
-        }
-      }
-    }
-
-    .event-logo {
-      flex-shrink: 0;
-      width: 100%; // Фіксована ширина замість відсоткової
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(
-        135deg,
-        rgba(30, 136, 229, 0.05) 0%,
-        rgba(30, 136, 229, 0.1) 100%
-      );
-      border-radius: 12px;
-      margin-left: auto; // Розміщуємо справа
-
-      img {
-        max-width: 80%;
-        max-height: 80%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        opacity: 0.9;
-      }
-    }
-  }
-
-  .event-read-more {
-    margin: 10px 0 0;
-    color: #e91e63;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.15s ease-in-out;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border: 2px solid #e91e63;
-    border-radius: 4px;
-
-    &:hover {
-      background-color: #e91e63;
-      color: #ffffff;
-      text-decoration: none;
-    }
-  }
-
-  // Адаптивність для планшетів
-  @include breakpoint(medium) {
-    .event-content-wrapper {
-      .event-logo {
-        width: 150px;
-        height: 150px;
-      }
-    }
-  }
-
-  // Адаптивність для мобільних
-  @include breakpoint(small down) {
-    flex-direction: column;
-
-    .event-content-wrapper {
-      flex-direction: column;
-
-      .event-content {
-        .event-description {
-          margin-bottom: 1rem;
-        }
-      }
-
-      .event-logo {
-        width: 100%;
-        height: auto;
-        margin-left: 0;
-        margin-top: 1rem;
-      }
-    }
-  }
-}
-
-.regular-events {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-
-  @include breakpoint(large) {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-
-  @include breakpoint(xlarge) {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-
-  .regular-event {
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-    display: flex;
-    gap: 1rem;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .event-date-block {
-      background-color: #1e88e5;
-      color: #ffffff;
-      padding: 0.75rem;
-      border-radius: 8px;
-      text-align: center;
-      min-width: 60px;
-      flex-shrink: 0;
-      height: fit-content;
-
-      .event-month {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0.25rem;
-      }
-
-      .event-day {
-        font-size: 1.125rem;
-        font-weight: 700;
-        line-height: 1;
-      }
-    }
-
-    .event-content {
-      flex: 1;
-      min-width: 0;
-
-      .event-location {
-        font-size: 0.75rem;
-        color: #9e9e9e;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0.25rem;
-      }
-
-      .event-title {
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: #1e88e5;
-        margin-bottom: 0.25rem;
-        line-height: 1.2;
-      }
-
       .event-subtitle {
-        font-size: 0.875rem;
+        font-size: 1rem;
         color: #9e9e9e;
         margin-bottom: 0.5rem;
       }
 
       .event-description {
-        font-size: 0.875rem;
+        font-size: 1rem;
         line-height: 1.75;
         color: #212121;
-        margin-bottom: 1rem;
+        margin-bottom: 1rem; // Зменшив з 1.5rem до 1rem
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -431,14 +415,11 @@
         color: #e91e63;
         text-decoration: none;
         font-weight: 600;
-        font-size: 0.75rem;
+        font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 1px;
         transition: all 0.15s ease-in-out;
         display: inline-block;
-        padding: 0.375rem 0.75rem;
-        border: 2px solid #e91e63;
-        border-radius: 4px;
 
         &:hover {
           background-color: #e91e63;
@@ -450,11 +431,23 @@
   }
 }
 
+/* Стилі для hr та відступів */
+.featured-event .event-read-more {
+  margin-bottom: 1.5rem; // Зменшив з 3rem до 1.5rem
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #00bcd4;
+  margin: 2rem 0; // Зменшив з 3rem до 2rem
+}
+
 @include breakpoint(medium down) {
   .spa-events-header {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    margin-top: 2rem;
 
     .spa-events-title {
       font-size: 1.875rem;
@@ -478,33 +471,4 @@
       }
     }
   }
-}
-
-// Animation for events loading
-.regular-events .regular-event {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-
-  @for $i from 1 through 20 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.1}s;
-    }
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Ensure next section has proper spacing */
-.stories-section {
-  margin-top: 0;
-  padding-top: 4rem;
 }

@@ -155,6 +155,10 @@ if ($events_section_title || $featured_event || $regular_events): ?>
                                                <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
                                                 <?php echo esc_html($home_link['title'] ?: 'READ MORE'); ?>
                                             </a>
+                                        <?php else: ?>
+                                            <a href="<?php echo get_permalink($featured_event->ID); ?>" class="event-read-more">
+                                                TO THE EVENT PAGE
+                                            </a>
                                         <?php endif; ?>
                                     </div>
 
@@ -166,6 +170,8 @@ if ($events_section_title || $featured_event || $regular_events): ?>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
+
+                            <hr>
 
                             <!-- Regular Events -->
                             <?php if ($regular_events): ?>
@@ -215,6 +221,9 @@ if ($events_section_title || $featured_event || $regular_events): ?>
                                                        <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
                                                         <?php echo esc_html($home_link['title']); ?>
                                                     </a>
+                                                <?php else: ?>
+
+
                                                 <?php endif; ?>
                                             </div>
                                         </div>

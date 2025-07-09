@@ -28,34 +28,38 @@ use theme\FoundationNavigation;
 <header class="header">
     <div class="menu-grid-container">
         <div class="grid-x">
-            <!-- Hide logo as per CSS -->
-            <div class="logo">
-                <h1>
-                    <?php show_custom_logo(); ?><span class="show-for-sr"><?php echo get_bloginfo('name'); ?></span>
-                </h1>
-            </div>
-
-            <!-- Mobile menu toggle -->
-            <?php if (has_nav_menu('header-menu')) { ?>
-                <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
-                    <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
-                        <span></span>
-                    </button>
-                    <div class="title-bar-title">Menu</div>
+            <!-- Header Content Container - Logo + Menu centered together -->
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <h1>
+                        <?php show_custom_logo(); ?><span class="show-for-sr"><?php echo get_bloginfo('name'); ?></span>
+                    </h1>
                 </div>
 
-                <!-- Navigation menu -->
-                <nav class="top-bar" id="main-menu">
-                    <div class="menu-container">
-                        <?php wp_nav_menu([
-                            'theme_location' => 'header-menu',
-                            'menu_class' => 'menu header-menu',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
-                            'walker' => new FoundationNavigation(),
-                        ]); ?>
+                <!-- Navigation Menu -->
+                <?php if (has_nav_menu('header-menu')) { ?>
+                    <!-- Mobile menu toggle -->
+                    <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
+                        <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
+                            <span></span>
+                        </button>
+                        <div class="title-bar-title">Menu</div>
                     </div>
-                </nav>
-            <?php } ?>
+
+                    <!-- Desktop/Mobile Navigation -->
+                    <nav class="top-bar" id="main-menu">
+                        <div class="menu-container">
+                            <?php wp_nav_menu([
+                                'theme_location' => 'header-menu',
+                                'menu_class' => 'menu header-menu',
+                                'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
+                                'walker' => new FoundationNavigation(),
+                            ]); ?>
+                        </div>
+                    </nav>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </header>

@@ -1,0 +1,437 @@
+/* -----------------------------------------
+   Single Event Page Styles - Perfect Design Match
+----------------------------------------- */
+
+.single-event-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+
+  .event-layout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #ffffff;
+    min-height: 100vh;
+
+    @include breakpoint(medium down) {
+      flex-direction: column;
+      max-width: 100%;
+    }
+  }
+
+  // Date Block - Left Side (Blue Square)
+  .event-date-left {
+    width: 120px;
+    height: 5%;
+    background-color: #1e88e5;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    flex-shrink: 0;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .date-month {
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+
+      @include breakpoint(medium down) {
+        margin-bottom: 0;
+        font-size: 16px;
+      }
+    }
+
+    .date-day {
+      font-size: 18x;
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 5px;
+
+      @include breakpoint(medium down) {
+        font-size: 36px;
+        margin-bottom: 0;
+      }
+      .date-year {
+        font-size: 14px;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  // Main Content Area
+  .event-main-content {
+    flex: 1;
+    padding: 60px 80px;
+    background-color: #ffffff;
+
+    @include breakpoint(large down) {
+      padding: 40px 60px;
+    }
+
+    @include breakpoint(medium down) {
+      padding: 30px 20px;
+    }
+
+    // Event Title
+    .event-main-title {
+      font-size: 36px;
+      font-weight: 300;
+      color: #333333;
+      text-align: center;
+      margin: 0 0 40px 0;
+      line-height: 1.2;
+
+      @include breakpoint(medium down) {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      @include breakpoint(small down) {
+        font-size: 24px;
+      }
+    }
+
+    // Main Image
+    .event-main-image {
+      margin-bottom: 30px;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    // Description Text
+    .event-main-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333333;
+      margin-bottom: 30px;
+
+      p {
+        margin-bottom: 16px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // Quote Block
+    .event-quote-block {
+      background-color: #00bcd4;
+      color: #ffffff;
+      padding: 20px 25px;
+      margin: 30px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    // Additional Text
+    .event-additional-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333333;
+      margin-bottom: 30px;
+
+      p {
+        margin-bottom: 16px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // Map Container
+    .event-map-container {
+      margin: 40px 0;
+
+      .event-map-display {
+        height: 300px;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .map-marker {
+          background-color: #ffffff;
+          padding: 15px 20px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+          text-align: center;
+          min-width: 150px;
+
+          .marker-label {
+            background-color: #e91e63;
+            color: #ffffff;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: inline-block;
+          }
+
+          .marker-address {
+            font-size: 12px;
+            color: #666666;
+            line-height: 1.3;
+          }
+        }
+      }
+    }
+
+    // Event Details Grid
+    .event-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin: 40px 0;
+
+      @include breakpoint(medium down) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .detail-column {
+        .detail-heading {
+          font-size: 12px;
+          font-weight: 700;
+          color: #1e88e5;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 15px;
+        }
+
+        .detail-info {
+          font-size: 14px;
+          line-height: 1.5;
+          color: #666666;
+
+          div {
+            margin-bottom: 8px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          .attendance-text {
+            margin-bottom: 15px;
+          }
+
+          .signup-button-container {
+            margin-top: 15px;
+
+            .signup-button {
+              background-color: #e91e63;
+              color: #ffffff;
+              padding: 8px 16px;
+              text-decoration: none;
+              font-size: 12px;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              display: inline-block;
+              transition: all 0.3s ease;
+
+              &:hover {
+                background-color: #c2185b;
+                text-decoration: none;
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Event Supporters
+    .event-supporters {
+      margin-top: 50px;
+      text-align: center;
+
+      .supporters-heading {
+        display: flex;
+        justify-content: left;
+        font-size: 12px;
+        font-weight: 700;
+        color: #1e88e5;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+      }
+
+      .supporters-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding: 20px;
+        border: 2px solid #e0e0e0;
+
+        @include breakpoint(medium down) {
+          gap: 20px;
+          padding: 15px;
+        }
+
+        .supporter-logo {
+          img {
+            max-height: 40px;
+            max-width: 120px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Social Icons - Right Side
+  .event-social-right {
+    width: 150px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: flex-start;
+    padding: 60px 5px;
+    gap: 15px;
+    flex-shrink: 0;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      padding: 20px 0;
+      background-color: #f5f5f5;
+    }
+
+    .social-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+
+      &.social-facebook {
+        background-color: #e91e63;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #c2185b;
+          transform: scale(1.1);
+        }
+      }
+
+      &.social-twitter {
+        background-color: #00bcd4;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #00acc1;
+          transform: scale(1.1);
+        }
+      }
+
+      &.social-linkedin {
+        background-color: #ff9800;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #f57c00;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  // No Event Found
+  .no-event-found {
+    text-align: center;
+    padding: 60px 40px;
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h2 {
+      color: #1e88e5;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+    p {
+      color: #666666;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .btn-back-home {
+      background-color: #1e88e5;
+      color: #ffffff;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      display: inline-block;
+
+      &:hover {
+        background-color: #1565c0;
+        text-decoration: none;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@include breakpoint(small down) {
+  .single-event-page {
+    .event-layout-container {
+      .event-main-content {
+        .event-main-title {
+          font-size: 20px;
+        }
+
+        .event-details-grid {
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
