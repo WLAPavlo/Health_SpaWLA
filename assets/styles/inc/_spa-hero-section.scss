@@ -1,20 +1,23 @@
 // Variables
-$primary-pink: #e91e63;
+$primary-pink: #f75097; // Оновлений колір для заголовка
 $primary-blue: #2c5aa0;
 $dark-blue: #1e3c72;
-$text-gray: #6c757d;
+$text-gray: #012d38; // Оновлений колір для тексту
 $white: #ffffff;
 
 // Hero Section Styles
 .hero-section {
   padding: 60px 0;
+  font-family: 'Open Sans', sans-serif;
+  background: transparent; // Прибираємо будь-який фон
 
   h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    color: $primary-pink;
+    font-size: 62px; // Розмір заголовка згідно макету
+    font-weight: 800; // Extrabold
+    color: $primary-pink; // Рожевий колір
     line-height: 1.2;
     margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
   }
 
   h2 {
@@ -24,24 +27,28 @@ $white: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 25px;
+    font-family: 'Open Sans', sans-serif;
   }
 
   // Підзаголовок "Fighting fit and raring to go"
   h5 {
-    font-size: 1.8rem;
-    font-weight: 100;
+    font-size: 28px;
+    font-weight: regular;
     color: $primary-blue;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 30px;
     line-height: 1.3;
+    font-family: 'Open Sans', sans-serif;
   }
 
   p {
-    font-size: 1.2rem;
-    color: $text-gray;
+    font-size: 16px; // Розмір тексту згідно макету
+    color: $text-gray; // Темно-синій колір тексту
     line-height: 1.6;
     margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400; // Regular
   }
 
   .video-container {
@@ -49,7 +56,6 @@ $white: #ffffff;
     flex-direction: column;
     margin-top: 40px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 100%;
     max-width: 100%;
@@ -135,6 +141,7 @@ $white: #ffffff;
       border-radius: 8px;
       transition: all 0.3s ease-in-out;
       border: 2px solid $primary-pink;
+      font-family: 'Open Sans', sans-serif;
 
       &:hover {
         background-color: transparent;
@@ -162,11 +169,9 @@ $white: #ffffff;
     video {
       width: 100% !important;
       max-width: 100% !important;
-      height: auto !important;
-      min-height: 350px !important;
+      max-height: 100% !important;
       aspect-ratio: 16/9;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      border-radius: none;
       margin: 30px 0;
 
       @include breakpoint(medium) {
@@ -182,9 +187,8 @@ $white: #ffffff;
     .responsive-embed {
       width: 100%;
       margin: 30px 0;
-      border-radius: 12px;
+      border-radius: none;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       position: relative;
       height: 0;
       padding-bottom: 56.25%; // 16:9 aspect ratio
@@ -201,110 +205,168 @@ $white: #ffffff;
   }
 }
 
-// Sidebar CTA Styles - Speech Bubble (ЦЕНТРУВАННЯ)
+// Sidebar CTA Styles - Speech Bubble з закарлючками як на макеті
 .sidebar-cta {
-  background: linear-gradient(135deg, $primary-blue 0%, $dark-blue 100%);
+  background: linear-gradient(
+    135deg,
+    #065481 0%,
+    #044a6b 100%
+  ); // Оновлений колір фона
   color: $white;
-  padding: 40px 30px;
-  border-radius: 12px;
+  padding: 30px 25px;
   position: relative;
-  margin: 60px auto 0; // Додано auto для центрування
-  box-shadow: 0 15px 35px rgba(30, 60, 114, 0.2);
-  text-align: center; // Центрування тексту
-  max-width: 400px; // Обмеження ширини для кращого вигляду
+  margin-bottom: 25%;
+  text-align: left;
+  max-width: 320px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
 
-  // Top left corner arrow
+  // Ліва закарлючка зверху (з картинки)
   &::before {
     content: '';
     position: absolute;
-    top: -15px;
-    left: 50%; // Центрування стрілки
-    transform: translateX(-50%); // Центрування стрілки
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid $primary-blue;
+    top: -55px;
+    left: 0px;
+    width: 60px;
+    height: 60px;
+    background-image: url('../../images/join us.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-
-  // Bottom right corner arrow
+  // Права закарлючка знизу
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
-    right: 50%; // Центрування стрілки
-    transform: translateX(50%); // Центрування стрілки
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 15px solid $dark-blue;
+    bottom: -55px;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background-image: url('../../images/join us2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .cta-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: inherit;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 28px; // Зменшуємо розмір
+    font-weight: 300; // Light Italic
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #17c8ff; // Блакитний колір (залишається той самий)
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.2;
   }
 
   .cta-description {
-    font-size: 1rem;
+    font-size: 13px; // Трохи менший розмір
     line-height: 1.5;
-    margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    color: #ffffff; // Білий колір
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400; // Regular
   }
 
   .cta-button {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .btn-cta {
-    background: rgba(255, 255, 255, 0.2);
-    color: $white;
-    padding: 12px 24px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    backdrop-filter: blur(10px);
+    background: #ffffff !important; // Білий фон кнопки
+    background-color: #ffffff !important; // Дублюємо для впевненості
+    color: #065481 !important; // Темно-синій текст кнопки
+    padding: 10px 20px !important;
+    border: 2px solid #ffffff !important; // Білий border
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important; // Semibold
+    font-size: 11px !important; // Трохи менший розмір
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    font-family: 'Open Sans', sans-serif !important;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      color: $white;
-      text-decoration: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background: rgba(
+        255,
+        255,
+        255,
+        0.95
+      ) !important; // Трохи прозорий білий при hover
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border-color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+      color: #065481 !important; // Зберігаємо колір тексту
+      text-decoration: none !important;
     }
   }
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     transition: transform 0.3s ease;
   }
 }
 
-// Grid Layout
-.grid-x {
-  align-items: flex-start;
+// Responsive Design
+@include breakpoint(large) {
+  // Контейнер для sidebar CTA - центруємо його
+  .cell.large-4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
-.cell {
-  &.large-8 {
-    padding-right: 30px;
-  }
+@media (max-width: 768px) {
+  .sidebar-cta {
+    margin-top: 30px;
+    padding: 25px 20px;
+    max-width: 100%;
 
-  &.large-4 {
-    padding-left: 15px;
-    display: flex;
-    justify-content: center; // Центрування sidebar
+    .cta-title {
+      font-size: 22px; // Зменшений розмір для мобільних
+    }
+
+    .cta-description {
+      font-size: 12px; // Зменшений розмір для мобільних
+    }
+
+    // Приховуємо закарлючки на мобільних
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .sidebar-cta {
+    margin-top: 40px;
+    padding: 30px 20px;
+    max-width: 100%;
+
+    .cta-title {
+      font-size: 24px; // Зменшений розмір для мобільних
+    }
+
+    .cta-description {
+      font-size: 13px; // Зменшений розмір для мобільних
+    }
+
+    // Приховуємо закарлючки на мобільних
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 }
 
@@ -314,7 +376,7 @@ $white: #ffffff;
     padding: 40px 0;
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 40px; // Зменшений розмір для мобільних
     }
 
     h2 {
@@ -323,6 +385,10 @@ $white: #ffffff;
 
     h5 {
       font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 14px; // Зменшений розмір для мобільних
     }
 
     .video-play-button {
@@ -356,10 +422,20 @@ $white: #ffffff;
   .sidebar-cta {
     margin-top: 40px;
     padding: 30px 20px;
-    max-width: 100%; // На мобільних повна ширина
+    max-width: 100%;
 
     .cta-title {
-      font-size: 1.5rem;
+      font-size: 24px; // Зменшений розмір для мобільних
+    }
+
+    .cta-description {
+      font-size: 13px; // Зменшений розмір для мобільних
+    }
+
+    // Приховуємо закарлючки на мобільних
+    &::before,
+    &::after {
+      display: none;
     }
   }
 

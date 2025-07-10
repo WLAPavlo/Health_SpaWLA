@@ -2,6 +2,11 @@
 	Typography
 --------------------------------------- */
 
+// Ensure Open Sans is used throughout the site
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -17,6 +22,7 @@ h6,
   a {
     color: inherit;
   }
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1,
@@ -51,6 +57,7 @@ h6,
 
 p {
   /* basic paragraph styles */
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   &:empty {
     display: none;
   }
@@ -63,6 +70,7 @@ p {
 ul {
   /* basic list styles */
   font-size: inherit;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 
   li {
     /* basic list-item styles */
@@ -72,11 +80,13 @@ ul {
 address {
   font-style: normal;
   margin-bottom: $global-margin;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 a {
   color: $primary-color;
   transition: all 0.2s ease-in-out;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 
   &:hover,
   &:focus {
@@ -128,6 +138,7 @@ input,
 textarea {
   &::placeholder {
     opacity: 1;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   }
 }
 
@@ -157,6 +168,7 @@ select,
   /* STYLES GO THERE */
   height: $height;
   margin-bottom: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 textarea[rows] {
@@ -189,6 +201,7 @@ input[type='button'] {
   border-width: $button-hollow-border-width;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 
   //&:hover,
   //&:focus {
@@ -202,4 +215,5 @@ input[type='button'] {
   &:focus {
     /* basic hover and focus effects */
   }
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }

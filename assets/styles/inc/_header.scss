@@ -1,9 +1,9 @@
 /* -----------------------------------------
-   Header Styles for SPA Design - Conditional Logo Display
+   Header Styles for SPA Design - Updated According to Mockup
 ----------------------------------------- */
 
 .header {
-  background: #0f3554; // Темно-синій фон як на зображенні
+  background: #043856; // Темно-синій фон як на макеті
   position: relative;
   z-index: 100;
   padding: 0;
@@ -12,7 +12,7 @@
 
 /* Main header container */
 .menu-grid-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 1.5rem;
 
@@ -43,7 +43,7 @@
         font-weight: 700;
         text-transform: none;
         letter-spacing: 0;
-        font-family: inherit;
+        font-family: 'Open Sans', sans-serif;
 
         &:hover {
           color: #00acc1;
@@ -155,7 +155,8 @@
         color: #ffffff;
         line-height: 48px;
         padding: 0 1rem;
-        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.75rem;
@@ -208,13 +209,14 @@
       flex: 0 0 auto;
 
       > a {
-        color: #85c3f6; // Білий колір для всіх пунктів за замовчуванням
+        color: #17c8ff; // Стандартний колір тексту меню
         line-height: 1;
         padding: 12px 20px;
-        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600; // Semibold
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-size: 0.8rem;
+        font-size: 13px; // Розмір тексту меню
         text-decoration: none;
         transition: all 0.3s ease-in-out;
         position: relative;
@@ -223,7 +225,7 @@
 
         &:hover,
         &:focus {
-          color: #ffffff;
+          color: #ffffff; // Колір при наведенні
           background: transparent;
         }
       }
@@ -232,19 +234,20 @@
       &.current_page_ancestor,
       &.current_page_parent {
         > a {
-          color: #ffffff;
+          color: #ffffff; // Колір активного пункту
           background: transparent;
           position: relative;
 
-          // Блакитна підкреслююча полоска знизу для активного пункту
+          // Біла підкреслююча лінія знизу для активного пункту
           &::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
             background-color: #ffffff;
+            width: calc(100% - 40px); // Ширина лінії відповідає ширині тексту
           }
         }
       }

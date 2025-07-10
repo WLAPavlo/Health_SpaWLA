@@ -31,24 +31,7 @@ if ($footer_sections) {
 
 <!-- Бігова стрічка перед футером -->
 <div class="pre-footer-stripe">
-    <span>HEALTH TECH INNOVATION</span>
-    <span>STARTUP ECOSYSTEM</span>
-    <span>DIGITAL HEALTH SOLUTIONS</span>
-    <span>MEDICAL TECHNOLOGY</span>
-    <span>WELLNESS INNOVATION</span>
-    <span>HEALTHCARE STARTUPS</span>
-    <span>HEALTH TECH INNOVATION</span>
-    <span>STARTUP ECOSYSTEM</span>
-    <span>DIGITAL HEALTH SOLUTIONS</span>
-    <span>MEDICAL TECHNOLOGY</span>
-    <span>WELLNESS INNOVATION</span>
-    <span>HEALTHCARE STARTUPS</span>
-    <span>HEALTH TECH INNOVATION</span>
-    <span>STARTUP ECOSYSTEM</span>
-    <span>DIGITAL HEALTH SOLUTIONS</span>
-    <span>MEDICAL TECHNOLOGY</span>
-    <span>WELLNESS INNOVATION</span>
-    <span>HEALTHCARE STARTUPS</span>
+    <!-- Просто кольоровий блок без тексту -->
 </div>
 
 <!-- BEGIN of footer -->

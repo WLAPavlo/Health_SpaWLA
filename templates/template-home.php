@@ -12,7 +12,7 @@ get_header(); ?>
 
 <!-- BEGIN of main content -->
 <div class="grid-container">
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x align-stretch">
         <!-- Hero Section (WYSIWYG) -->
         <?php
         $hero_section = get_field('hero_section');
@@ -24,35 +24,35 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
 
-        <!-- Sidebar CTA -->
-        <?php
-        $sidebar_cta = get_field('sidebar_cta');
-        if ($sidebar_cta): ?>
-            <div class="cell large-4">
-                <div class="sidebar-cta">
-                    <?php if ($sidebar_cta['title']): ?>
-                        <h3 class="cta-title"><?php echo esc_html($sidebar_cta['title']); ?></h3>
-                    <?php endif; ?>
+            <!-- Sidebar CTA -->
+            <?php
+            $sidebar_cta = get_field('sidebar_cta');
+            if ($sidebar_cta): ?>
+                <div class="cell large-4">
+                    <div class="sidebar-cta">
+                        <?php if ($sidebar_cta['title']): ?>
+                            <h3 class="cta-title"><?php echo esc_html($sidebar_cta['title']); ?></h3>
+                        <?php endif; ?>
 
-                    <?php if ($sidebar_cta['description']): ?>
-                        <div class="cta-description">
-                            <?php echo nl2br(esc_html($sidebar_cta['description'])); ?>
-                        </div>
-                    <?php endif; ?>
+                        <?php if ($sidebar_cta['description']): ?>
+                            <div class="cta-description">
+                                <?php echo nl2br(esc_html($sidebar_cta['description'])); ?>
+                            </div>
+                        <?php endif; ?>
 
-                    <?php if ($sidebar_cta['button']): ?>
-                        <div class="cta-button">
-                            <a href="<?php echo esc_url($sidebar_cta['button']['url']); ?>"
-                               class="btn-cta"
-                               <?php if ($sidebar_cta['button']['target']): ?>target="<?php echo esc_attr($sidebar_cta['button']['target']); ?>"<?php endif; ?>>
-                                <?php echo esc_html($sidebar_cta['button']['title']); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
+                        <?php if ($sidebar_cta['button']): ?>
+                            <div class="cta-button">
+                                <a href="<?php echo esc_url($sidebar_cta['button']['url']); ?>"
+                                   class="btn-cta"
+                                   <?php if ($sidebar_cta['button']['target']): ?>target="<?php echo esc_attr($sidebar_cta['button']['target']); ?>"<?php endif; ?>>
+                                    <?php echo esc_html($sidebar_cta['button']['title']); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>
@@ -93,149 +93,138 @@ if ($events_section_title || $featured_event || $regular_events): ?>
                             <?php endif; ?>
                         </div>
                     </div>
-
-                    <!-- White container for all events -->
-                    <div class="cell">
-                        <div class="spa-events-white-container">
-                            <div class="decorative-stripe events-stripe">
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                                <span>FEATURED EVENT</span>
-                            </div>
-                            <!-- Featured Event -->
-                            <?php if ($featured_event): ?>
-                                <div class="featured-event">
-                                    <div class="event-date-block">
-                                        <?php
-                                        $home_month = get_field('home_month', $featured_event->ID);
-                                        $event_day = get_field('event_day', $featured_event->ID);
-                                        ?>
-                                        <?php if ($home_month): ?>
-                                            <div class="event-month"><?php echo esc_html($home_month); ?></div>
-                                        <?php endif; ?>
-                                        <?php if ($event_day): ?>
-                                            <div class="event-day"><?php echo esc_html($event_day); ?></div>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <div class="event-content">
-                                        <?php
-                                        $event_location = get_field('event_location', $featured_event->ID);
-                                        $event_logo = get_field('event_logo', $featured_event->ID);
-                                        $home_decripthion = get_field('home_decripthion', $featured_event->ID);
-                                        $home_link = get_field('home_link', $featured_event->ID);
-                                        ?>
-
-                                        <?php if ($event_location): ?>
-                                            <div class="event-location"><?php echo esc_html($event_location); ?></div>
-                                        <?php endif; ?>
-
-                                        <h3 class="event-title"><?php echo esc_html($featured_event->post_title); ?></h3>
-
-                                        <?php if ($home_decripthion): ?>
-                                            <div class="event-description">
-                                                <?php echo wp_kses_post($home_decripthion); ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($home_link): ?>
-                                            <a href="<?php echo esc_url($home_link['url']); ?>"
-                                               class="event-read-more"
-                                               <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
-                                                <?php echo esc_html($home_link['title'] ?: 'READ MORE'); ?>
-                                            </a>
-                                        <?php else: ?>
-                                            <a href="<?php echo get_permalink($featured_event->ID); ?>" class="event-read-more">
-                                                TO THE EVENT PAGE
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <?php if ($event_logo): ?>
-                                        <div class="event-logo">
-                                            <img src="<?php echo esc_url($event_logo['url']); ?>"
-                                                 alt="<?php echo esc_attr($event_logo['alt'] ?: $featured_event->post_title); ?>">
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <hr>
-
-                            <!-- Regular Events -->
-                            <?php if ($regular_events): ?>
-                                <div class="regular-events">
-                                    <?php foreach ($regular_events as $event): ?>
-                                        <div class="regular-event">
-                                            <div class="event-date-block">
-                                                <?php
-                                                $home_month = get_field('home_month', $event->ID);
-                                                $event_day = get_field('event_day', $event->ID);
-                                                ?>
-                                                <?php if ($home_month): ?>
-                                                    <div class="event-month"><?php echo esc_html($home_month); ?></div>
-                                                <?php endif; ?>
-                                                <?php if ($event_day): ?>
-                                                    <div class="event-day"><?php echo esc_html($event_day); ?></div>
-                                                <?php endif; ?>
-                                            </div>
-
-                                            <div class="event-content">
-                                                <?php
-                                                $event_location = get_field('event_location', $event->ID);
-                                                $event_subtitle = get_field('event_subtitle', $event->ID);
-                                                $home_decripthion = get_field('home_decripthion', $event->ID);
-                                                $home_link = get_field('home_link', $event->ID);
-                                                ?>
-
-                                                <?php if ($event_location): ?>
-                                                    <div class="event-location"><?php echo esc_html($event_location); ?></div>
-                                                <?php endif; ?>
-
-                                                <h4 class="event-title"><?php echo esc_html($event->post_title); ?></h4>
-
-                                                <?php if ($event_subtitle): ?>
-                                                    <div class="event-subtitle"><?php echo esc_html($event_subtitle); ?></div>
-                                                <?php endif; ?>
-
-                                                <?php if ($home_decripthion): ?>
-                                                    <div class="event-description">
-                                                        <?php echo wp_kses_post($home_decripthion); ?>
-                                                    </div>
-                                                <?php endif; ?>
-
-                                                <?php if ($home_link): ?>
-                                                    <a href="<?php echo esc_url($home_link['url']); ?>"
-                                                       class="event-read-more"
-                                                       <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
-                                                        <?php echo esc_html($home_link['title']); ?>
-                                                    </a>
-                                                <?php else: ?>
-
-
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- White container for all events -->
+    <div class="cell">
+        <div class="spa-events-white-container">
+            <!-- Static stripe for Featured Event -->
+            <div class="featured-event-stripe">
+                <div class="stripe-text">
+                    FEATURED EVENT - FEATURED EVENT - FEATURED EVENT - FEATURED EVENT - FEATURED EVENT - FEATURED EVENT
+                </div>
+            </div>
+            <!-- Featured Event -->
+            <?php if ($featured_event): ?>
+                <div class="featured-event">
+                    <div class="event-date-block">
+                        <?php
+                        $home_month = get_field('home_month', $featured_event->ID);
+                        $event_day = get_field('event_day', $featured_event->ID);
+                        ?>
+                        <?php if ($home_month): ?>
+                            <div class="event-month"><?php echo esc_html($home_month); ?></div>
+                        <?php endif; ?>
+                        <?php if ($event_day): ?>
+                            <div class="event-day"><?php echo esc_html($event_day); ?></div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="event-content">
+                        <?php
+                        $event_location = get_field('event_location', $featured_event->ID);
+                        $event_logo = get_field('event_logo', $featured_event->ID);
+                        $home_decripthion = get_field('home_decripthion', $featured_event->ID);
+                        $home_link = get_field('home_link', $featured_event->ID);
+                        ?>
+
+                        <?php if ($event_location): ?>
+                            <div class="event-location"><?php echo esc_html($event_location); ?></div>
+                        <?php endif; ?>
+
+                        <h3 class="event-title"><?php echo esc_html($featured_event->post_title); ?></h3>
+
+                        <?php if ($home_decripthion): ?>
+                            <div class="event-description">
+                                <?php echo wp_kses_post($home_decripthion); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($home_link): ?>
+                            <a href="<?php echo esc_url($home_link['url']); ?>"
+                               class="event-read-more"
+                               <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
+                                <?php echo esc_html($home_link['title'] ?: 'READ MORE'); ?>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?php echo get_permalink($featured_event->ID); ?>" class="event-read-more">
+                                TO THE EVENT PAGE
+                            </a>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($event_logo): ?>
+                        <div class="event-logo">
+                            <img src="<?php echo esc_url($event_logo['url']); ?>"
+                                 alt="<?php echo esc_attr($event_logo['alt'] ?: $featured_event->post_title); ?>">
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <hr>
+
+            <!-- Regular Events -->
+            <?php if ($regular_events): ?>
+                <div class="regular-events">
+                    <?php foreach ($regular_events as $event): ?>
+                        <div class="regular-event">
+                            <div class="event-date-block">
+                                <?php
+                                $home_month = get_field('home_month', $event->ID);
+                                $event_day = get_field('event_day', $event->ID);
+                                ?>
+                                <?php if ($home_month): ?>
+                                    <div class="event-month"><?php echo esc_html($home_month); ?></div>
+                                <?php endif; ?>
+                                <?php if ($event_day): ?>
+                                    <div class="event-day"><?php echo esc_html($event_day); ?></div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="event-content">
+                                <?php
+                                $event_location = get_field('event_location', $event->ID);
+                                $event_subtitle = get_field('event_subtitle', $event->ID);
+                                $home_decripthion = get_field('home_decripthion', $event->ID);
+                                $home_link = get_field('home_link', $event->ID);
+                                ?>
+
+                                <?php if ($event_location): ?>
+                                    <div class="event-location"><?php echo esc_html($event_location); ?></div>
+                                <?php endif; ?>
+
+                                <h4 class="event-title"><?php echo esc_html($event->post_title); ?></h4>
+
+                                <?php if ($event_subtitle): ?>
+                                    <div class="event-subtitle"><?php echo esc_html($event_subtitle); ?></div>
+                                <?php endif; ?>
+
+                                <?php if ($home_decripthion): ?>
+                                    <div class="event-description">
+                                        <?php echo wp_kses_post($home_decripthion); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($home_link): ?>
+                                    <a href="<?php echo esc_url($home_link['url']); ?>"
+                                       class="event-read-more"
+                                       <?php if ($home_link['target']): ?>target="<?php echo esc_attr($home_link['target']); ?>"<?php endif; ?>>
+                                        <?php echo esc_html($home_link['title']); ?>
+                                    </a>
+                                <?php else: ?>
+
+
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 <?php endif; ?>
 
 <!-- Stories Section -->
@@ -253,23 +242,8 @@ if ($stories_query->have_posts()): ?>
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell">
-                    <!-- Decorative stripe for stories -->
-                    <div class="decorative-stripe stories-stripe">
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                        <span>STORIES</span>
-                    </div>
+                    <!-- Simple colored block for stories -->
+                    <div class="stories-color-block"></div>
                     <div class="stories-header">
                         <h2 class="stories-title">Stories</h2>
 
@@ -364,7 +338,7 @@ if ($stories_query->have_posts()): ?>
                                             // Обрізаємо excerpt до 120 символів
                                             $excerpt = get_the_excerpt();
                                             if (strlen($excerpt) > 120) {
-                                                $excerpt = substr($excerpt, 0, 120) . '...';
+                                                $excerpt = substr($excerpt, 0, 120) . '<span style="color: #f75097;">...</span>';
                                             }
                                             echo $excerpt;
                                         }

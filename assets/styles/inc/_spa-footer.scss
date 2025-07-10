@@ -4,38 +4,20 @@
 
 /* Бігова стрічка перед футером */
 .pre-footer-stripe {
-  background-color: #00bcd4;
+  background-color: #16c0f6;
   height: 50px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden; // Залишаємо overflow для сумісності
   position: relative;
   margin-bottom: 0;
 
-  span {
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    white-space: nowrap;
-    margin-right: 4rem;
-    animation: scrollTextContinuous 25s linear infinite;
-  }
-}
-
-@keyframes scrollTextContinuous {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  // Прибираємо весь контент - просто кольоровий блок
 }
 
 .spa-footer {
   margin-top: auto;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 3rem 0 2rem;
   display: flex;
   flex-direction: column;
@@ -48,9 +30,9 @@
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0 2rem;
-    gap: 3rem;
+    gap: 18rem; // Значно збільшуємо відступ між колонками
 
     @include breakpoint(medium down) {
       flex-direction: column;
@@ -77,7 +59,6 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    min-height: 100px; // Мінімальна висота для вирівнювання
 
     @include breakpoint(medium down) {
       justify-content: center;
@@ -143,20 +124,20 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         transition: all 0.3s ease-in-out;
         text-decoration: none;
 
         @include breakpoint(medium down) {
-          width: 50px;
-          height: 50px;
+          width: 36px;
+          height: 36px;
         }
 
         // Facebook - Pink
         &.social-facebook {
-          background-color: #e91e63;
+          background-color: #e44078; // Новий колір
 
           &:hover {
             background-color: #c2185b;
@@ -166,40 +147,40 @@
 
         // Twitter - Blue
         &.social-twitter {
-          background-color: #1da1f2;
+          background-color: #e44078; // Новий колір
 
           &:hover {
-            background-color: #0d8bd9;
+            background-color: #c2185b;
             transform: scale(1.1) translateY(-2px);
           }
         }
 
         // LinkedIn - Blue
         &.social-linkedin {
-          background-color: #0077b5;
+          background-color: #e44078; // Новий колір
 
           &:hover {
-            background-color: #005885;
+            background-color: #c2185b;
             transform: scale(1.1) translateY(-2px);
           }
         }
 
         // Default for other social networks
         &:not(.social-facebook):not(.social-twitter):not(.social-linkedin) {
-          background-color: #6c757d;
+          background-color: #e44078; // Новий колір
 
           &:hover {
-            background-color: #495057;
+            background-color: #c2185b;
             transform: scale(1.1) translateY(-2px);
           }
         }
 
         i {
-          font-size: 18px;
+          font-size: 14px;
           color: #ffffff;
 
           @include breakpoint(medium down) {
-            font-size: 22px;
+            font-size: 16px;
           }
         }
       }
@@ -215,6 +196,7 @@
     }
 
     .partners-title {
+      text-align: left;
       font-size: 1.125rem;
       font-weight: 600;
       color: #333333;
@@ -227,15 +209,17 @@
 
     .partner-logos {
       display: flex;
-      flex-direction: row;
+      flex-direction: row; // Горизонтальне розташування логотипів
       justify-content: flex-end;
       align-items: center;
       gap: 1.5rem;
       flex-wrap: nowrap;
+      margin-top: 0; // Прибираємо верхній відступ щоб логотипи були на рівні тексту
 
       @include breakpoint(medium down) {
         justify-content: center;
         gap: 2rem;
+        flex-direction: row;
         flex-wrap: wrap;
       }
 
@@ -249,16 +233,16 @@
         }
 
         img {
-          max-height: 80px;
-          max-width: 140px;
+          max-height: 70px;
+          max-width: 135px;
           width: auto;
           height: auto;
           object-fit: contain;
           filter: grayscale(0%);
 
           @include breakpoint(medium down) {
-            max-height: 70px;
-            max-width: 140px;
+            max-height: 45px;
+            max-width: 130px;
           }
         }
 
