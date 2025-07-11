@@ -159,7 +159,7 @@
   overflow: hidden;
 
   .event-date-block {
-    background-color: #065481; // Новий колір блоку дати
+    background-color: #065481;
     color: #ffffff;
     padding: 1rem;
     border-radius: none;
@@ -168,6 +168,19 @@
     flex-shrink: 0;
     margin-top: 0;
     align-self: flex-start;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -20px;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #065481;
+    }
   }
 
   .event-month {
@@ -306,11 +319,24 @@
       flex-shrink: 0;
       margin-top: 0;
       align-self: flex-start;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -20px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #065481;
+      }
 
       .event-month {
         font-family: 'Open Sans', sans-serif;
-        font-size: 12px; // Розмір шрифту для місяця
-        font-weight: 700; // Bold
+        font-size: 12px;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 0.25rem;
@@ -318,8 +344,8 @@
 
       .event-day {
         font-family: 'Open Sans', sans-serif;
-        font-size: 24px; // Розмір шрифту для дня
-        font-weight: 400; // Regular
+        font-size: 24px;
+        font-weight: 400;
         line-height: 1;
       }
     }
@@ -430,5 +456,100 @@ hr {
         align-self: center;
       }
     }
+  }
+}
+
+.events-pagination {
+  margin-top: 3rem;
+  background-color: #fff;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #2e5c73; // рамка навколо пагінації
+  box-shadow: 0 1px 3px rgba(46, 92, 115, 0.1);
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    a,
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      color: #2e5c73;
+      background: none;
+      border: none;
+      padding: 0 6px;
+      margin: 0 2px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #17c8ff;
+      }
+    }
+
+    .current {
+      font-weight: 700;
+      color: #17c8ff;
+    }
+
+    .prev,
+    .next {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 10px;
+      color: #2e5c73;
+
+      &:hover {
+        color: #17c8ff;
+      }
+    }
+
+    .dots {
+      color: #2e5c73;
+      cursor: default;
+      user-select: none;
+    }
+
+    @include breakpoint(small down) {
+      gap: 0.3rem;
+
+      a,
+      span {
+        min-width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .prev,
+      .next {
+        font-size: 10px;
+        min-width: 40px;
+        padding: 0 6px;
+      }
+    }
+  }
+}
+
+.no-events {
+  text-align: center;
+  padding: 3rem;
+  color: #9e9e9e;
+
+  p {
+    font-size: 1.125rem;
+    margin: 0;
   }
 }
