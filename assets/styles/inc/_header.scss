@@ -108,42 +108,69 @@
   }
 
   .header-content {
-    justify-content: space-between;
+    justify-content: space-between; // Розташовуємо елементи по краях
+    width: 100%;
 
-    // На головній сторінці мобільного - меню кнопка справа
+    // На всіх сторінках - логотип зліва, меню справа
     .page-template-template-home & {
-      justify-content: flex-end;
+      justify-content: space-between;
     }
   }
 
   .logo {
     margin-right: 0;
+    display: block !important; // Показуємо логотип на всіх сторінках, включаючи головну
+
+    // Зменшуємо розмір логотипу для мобільних пристроїв
+    h1 {
+      margin: 0;
+
+      a {
+        font-size: 1.5rem; // Менший розмір для мобільних
+      }
+
+      img {
+        max-height: 40px; // Менша висота для мобільних
+        width: auto;
+      }
+
+      .spa-text {
+        font-size: 1.5rem;
+      }
+
+      .spa-subtitle {
+        font-size: 0.75rem;
+      }
+    }
   }
 
   .title-bar {
     background: transparent;
     padding: 0.5rem 0;
     border: none;
+    flex-shrink: 0; // Запобігаємо стисканню кнопки меню
 
     .menu-icon {
       padding: 0;
       border: none;
       background-color: transparent;
+      margin: 0; // Прибираємо зайві відступи
 
       @include menu-icon(#ffffff, #ffffff, 24px, 18px, 3px);
     }
 
     .title-bar-title {
-      color: #ffffff;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      display: none; // Приховуємо текст "Menu"
     }
   }
 
   .top-bar {
     display: none;
     background: #003366;
+    width: 100%; // Повна ширина для мобільного меню
+    position: absolute;
+    left: 0;
+    top: 100%;
   }
 
   .header-menu {
@@ -209,14 +236,14 @@
       flex: 0 0 auto;
 
       > a {
-        color: #17c8ff; // Стандартний колір тексту меню
+        color: #17c8ff;
         line-height: 1;
         padding: 12px 20px;
         font-family: 'Open Sans', sans-serif;
-        font-weight: 600; // Semibold
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-size: 13px; // Розмір тексту меню
+        font-size: 13px;
         text-decoration: none;
         transition: all 0.3s ease-in-out;
         position: relative;
@@ -225,7 +252,7 @@
 
         &:hover,
         &:focus {
-          color: #ffffff; // Колір при наведенні
+          color: #ffffff;
           background: transparent;
         }
       }
@@ -234,11 +261,10 @@
       &.current_page_ancestor,
       &.current_page_parent {
         > a {
-          color: #ffffff; // Колір активного пункту
+          color: #ffffff;
           background: transparent;
           position: relative;
 
-          // Біла підкреслююча лінія знизу для активного пункту
           &::after {
             content: '';
             position: absolute;
@@ -247,7 +273,7 @@
             transform: translateX(-50%);
             height: 2px;
             background-color: #ffffff;
-            width: calc(100% - 40px); // Ширина лінії відповідає ширині тексту
+            width: calc(100% - 40px);
           }
         }
       }

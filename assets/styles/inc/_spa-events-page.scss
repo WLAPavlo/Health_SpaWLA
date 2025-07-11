@@ -280,7 +280,7 @@
     margin-top: 3rem;
     background-color: #fff;
     padding: 2rem 0;
-    max-width: 800px;
+    max-width: 1000px; // Збільшуємо ширину пагінації
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #2e5c73;
@@ -406,7 +406,7 @@
     }
 
     .events-pagination {
-      max-width: 700px;
+      max-width: 900px; // Також збільшуємо для large down
     }
   }
 
