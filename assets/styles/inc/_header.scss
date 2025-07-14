@@ -3,11 +3,15 @@
 ----------------------------------------- */
 
 .header {
-  background: #043856; // Темно-синій фон як на макеті
+  background: #043856;
   position: relative;
   z-index: 100;
   padding: 0;
   min-height: 60px;
+
+  @include breakpoint(small down) {
+    min-height: 50px;
+  }
 }
 
 /* Main header container */
@@ -16,22 +20,38 @@
   margin: 0 auto;
   padding: 0 1.5rem;
 
+  @include breakpoint(small down) {
+    padding: 0 1rem;
+  }
+
   .grid-x {
     align-items: center;
     min-height: 60px;
-    justify-content: center; // Центруємо весь контент
+    justify-content: center;
+
+    @include breakpoint(small down) {
+      min-height: 50px;
+    }
   }
 }
 
 /* Logo visibility - hide on home page, show on all other pages */
 .logo {
   margin: 0 0 15px 0;
-  display: none; // За замовчуванням приховано
+  display: none;
 
   // Show logo on all pages except home template
   body:not(.page-template-template-home) & {
     display: block;
-    margin-right: 2rem; // Відступ між логотипом і меню
+    margin-right: 2rem;
+
+    @include breakpoint(medium down) {
+      margin-right: 1rem;
+    }
+
+    @include breakpoint(small down) {
+      margin-right: 0.5rem;
+    }
 
     h1 {
       margin: 0;
@@ -45,6 +65,14 @@
         letter-spacing: 0;
         font-family: 'Open Sans', sans-serif;
 
+        @include breakpoint(medium down) {
+          font-size: 1.75rem;
+        }
+
+        @include breakpoint(small down) {
+          font-size: 1.5rem;
+        }
+
         &:hover {
           color: #00acc1;
         }
@@ -53,6 +81,10 @@
       img {
         max-height: 50px;
         width: auto;
+
+        @include breakpoint(small down) {
+          max-height: 40px;
+        }
       }
 
       // SPA text styling
@@ -62,6 +94,14 @@
         font-weight: 700;
         text-transform: none;
         letter-spacing: 0;
+
+        @include breakpoint(medium down) {
+          font-size: 1.75rem;
+        }
+
+        @include breakpoint(small down) {
+          font-size: 1.5rem;
+        }
       }
 
       .spa-subtitle {
@@ -71,30 +111,31 @@
         text-transform: lowercase;
         letter-spacing: 0;
         margin-left: 0.5rem;
+
+        @include breakpoint(small down) {
+          font-size: 0.75rem;
+          margin-left: 0.25rem;
+        }
       }
     }
   }
 }
 
-/* Menu container - поруч з логотипом */
 .menu-container {
   display: flex;
   align-items: center;
 }
 
-/* Контейнер для логотипу і меню разом */
 .header-content {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 
-  // На головній сторінці - тільки меню по центру
   .page-template-template-home & {
     justify-content: center;
   }
 
-  // На інших сторінках - логотип + меню по центру
   body:not(.page-template-template-home) & {
     justify-content: center;
   }
@@ -108,10 +149,9 @@
   }
 
   .header-content {
-    justify-content: space-between; // Розташовуємо елементи по краях
+    justify-content: space-between;
     width: 100%;
 
-    // На всіх сторінках - логотип зліва, меню справа
     .page-template-template-home & {
       justify-content: space-between;
     }
@@ -119,18 +159,17 @@
 
   .logo {
     margin-right: 0;
-    display: block !important; // Показуємо логотип на всіх сторінках, включаючи головну
+    display: block !important;
 
-    // Зменшуємо розмір логотипу для мобільних пристроїв
     h1 {
       margin: 0;
 
       a {
-        font-size: 1.5rem; // Менший розмір для мобільних
+        font-size: 1.5rem;
       }
 
       img {
-        max-height: 40px; // Менша висота для мобільних
+        max-height: 40px;
         width: auto;
       }
 
@@ -148,26 +187,26 @@
     background: transparent;
     padding: 0.5rem 0;
     border: none;
-    flex-shrink: 0; // Запобігаємо стисканню кнопки меню
+    flex-shrink: 0;
 
     .menu-icon {
       padding: 0;
       border: none;
       background-color: transparent;
-      margin: 0; // Прибираємо зайві відступи
+      margin: 0;
 
       @include menu-icon(#ffffff, #ffffff, 24px, 18px, 3px);
     }
 
     .title-bar-title {
-      display: none; // Приховуємо текст "Menu"
+      display: none;
     }
   }
 
   .top-bar {
     display: none;
     background: #003366;
-    width: 100%; // Повна ширина для мобільного меню
+    width: 100%;
     position: absolute;
     left: 0;
     top: 100%;

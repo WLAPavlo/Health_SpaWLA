@@ -1,17 +1,17 @@
 /* -----------------------------------------
-   SPA Sidebar CTA - Гострі кути без трикутника
+   SPA Sidebar CTA
 ----------------------------------------- */
 
 .sidebar-cta {
-  background-color: #1e88e5; // Primary blue
+  background-color: #065481; // Primary blue
   color: #ffffff;
+  width: 300px;
   padding: 2rem;
-  border-radius: 0; // Прибираємо заокруглені кути
+  border-radius: 0;
   position: relative;
   margin-top: 2rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
-  // Ліва закарлючка зверху
   &::before {
     content: '';
     position: absolute;
@@ -25,7 +25,6 @@
     background-position: center;
   }
 
-  // Права закарлючка знизу
   &::after {
     content: '';
     position: absolute;
@@ -45,54 +44,53 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
-    text-align: left; // Вирівнюємо по лівому краю
+    text-align: left;
   }
 
   .cta-description {
     font-size: 0.875rem;
     line-height: 1.75;
     margin-bottom: 1.5rem;
-    text-align: left; // Вирівнюємо по лівому краю
+    text-align: left;
   }
 
   .cta-button {
-    text-align: left; // Вирівнюємо кнопку по лівому краю
+    text-align: left;
 
     .btn-cta {
-      background: transparent !important; // Прозорий фон
-      background-color: transparent !important; // Прозорий фон
-      color: #ffffff !important; // Білий текст
-      padding: 0 !important; // Без padding
-      border: none !important; // Без border
-      border-radius: 0 !important; // Без заокруглень
+      background: transparent !important;
+      background-color: transparent !important;
+      color: #ffffff !important;
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
       text-decoration: none !important;
       font-weight: 600 !important;
-      font-size: 12px !important; // 12px як на макеті
+      font-size: 12px !important;
       text-transform: uppercase !important;
       letter-spacing: 1px !important;
       transition: all 0.3s ease-in-out !important;
       display: inline-block !important;
       position: relative !important;
-      font-family: 'Open Sans', sans-serif !important; // Open Sans
+      font-family: 'Open Sans', sans-serif !important;
 
-      // Додаємо стрілочку перед текстом
       &::before {
-        content: '▶ '; // Менша стрілочка
+        content: '▶ ';
         margin-right: 0.4rem;
         color: #ffffff;
-        font-size: 10px; // Зменшена стрілочка
+        font-size: 10px;
       }
 
       &:hover,
       &:focus,
       &:active {
-        background: transparent !important; // Залишаємо прозорим
+        background: transparent !important;
         background-color: transparent !important;
         border: none !important;
-        color: rgba(255, 255, 255, 0.8) !important; // Трохи прозорий при hover
+        color: rgba(255, 255, 255, 0.8) !important;
         text-decoration: none !important;
-        transform: none !important; // Прибираємо transform
-        box-shadow: none !important; // Прибираємо shadow
+        transform: none !important;
+        box-shadow: none !important;
       }
     }
   }

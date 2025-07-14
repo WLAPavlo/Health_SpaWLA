@@ -28,16 +28,15 @@
     }
   }
 
-  // Один блок "FEATURED EVENTS" за межами постів
   .featured-events-stripe {
     background-color: #17c8ff;
-    color: #ffffff;
+    color: hsla(0, 0%, 100%, 0.8);
     padding: 12px 0;
     margin: 0 auto 3rem auto;
     text-align: center;
     position: relative;
     overflow: hidden;
-    max-width: 800px; // Робимо таку ж ширину як контент
+    max-width: 800px;
 
     .stripe-content {
       font-family: 'Open Sans', sans-serif;
@@ -50,13 +49,11 @@
     }
   }
 
-  // Контейнер для списку подій з обмеженою шириною
   .events-list {
-    max-width: 800px; // Зменшуємо ширину контенту
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
 
-    // Wrapper для кожної події
     .event-item {
       position: relative;
       margin-bottom: 4rem;
@@ -73,28 +70,27 @@
         width: 100%;
       }
 
-      // Блок дати - ПОЗА межами основного контенту
       .event-date-block {
         position: absolute;
-        left: -150px;
+        left: -100px;
         top: 0;
         background-color: #065481;
         color: #ffffff;
         padding: 1rem;
         text-align: center;
-        min-width: 90px;
+        min-width: 70px;
         z-index: 10;
 
         &:before {
           content: '';
           position: absolute;
           top: 0;
-          right: -20px;
+          right: -15px;
           width: 0;
           height: 0;
-          border-left: 20px solid transparent;
-          border-right: 20px solid transparent;
-          border-top: 20px solid #065481;
+          border-left: 15px solid transparent;
+          border-right: 15px solid transparent;
+          border-top: 15px solid #065481;
         }
 
         .event-month {
@@ -114,8 +110,8 @@
         }
 
         @include breakpoint(large down) {
-          left: -130px; // Зміщуємо лівіше і на великих екранах
-          min-width: 80px;
+          left: -130px;
+          min-width: 70px;
         }
 
         @include breakpoint(medium down) {
@@ -131,7 +127,6 @@
         }
       }
 
-      // Wrapper для контенту події
       .event-content {
         width: 100%;
         max-width: 100%;
@@ -177,7 +172,6 @@
           }
         }
 
-        // Стилі для кнопки "TO THE EVENT PAGE"
         .event-read-more-section {
           margin-bottom: 2rem;
 
@@ -195,8 +189,7 @@
             cursor: pointer;
 
             &:hover {
-              background-color: #e91e63;
-              color: #ffffff;
+              cursor: pointer;
               transform: translateY(-1px);
             }
 
@@ -239,20 +232,18 @@
 
                 .book-tickets-btn {
                   display: inline-block;
-                  font-family: 'Open Sans', sans-serif;
-                  font-weight: 600; // Semibold
-                  font-size: 12px;
-                  color: #f75097;
                   text-decoration: none;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  margin-top: 0.5rem;
-                  transition: all 0.3s ease;
+                  font-weight: 600;
+                }
 
-                  &:hover {
-                    color: #e91e63;
-                    text-decoration: underline;
-                  }
+                .btn-available {
+                  color: #f75097;
+                }
+
+                .btn-sold-out {
+                  color: #011a20;
+                  pointer-events: none;
+                  cursor: not-allowed;
                 }
               }
             }
@@ -260,7 +251,6 @@
         }
       }
 
-      // Мобільна адаптивність
       @include breakpoint(medium down) {
         .event-content {
           .event-details {
@@ -279,8 +269,8 @@
   .events-pagination {
     margin-top: 3rem;
     background-color: #fff;
-    padding: 2rem 0;
-    max-width: 1000px; // Збільшуємо ширину пагінації
+    padding: 1rem 0;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #2e5c73;
@@ -406,7 +396,7 @@
     }
 
     .events-pagination {
-      max-width: 900px; // Також збільшуємо для large down
+      max-width: 900px;
     }
   }
 

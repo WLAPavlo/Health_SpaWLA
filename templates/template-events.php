@@ -150,14 +150,20 @@ get_header(); ?>
                                                         $event_registration_link = get_field('event_registration_link') ?: get_field('signup_button_link');
                                                         ?>
                                                         <?php echo nl2br(esc_html($event_attendance_info)); ?><br>
-                                                        <?php if ($event_registration_link): ?>
+
+                                                        <?php
+                                                        if ($event_registration_link):
+                                                            $button_title = $event_registration_link['title'] ?: 'BOOK TICKETS';
+
+                                                            $button_class = (strtolower(trim($button_title)) === 'sold out') ? 'btn-sold-out' : 'btn-available';
+                                                            ?>
                                                             <a href="<?php echo esc_url($event_registration_link['url']); ?>"
-                                                               class="book-tickets-btn"
+                                                               class="book-tickets-btn <?php echo esc_attr($button_class); ?>"
                                                                <?php if ($event_registration_link['target']): ?>target="<?php echo esc_attr($event_registration_link['target']); ?>"<?php endif; ?>>
-                                                                <?php echo esc_html($event_registration_link['title'] ?: 'BOOK TICKETS'); ?>
+                                                                <?php echo esc_html($button_title); ?>
                                                             </a>
                                                         <?php else: ?>
-                                                            <a href="#" class="book-tickets-btn">BOOK TICKETS</a>
+                                                            <a href="#" class="book-tickets-btn btn-available">BOOK TICKETS</a>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>

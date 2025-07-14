@@ -1,23 +1,45 @@
 // Variables
-$primary-pink: #f75097; // Оновлений колір для заголовка
+$primary-pink: #f75097;
 $primary-blue: #2c5aa0;
 $dark-blue: #1e3c72;
-$text-gray: #012d38; // Оновлений колір для тексту
+$text-gray: #012d38;
 $white: #ffffff;
 
 // Hero Section Styles
 .hero-section {
   padding: 60px 0;
   font-family: 'Open Sans', sans-serif;
-  background: transparent; // Прибираємо будь-який фон
+  background: transparent;
+
+  @include breakpoint(medium down) {
+    padding: 40px 0;
+  }
+
+  @include breakpoint(small down) {
+    padding: 30px 0;
+  }
 
   h1 {
-    font-size: 62px; // Розмір заголовка згідно макету
+    font-size: 62px;
     font-weight: 800; // Extrabold
-    color: $primary-pink; // Рожевий колір
+    color: $primary-pink;
     line-height: 1.2;
     margin-bottom: 30px;
     font-family: 'Open Sans', sans-serif;
+
+    @include breakpoint(large down) {
+      font-size: 52px;
+    }
+
+    @include breakpoint(medium down) {
+      font-size: 42px;
+      margin-bottom: 25px;
+    }
+
+    @include breakpoint(small down) {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
   }
 
   h2 {
@@ -28,9 +50,19 @@ $white: #ffffff;
     letter-spacing: 0.5px;
     margin-bottom: 25px;
     font-family: 'Open Sans', sans-serif;
+
+    @include breakpoint(medium down) {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
+    @include breakpoint(small down) {
+      font-size: 1.125rem;
+      margin-bottom: 15px;
+    }
   }
 
-  // Підзаголовок "Fighting fit and raring to go"
+  //"Fighting fit and raring to go"
   h5 {
     font-size: 28px;
     font-weight: regular;
@@ -40,15 +72,37 @@ $white: #ffffff;
     margin-bottom: 30px;
     line-height: 1.3;
     font-family: 'Open Sans', sans-serif;
+
+    @include breakpoint(medium down) {
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+
+    @include breakpoint(small down) {
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
   }
 
   p {
-    font-size: 16px; // Розмір тексту згідно макету
-    color: $text-gray; // Темно-синій колір тексту
+    font-size: 16px;
+    color: $text-gray;
     line-height: 1.6;
     margin-bottom: 20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400; // Regular
+
+    @include breakpoint(medium down) {
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    @include breakpoint(small down) {
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
   }
 
   .video-container {
@@ -66,13 +120,12 @@ $white: #ffffff;
       display: block;
     }
 
-    // Відео на всю ширину контейнера з правильними пропорціями
     iframe,
     video {
       width: 100%;
       height: auto;
-      min-height: 350px; // Збільшено мінімальну висоту
-      aspect-ratio: 16/9; // Додано правильні пропорції
+      min-height: 350px;
+      aspect-ratio: 16/9;
       border-radius: 12px;
 
       @include breakpoint(medium) {
@@ -84,7 +137,6 @@ $white: #ffffff;
       }
     }
 
-    // Responsive embed для YouTube/Vimeo
     .responsive-embed {
       width: 100%;
       position: relative;
@@ -124,7 +176,6 @@ $white: #ffffff;
     }
   }
 
-  // READ MORE кнопка для Hero Section
   .hero-read-more {
     margin-top: 30px;
 
@@ -164,86 +215,75 @@ $white: #ffffff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 0;
-      height: 0;
-      border-top: 20px solid transparent;
-      border-bottom: 20px solid transparent;
-      border-left: 25px solid #ffffff;
+  .mejs-overlay-button::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 0 20px 25px;
+    border-color: transparent transparent transparent #ffffff;
+    position: relative;
+    left: 2px;
+  }
+}
+
+.hero-content {
+  width: 100%;
+
+  > * {
+    max-width: 100%;
+  }
+
+  .wp-video,
+  .wp-video-shortcode,
+  iframe,
+  video {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    aspect-ratio: 16/9;
+    border-radius: none;
+    margin: 30px 0;
+
+    @include breakpoint(medium) {
+      min-height: 400px !important;
+    }
+
+    @include breakpoint(large) {
+      min-height: 450px !important;
     }
   }
 
-  // Стилі для WYSIWYG контенту
-  .hero-content {
+  // Responsive embeds
+  .responsive-embed {
     width: 100%;
+    margin: 30px 0;
+    border-radius: none;
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
 
-    // Забезпечуємо, що всі елементи займають повну ширину
-    > * {
-      max-width: 100%;
-    }
-
-    // Відео в WYSIWYG
-    .wp-video,
-    .wp-video-shortcode,
-    iframe,
-    video {
+    iframe {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
       width: 100% !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
-      aspect-ratio: 16/9;
-      border-radius: none;
-      margin: 30px 0;
-
-      @include breakpoint(medium) {
-        min-height: 400px !important;
-      }
-
-      @include breakpoint(large) {
-        min-height: 450px !important;
-      }
-    }
-
-    // Responsive embeds
-    .responsive-embed {
-      width: 100%;
-      margin: 30px 0;
-      border-radius: none;
-      overflow: hidden;
-      position: relative;
-      height: 0;
-      padding-bottom: 56.25%; // 16:9 aspect ratio
-
-      iframe {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        min-height: auto !important;
-      }
+      height: 100% !important;
+      min-height: auto !important;
     }
   }
 }
 
-// Sidebar CTA Styles - Speech Bubble з закарлючками як на макеті
 .sidebar-cta {
-  background: linear-gradient(
-    135deg,
-    #065481 0%,
-    #044a6b 100%
-  ); // Оновлений колір фона
+  background-color: #065481;
   color: $white;
   padding: 30px 25px;
   position: relative;
@@ -253,7 +293,6 @@ $white: #ffffff;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
 
-  // Ліва закарлючка зверху (з картинки)
   &::before {
     content: '';
     position: absolute;
@@ -266,7 +305,6 @@ $white: #ffffff;
     background-repeat: no-repeat;
     background-position: center;
   }
-  // Права закарлючка знизу
   &::after {
     content: '';
     position: absolute;
@@ -281,11 +319,11 @@ $white: #ffffff;
   }
 
   .cta-title {
-    font-size: 28px; // Зменшуємо розмір
+    font-size: 28px;
     font-weight: 300; // Light Italic
     font-style: italic;
     margin-bottom: 15px;
-    color: #17c8ff; // Блакитний колір (залишається той самий)
+    color: #17c8ff;
     text-transform: none;
     letter-spacing: 0;
     font-family: 'Open Sans', sans-serif;
@@ -293,10 +331,10 @@ $white: #ffffff;
   }
 
   .cta-description {
-    font-size: 13px; // Трохи менший розмір
+    font-size: 13px;
     line-height: 1.5;
     margin-bottom: 20px;
-    color: #ffffff; // Білий колір
+    color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400; // Regular
   }
@@ -306,15 +344,15 @@ $white: #ffffff;
   }
 
   .btn-cta {
-    background: #ffffff !important; // Білий фон кнопки
-    background-color: #ffffff !important; // Дублюємо для впевненості
-    color: #065481 !important; // Темно-синій текст кнопки
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #065481 !important;
     padding: 10px 20px !important;
-    border: 2px solid #ffffff !important; // Білий border
+    border: 2px solid #ffffff !important;
     border-radius: 6px !important;
     text-decoration: none !important;
     font-weight: 600 !important; // Semibold
-    font-size: 11px !important; // Трохи менший розмір
+    font-size: 11px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
     transition: all 0.3s ease !important;
@@ -324,17 +362,12 @@ $white: #ffffff;
     &:hover,
     &:focus,
     &:active {
-      background: rgba(
-        255,
-        255,
-        255,
-        0.95
-      ) !important; // Трохи прозорий білий при hover
+      background: rgba(255, 255, 255, 0.95) !important;
       background-color: rgba(255, 255, 255, 0.95) !important;
       border-color: #ffffff !important;
       transform: translateY(-2px) !important;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
-      color: #065481 !important; // Зберігаємо колір тексту
+      color: #065481 !important;
       text-decoration: none !important;
     }
   }
@@ -347,7 +380,6 @@ $white: #ffffff;
 
 // Responsive Design
 @include breakpoint(large) {
-  // Контейнер для sidebar CTA - центруємо його
   .cell.large-4 {
     display: flex;
     align-items: center;
@@ -364,14 +396,13 @@ $white: #ffffff;
     max-width: 100%;
 
     .cta-title {
-      font-size: 22px; // Зменшений розмір для мобільних
+      font-size: 22px;
     }
 
     .cta-description {
-      font-size: 12px; // Зменшений розмір для мобільних
+      font-size: 12px;
     }
 
-    // Приховуємо закарлючки на мобільних
     &::before,
     &::after {
       display: none;
@@ -387,14 +418,13 @@ $white: #ffffff;
     max-width: 100%;
 
     .cta-title {
-      font-size: 24px; // Зменшений розмір для мобільних
+      font-size: 24px;
     }
 
     .cta-description {
-      font-size: 13px; // Зменшений розмір для мобільних
+      font-size: 13px;
     }
 
-    // Приховуємо закарлючки на мобільних
     &::before,
     &::after {
       display: none;
@@ -408,7 +438,7 @@ $white: #ffffff;
     padding: 40px 0;
 
     h1 {
-      font-size: 40px; // Зменшений розмір для мобільних
+      font-size: 40px;
     }
 
     h2 {
@@ -420,7 +450,7 @@ $white: #ffffff;
     }
 
     p {
-      font-size: 14px; // Зменшений розмір для мобільних
+      font-size: 14px;
     }
 
     .video-play-button {
@@ -457,14 +487,13 @@ $white: #ffffff;
     max-width: 100%;
 
     .cta-title {
-      font-size: 24px; // Зменшений розмір для мобільних
+      font-size: 24px;
     }
 
     .cta-description {
-      font-size: 13px; // Зменшений розмір для мобільних
+      font-size: 13px;
     }
 
-    // Приховуємо закарлючки на мобільних
     &::before,
     &::after {
       display: none;

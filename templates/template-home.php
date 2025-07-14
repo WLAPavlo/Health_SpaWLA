@@ -248,10 +248,10 @@ if ($stories_query->have_posts()): ?>
                         <h2 class="stories-title">Stories</h2>
 
                         <?php
-                        $story_link = get_field('story_link'); // отримуємо посилання з ACF
+                        $story_link = get_field('story_link');
                         if ($story_link): ?>
                             <a href="<?php echo esc_url($story_link['url']); ?>" class="stories-see-all">
-                                <?php echo esc_html($story_link['title']); // або будь-який текст ?>
+                                <?php echo esc_html($story_link['title']); ?>
                             </a>
                         <?php endif; ?>
                     </div>
@@ -277,7 +277,6 @@ if ($stories_query->have_posts()): ?>
                                         $story_author = get_field('story_author');
                                         $story_news = get_field('story_news');
 
-                                        // Якщо немає кастомної дати, використовуємо дату публікації
                                         if (!$story_date) {
                                             $story_date = get_the_date('M j');
                                         }
@@ -286,12 +285,10 @@ if ($stories_query->have_posts()): ?>
                                             $story_news = '';
                                         }
 
-                                        // Якщо немає кастомного автора, використовуємо WordPress автора
                                         if (!$story_author) {
                                             $story_author = get_the_author();
                                         }
 
-                                        // Якщо немає кастомної категорії, використовуємо першу категорію WordPress
                                         if (!$story_category) {
                                             $categories = get_the_category();
                                             if (!empty($categories)) {
@@ -335,7 +332,6 @@ if ($stories_query->have_posts()): ?>
                                         if ($story_excerpt) {
                                             echo wp_kses_post($story_excerpt);
                                         } else {
-                                            // Обрізаємо excerpt до 120 символів
                                             $excerpt = get_the_excerpt();
                                             if (strlen($excerpt) > 120) {
                                                 $excerpt = substr($excerpt, 0, 120) . '<span style="color: #f75097;">...</span>';
@@ -354,7 +350,6 @@ if ($stories_query->have_posts()): ?>
     </section>
 <?php endif; wp_reset_postdata(); ?>
 
-<!-- Standard Page Content (якщо потрібно) -->
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
         <div class="cell">

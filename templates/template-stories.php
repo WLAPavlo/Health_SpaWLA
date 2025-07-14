@@ -54,17 +54,14 @@ get_header(); ?>
                                                 $story_category = get_field('story_category');
                                                 $story_author = get_field('story_author');
 
-                                                // Якщо немає кастомної дати, використовуємо дату публікації
                                                 if (!$story_date) {
                                                     $story_date = get_the_date('M j');
                                                 }
 
-                                                // Якщо немає кастомного автора, використовуємо WordPress автора
                                                 if (!$story_author) {
                                                     $story_author = get_the_author();
                                                 }
 
-                                                // Якщо немає кастомної категорії, використовуємо першу категорію WordPress
                                                 if (!$story_category) {
                                                     $categories = get_the_category();
                                                     if (!empty($categories)) {
@@ -101,7 +98,6 @@ get_header(); ?>
                                                 if ($story_excerpt) {
                                                     echo wp_kses_post($story_excerpt);
                                                 } else {
-                                                    // Обрізаємо excerpt до 150 символів
                                                     $excerpt = get_the_excerpt();
                                                     if (strlen($excerpt) > 150) {
                                                         $excerpt = substr($excerpt, 0, 150) . '...';

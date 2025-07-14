@@ -237,7 +237,7 @@ $(window).on('scroll', function () {
   // jQuery code goes here
 });
 document.addEventListener('DOMContentLoaded', function () {
-  const yearInput = document.querySelector('input[name="event_year"]'); // або інший селектор
+  const yearInput = document.querySelector('input[name="event_year"]');
   if (yearInput) {
     yearInput.setAttribute('min', '2015');
 
@@ -350,11 +350,20 @@ function add_marker($marker, map) {
     $marker.attr('data-lng')
   );
 
+  // Custom marker icon
+  var customIcon = {
+    url:
+      $marker.data('marker-icon') ||
+      '/wp-content/themes/your-theme/assets/images/event.png',
+    scaledSize: new google.maps.Size(150, 70),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(40, 90),
+  };
   // create marker
   var marker = new google.maps.Marker({
     position: latlng,
     map: map,
-    //icon: $marker.data('marker-icon') //uncomment if you use custom marker
+    icon: customIcon,
   });
 
   // add to array
