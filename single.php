@@ -24,23 +24,19 @@ get_header(); ?>
                                             $story_category = get_field('story_category');
                                             $story_author = get_field('story_author');
 
-                                            // Якщо немає кастомної дати, використовуємо дату публікації
+                                            // Fallback to WordPress data if ACF fields are empty
                                             if (!$story_date) {
                                                 $story_date = get_the_date('M j');
                                             }
 
-                                            // Якщо немає кастомного автора, використовуємо WordPress автора
                                             if (!$story_author) {
                                                 $story_author = get_the_author();
                                             }
 
-                                            // Якщо немає кастомної категорії, використовуємо першу категорію WordPress
                                             if (!$story_category) {
                                                 $categories = get_the_category();
                                                 if (!empty($categories)) {
                                                     $story_category = strtoupper($categories[0]->name);
-                                                } else {
-                                                    $story_category = 'NEWS';
                                                 }
                                             }
                                             ?>
@@ -66,7 +62,7 @@ get_header(); ?>
 
                                         <div class="reading-time">
                                             <?php
-                                            // Простий розрахунок часу читання
+
                                             $word_count = str_word_count(strip_tags(get_the_content()));
                                             $reading_time = ceil($word_count / 200); // 200 слів за хвилину
                                             ?>

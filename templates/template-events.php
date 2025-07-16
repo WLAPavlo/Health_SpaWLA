@@ -39,25 +39,29 @@ get_header(); ?>
 
                     if ($events_query->have_posts()):
                         while ($events_query->have_posts()): $events_query->the_post();
-                            $two_month = get_field('two_month');
-                            $two_day = get_field('two_day');
+                            $event_date = get_field('event_date');
                             $event_location = get_field('event_location');
                             $event_subtitle = get_field('event_subtitle');
                             $event_description = get_field('event_description_wysiwyg');
                             $event_link = get_field('event_link');
                             $event_logo = get_field('event_logo');
-                            $post_featured_image = get_field('post_featured_image');
+                            $featured_image = get_field('featured_image');
                             ?>
 
                             <div class="event-item">
                                 <div class="event-item-wrapper">
                                     <!-- Event Date Block - Left side, outside content -->
                                     <div class="event-date-block">
-                                        <?php if ($two_month): ?>
-                                            <div class="event-month"><?php echo esc_html($two_month); ?></div>
-                                        <?php endif; ?>
-                                        <?php if ($two_day): ?>
-                                            <div class="event-day"><?php echo esc_html($two_day); ?></div>
+                                        <?php if ($event_date): ?>
+                                            <?php
+                                            $timestamp = strtotime($event_date);
+                                            if ($timestamp) {
+                                                $month = strtoupper(date('M', $timestamp));
+                                                $day = date('j', $timestamp);
+                                                ?>
+                                                <div class="event-month"><?php echo esc_html($month); ?></div>
+                                                <div class="event-day"><?php echo esc_html($day); ?></div>
+                                            <?php } ?>
                                         <?php endif; ?>
                                     </div>
 
@@ -66,10 +70,9 @@ get_header(); ?>
                                         <h2 class="event-title"><?php the_title(); ?></h2>
 
                                         <!-- Event Featured Image -->
-                                        <?php if ($post_featured_image): ?>
+                                        <?php if ($featured_image): ?>
                                             <div class="event-image">
-                                                <img src="<?php echo esc_url($post_featured_image['url']); ?>"
-                                                     alt="<?php echo esc_attr($post_featured_image['alt'] ?: get_the_title()); ?>">
+                                                <img src="<?php echo esc_url($featured_image['url']); ?>"
                                             </div>
                                         <?php elseif (has_post_thumbnail()): ?>
                                             <div class="event-image">

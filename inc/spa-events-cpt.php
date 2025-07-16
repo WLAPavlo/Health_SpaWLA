@@ -146,3 +146,26 @@ function spa_events_rewrite_flush() {
     flush_rewrite_rules();
 }
 register_activation_hook(__FILE__, 'spa_events_rewrite_flush');
+
+// Modify main query for spa_event archive to show only upcoming events
+add_action('pre_get_posts', function($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        if (is_post_type_archive('spa_event')) {
+            $current_date = date('Y-m-d');
+
+            $query->set('meta_query', [
+                [
+                    'key' => 'event_date',
+                    'value' => $current_date,
+                    'compare' => '>=',
+                    'type' => 'DATE'
+                ]
+            ]);
+
+            $query->set('meta_key', 'event_date');
+            $query->set('orderby', 'meta_value');
+            $query->set('order', 'ASC');
+            $query->set('posts_per_page', 6);
+        }
+    }
+});

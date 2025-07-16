@@ -80,6 +80,7 @@ array_map(function ($filename) {
     //    'elementor-support',
     //    'shortcodes',
     'acf-placeholder',
+    'twitter-integration', // Twitter integration
 ]);
 
 // Register ACF Gravity Forms field
@@ -357,7 +358,36 @@ add_action('admin_footer', function() {
 // Custom media library's image sizes
 add_image_size('full_hd', 1920, 0, ['center', 'center']);
 add_image_size('large_high', 1024, 0, false);
-// add_image_size( 'name', width, height, ['center','center']);
+
+// Settings for Stories count from admin
+add_action('admin_init', function() {
+    add_settings_section(
+        'spa_stories_settings',
+        'SPA Stories Settings',
+        null,
+        'reading'
+    );
+
+    add_settings_field(
+        'spa_stories_count',
+        'Stories Count on Homepage',
+        function() {
+            $value = get_option('spa_stories_count', 3);
+            echo '<input type="number" name="spa_stories_count" value="' . esc_attr($value) . '" min="1" max="10" />';
+            echo '<p class="description">Number of stories to display on homepage</p>';
+        },
+        'reading',
+        'spa_stories_settings'
+    );
+
+    register_setting('reading', 'spa_stories_count', [
+        'type' => 'integer',
+        'default' => 3,
+        'sanitize_callback' => function($value) {
+            return max(1, min(10, intval($value)));
+        }
+    ]);
+});
 
 // Disable gutenberg
 add_filter('use_block_editor_for_post_type', '__return_false');
