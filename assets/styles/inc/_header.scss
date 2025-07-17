@@ -146,11 +146,21 @@
   .menu-grid-container {
     padding-left: 1rem;
     padding-right: 1rem;
+    max-width: 100%;
+
+    .grid-x {
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
   }
 
   .header-content {
-    justify-content: space-between;
+    justify-content: space-between !important;
     width: 100%;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
 
     .page-template-template-home & {
       justify-content: space-between;
@@ -158,48 +168,146 @@
   }
 
   .logo {
-    margin-right: 0;
+    margin-right: auto;
+    margin-bottom: 0;
     display: block !important;
+    display: flex !important;
+    align-items: center;
+    flex-shrink: 0;
+    max-width: calc(100% - 60px);
 
     h1 {
       margin: 0;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
 
       a {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 360px) {
+          font-size: 1rem;
+        }
       }
 
       img {
-        max-height: 40px;
+        max-height: 35px;
         width: auto;
+
+        @media (max-width: 360px) {
+          max-height: 30px;
+        }
       }
 
       .spa-text {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+
+        @media (max-width: 360px) {
+          font-size: 1rem;
+        }
       }
 
       .spa-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+
+        @media (max-width: 360px) {
+          font-size: 0.6rem;
+        }
       }
     }
   }
 
-  .title-bar {
+  // Кастомний мобільний бургер
+  .mobile-menu-toggle {
     background: transparent;
-    padding: 0.5rem 0;
     border: none;
+    padding: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
     flex-shrink: 0;
+    margin-left: auto;
+    z-index: 1001;
 
-    .menu-icon {
-      padding: 0;
-      border: none;
-      background-color: transparent;
-      margin: 0;
+    span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 18px;
+      background: #ffffff;
+      border-radius: 1px;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: all 0.3s cubic-bezier(0.77, 0.2, 0.05, 1);
 
-      @include menu-icon(#ffffff, #ffffff, 24px, 18px, 3px);
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 18px;
+        background: #ffffff;
+        border-radius: 1px;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s cubic-bezier(0.77, 0.2, 0.05, 1);
+      }
+
+      &::before {
+        top: -6px;
+      }
+
+      &::after {
+        top: 6px;
+      }
     }
 
-    .title-bar-title {
-      display: none;
+    // Коли меню активне - перетворюємо на хрестик
+    &.is-active {
+      span {
+        // Ховаємо середню лінію
+        background-color: transparent;
+
+        &::before {
+          // Поворачиваємо верхню лінію
+          transform: rotate(45deg);
+          top: 0;
+        }
+
+        &::after {
+          // Поворачиваємо нижню лінію
+          transform: rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+
+    // Додаткові стилі для кращої анімації
+    &:hover {
+      span {
+        &::before {
+          top: -8px;
+        }
+
+        &::after {
+          top: 8px;
+        }
+      }
+
+      &.is-active {
+        span {
+          &::before,
+          &::after {
+            top: 0;
+          }
+        }
+      }
     }
   }
 
@@ -210,12 +318,31 @@
     position: absolute;
     left: 0;
     top: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    &.expanded {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
   }
 
   .header-menu {
     background: transparent;
 
+    ul {
+      flex-direction: column;
+      width: 100%;
+    }
+
     li {
+      width: 100%;
+
       > a {
         background: transparent;
         color: #ffffff;
@@ -227,6 +354,10 @@
         letter-spacing: 1px;
         font-size: 0.75rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        display: block;
+        width: 100%;
+        text-align: left;
 
         &:hover,
         &:focus {
@@ -243,6 +374,50 @@
           color: #ffffff;
         }
       }
+
+      &:last-child > a {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // Extra small screens
+  @media (max-width: 360px) {
+    .header {
+      min-height: 45px;
+    }
+
+    .menu-grid-container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+
+      .grid-x {
+        min-height: 45px;
+      }
+    }
+
+    .mobile-menu-toggle {
+      width: 20px;
+      height: 20px;
+
+      span {
+        width: 15px;
+        height: 2px;
+
+        &::before,
+        &::after {
+          width: 15px;
+          height: 2px;
+        }
+
+        &::before {
+          top: -5px;
+        }
+
+        &::after {
+          top: 5px;
+        }
+      }
     }
   }
 }
@@ -253,7 +428,7 @@
     padding: 0;
   }
 
-  .title-bar {
+  .mobile-menu-toggle {
     display: none;
   }
 
@@ -289,6 +464,12 @@
         display: block;
         background: transparent;
 
+        @include breakpoint(medium only) {
+          font-size: 11px;
+          padding: 12px 15px;
+          letter-spacing: 0.5px;
+        }
+
         &:hover,
         &:focus {
           color: #ffffff;
@@ -321,6 +502,10 @@
         > a {
           padding-right: 2rem;
 
+          @include breakpoint(medium only) {
+            padding-right: 1.5rem;
+          }
+
           &::after {
             content: '\f107';
             font-family: 'Font Awesome 6 Free';
@@ -331,6 +516,10 @@
             transform: translateY(-50%);
             font-size: 0.6rem;
             transition: transform 0.3s ease-in-out;
+
+            @include breakpoint(medium only) {
+              right: 0.5rem;
+            }
           }
         }
 
@@ -343,68 +532,21 @@
         }
       }
     }
-
-    /* Dropdown Styles */
-    .submenu {
-      z-index: 1000;
-      display: none;
-      background: #ffffff;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-      min-width: 220px;
-      padding: 0.5rem 0;
-      position: absolute;
-      top: 100%;
-      left: 0;
-
-      &.js-dropdown-active {
-        display: block;
-      }
-
-      li {
-        > a {
-          background: transparent;
-          color: #212121;
-          line-height: 1.4;
-          padding: 0.75rem 1.25rem;
-          font-size: 0.7rem;
-          font-weight: 400;
-          text-transform: none;
-          letter-spacing: 0.5px;
-
-          &:hover,
-          &:focus {
-            background: #f5f5f5;
-            color: #003366;
-          }
-        }
-
-        &.current-menu-item,
-        &.current_page_ancestor,
-        &.current_page_parent {
-          > a {
-            background: #f5f5f5;
-            color: #003366;
-          }
-        }
-      }
+  }
+  /* Override Foundation top-bar default styles */
+  .top-bar {
+    .top-bar-left,
+    .top-bar-right {
+      flex: none;
     }
   }
-}
 
-/* Override Foundation top-bar default styles */
-.top-bar {
-  .top-bar-left,
-  .top-bar-right {
-    flex: none;
-  }
-}
-
-/* Mobile menu specific styling */
-@include breakpoint(small down) {
-  .top-bar {
-    &.expanded {
-      display: block;
+  /* Mobile menu specific styling */
+  @include breakpoint(small down) {
+    .top-bar {
+      &.expanded {
+        display: block;
+      }
     }
   }
 }

@@ -29,9 +29,7 @@ if ($footer_sections) {
 }
 ?>
 
-<!-- Бігова стрічка перед футером -->
 <div class="pre-footer-stripe">
-    <!-- Просто кольоровий блок без тексту -->
 </div>
 
 <!-- BEGIN of footer -->

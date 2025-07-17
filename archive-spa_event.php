@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive template for SPA Events
+ * Template Name: Events Page
  */
 get_header(); ?>
 
@@ -8,47 +8,63 @@ get_header(); ?>
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell">
-                    <!-- Page Title -->
+                    <!-- Page Title - Centered -->
                     <div class="events-page-header">
-                        <h1 class="events-page-title"><?php echo get_the_archive_title() ?: 'Upcoming Events'; ?></h1>
+                        <h1 class="events-page-title"><?= __('Upcoming events', 'fwp'); ?></h1>
+                    </div>
+
+                    <!-- Single Featured Events Stripe - Outside of posts loop -->
+                    <div class="featured-events-stripe">
+                        <div class="stripe-content">
+                            <?= implode(' - ', array_fill(0, 4, __('FEATURED EVENTS', 'fwp'))); ?>
+                        </div>
                     </div>
 
                     <!-- Events List -->
                     <div class="events-list">
-                        <?php if (have_posts()): ?>
-                            <?php while (have_posts()): the_post();
+                        <?php
+                        // Модифікуємо головний запит для цієї сторінки
+                        global $wp_query;
+
+                        $original_query = $wp_query;
+
+                        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+                        $wp_query = new WP_Query([
+                            'post_type' => 'spa_event',
+                            'posts_per_page' => get_option('posts_per_page'),
+                            'paged' => $paged,
+                            'post_status' => 'publish',
+                            'meta_key' => 'event_day',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'ASC'
+                        ]);
+
+                        if (have_posts()):
+                            while (have_posts()): the_post();
                                 $event_date = get_field('event_date');
                                 $event_location = get_field('event_location');
                                 $event_subtitle = get_field('event_subtitle');
                                 $event_description = get_field('event_description_wysiwyg');
                                 $event_link = get_field('event_link');
                                 $event_logo = get_field('event_logo');
-                                $post_featured_image = get_field('post_featured_image');
-
-                                // Get month and day from ACF fields or fallback to event_date
-                                $event_month = get_field('event_month');
-                                $event_day = get_field('event_day');
-
-                                if (!$event_month || !$event_day) {
-                                    if ($event_date) {
-                                        $timestamp = strtotime($event_date);
-                                        if ($timestamp) {
-                                            $event_month = strtoupper(date('M', $timestamp));
-                                            $event_day = date('j', $timestamp);
-                                        }
-                                    }
-                                }
+                                $featured_image = get_field('featured_image');
                                 ?>
 
                                 <div class="event-item">
                                     <div class="event-item-wrapper">
                                         <!-- Event Date Block - Left side, outside content -->
                                         <div class="event-date-block">
-                                            <?php if ($event_month): ?>
-                                                <div class="event-month"><?php echo esc_html($event_month); ?></div>
-                                            <?php endif; ?>
-                                            <?php if ($event_day): ?>
-                                                <div class="event-day"><?php echo esc_html($event_day); ?></div>
+                                            <?php if ($event_date): ?>
+                                                <?php
+                                                $timestamp = strtotime($event_date);
+                                                if ($timestamp) {
+                                                    $month = strtoupper(date('M', $timestamp));
+                                                    $day = date('j', $timestamp);
+                                                    ?>
+                                                    <div class="event-month"><?php echo esc_html($month); ?></div>
+                                                    <div class="event-day"><?php echo esc_html($day); ?></div>
+                                                <?php } ?>
                                             <?php endif; ?>
                                         </div>
 
@@ -57,10 +73,9 @@ get_header(); ?>
                                             <h2 class="event-title"><?php the_title(); ?></h2>
 
                                             <!-- Event Featured Image -->
-                                            <?php if ($post_featured_image): ?>
+                                            <?php if ($featured_image): ?>
                                                 <div class="event-image">
-                                                    <img src="<?php echo esc_url($post_featured_image['url']); ?>"
-                                                         alt="<?php echo esc_attr($post_featured_image['alt'] ?: get_the_title()); ?>">
+                                                    <img src="<?php echo esc_url($featured_image['url']); ?>" alt="<?php echo esc_attr($featured_image['alt']); ?>">
                                                 </div>
                                             <?php elseif (has_post_thumbnail()): ?>
                                                 <div class="event-image">
@@ -82,7 +97,7 @@ get_header(); ?>
                                             <!-- Read More Button -->
                                             <div class="event-read-more-section">
                                                 <a href="<?php echo get_permalink(); ?>" class="event-read-more-btn">
-                                                    TO THE EVENT PAGE
+                                                    <?= __('To the event page', 'fwp'); ?>
                                                 </a>
                                             </div>
 
@@ -90,12 +105,24 @@ get_header(); ?>
                                             <div class="event-details">
                                                 <div class="event-details-row">
                                                     <div class="event-detail-item">
-                                                        <div class="detail-label">WHEN</div>
+                                                        <div class="detail-label"><?= __('When', 'fwp'); ?></div>
+                                                        <?php
+                                                        $start = get_field('event_start');
+                                                        $end = get_field('event_end');
+
+                                                        if ($start) {
+                                                            $start_date = DateTime::createFromFormat('Y-m-d H:i:s', $start);
+                                                        }
+
+                                                        if ($end) {
+                                                            $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $end);
+                                                        }
+                                                        ?>
                                                         <div class="detail-value">
                                                             <?php
-                                                            $event_year = get_field('event_year') ?: '2025';
-                                                            $event_time_start = get_field('event_time_start') ?: '16:30';
-                                                            $event_time_end = get_field('event_time_end') ?: '21:00';
+                                                            $event_year = get_field('event_year');
+                                                            $event_time_start = get_field('event_time_start');
+                                                            $event_time_end = get_field('event_time_end');
                                                             $when_full_date = get_field('when_full_date');
                                                             $when_time_range = get_field('when_time_range');
                                                             ?>
@@ -112,7 +139,7 @@ get_header(); ?>
                                                         </div>
                                                     </div>
                                                     <div class="event-detail-item">
-                                                        <div class="detail-label">WHERE</div>
+                                                        <div class="detail-label"><?= __('Where', 'fwp'); ?></div>
                                                         <div class="detail-value">
                                                             <?php
                                                             $event_venue_name = get_field('event_venue_name') ?: get_field('where_venue_name') ?: 'Biomedicum Helsinki 1';
@@ -129,12 +156,12 @@ get_header(); ?>
                                                                     <?php echo esc_html($where_address_line2); ?>
                                                                 <?php endif; ?>
                                                             <?php else: ?>
-                                                                Haartmaninkatu 8<br>00290 Helsinki
+                                                                <?= esc_html__('Haartmaninkatu 8', 'fwp') . '<br>' . esc_html__('00290 Helsinki', 'fwp'); ?>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
                                                     <div class="event-detail-item">
-                                                        <div class="detail-label">ATTENDANCE</div>
+                                                        <div class="detail-label"><?= __('Attedence', 'fwp'); ?></div>
                                                         <div class="detail-value">
                                                             <?php
                                                             $event_attendance_info = get_field('event_attendance_info') ?: get_field('attendance_text') ?: 'The event is free, but seating is limited to 50.';
@@ -153,7 +180,7 @@ get_header(); ?>
                                                                     <?php echo esc_html($button_title); ?>
                                                                 </a>
                                                             <?php else: ?>
-                                                                <a href="#" class="book-tickets-btn btn-available">BOOK TICKETS</a>
+                                                                <a href="#" class="book-tickets-btn btn-available"><?= __('Book Tickets', 'fwp'); ?></a>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
@@ -162,8 +189,10 @@ get_header(); ?>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endwhile; ?>
-                        <?php else: ?>
+                            <?php
+                            endwhile;
+                        else:
+                            ?>
                             <div class="no-events">
                                 <p>No events found.</p>
                             </div>
@@ -171,34 +200,12 @@ get_header(); ?>
                     </div>
 
                     <!-- Pagination -->
+                    <?php foundation_pagination(); ?>
+
                     <?php
-                    global $wp_query;
-                    if ($wp_query->max_num_pages > 1): ?>
-                        <div class="events-pagination">
-                            <div class="pagination-controls">
-                                <?php
-                                $pagination_args = array(
-                                    'total' => $wp_query->max_num_pages,
-                                    'current' => max(1, get_query_var('paged')),
-                                    'prev_text' => '« PREV',
-                                    'next_text' => 'NEXT »',
-                                    'type' => 'array',
-                                    'show_all' => false,
-                                    'end_size' => 1,
-                                    'mid_size' => 2,
-                                );
-
-                                $pagination_links = paginate_links($pagination_args);
-
-                                if ($pagination_links) {
-                                    foreach ($pagination_links as $link) {
-                                        echo $link;
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
+                    wp_reset_postdata();
+                    $wp_query = $original_query;
+                    ?>
                 </div>
             </div>
         </div>

@@ -345,8 +345,18 @@
       }
 
       &:hover {
+        color: #17c8ff;
         cursor: pointer;
-        text-decoration: none;
+        transform: translateY(-2px);
+        text-shadow: 0 1px 3px rgba(23, 200, 255, 0.3);
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          width: 100%;
+        }
       }
     }
   }
@@ -569,8 +579,18 @@
         }
 
         &:hover {
+          color: #17c8ff;
           cursor: pointer;
-          text-decoration: none;
+          transform: translateY(-2px);
+          text-shadow: 0 1px 3px rgba(23, 200, 255, 0.3);
+
+          &::before {
+            left: 0;
+          }
+
+          &::after {
+            width: 100%;
+          }
         }
       }
     }

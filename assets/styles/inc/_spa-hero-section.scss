@@ -21,11 +21,14 @@ $white: #ffffff;
 
   h1 {
     font-size: 62px;
-    font-weight: 800; // Extrabold
+    font-weight: 800;
     color: $primary-pink;
     line-height: 1.2;
     margin-bottom: 30px;
     font-family: 'Open Sans', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 
     @include breakpoint(large down) {
       font-size: 52px;
@@ -39,6 +42,10 @@ $white: #ffffff;
     @include breakpoint(small down) {
       font-size: 32px;
       margin-bottom: 20px;
+      // Prevent breaking between & and the next word
+      .no-break {
+        white-space: nowrap;
+      }
     }
   }
 
@@ -232,6 +239,14 @@ $white: #ffffff;
     position: relative;
     left: 2px;
   }
+
+  .mejs-overlay-button:hover {
+    background: #a03973;
+    border-radius: 50%;
+    box-shadow: 0 12px 40px rgba(181, 62, 112, 0.5);
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: brightness(1.1);
+  }
 }
 
 .hero-content {
@@ -328,6 +343,7 @@ $white: #ffffff;
     letter-spacing: 0;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.2;
+    text-align: center;
   }
 
   .cta-description {
@@ -337,10 +353,12 @@ $white: #ffffff;
     color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400; // Regular
+    text-align: center;
   }
 
   .cta-button {
     margin-top: 20px;
+    text-align: center;
   }
 
   .btn-cta {
@@ -391,16 +409,23 @@ $white: #ffffff;
 
 @media (max-width: 768px) {
   .sidebar-cta {
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
     padding: 25px 20px;
     max-width: 100%;
+    display: block;
 
     .cta-title {
       font-size: 22px;
+      text-align: center;
     }
 
     .cta-description {
       font-size: 12px;
+      text-align: center;
+    }
+
+    .cta-button {
+      text-align: center;
     }
 
     &::before,
@@ -413,16 +438,23 @@ $white: #ffffff;
 // Responsive Design
 @media (max-width: 768px) {
   .sidebar-cta {
-    margin-top: 40px;
+    margin: 40px auto 0 auto;
     padding: 30px 20px;
     max-width: 100%;
+    display: block;
 
     .cta-title {
       font-size: 24px;
+      text-align: center;
     }
 
     .cta-description {
       font-size: 13px;
+      text-align: center;
+    }
+
+    .cta-button {
+      text-align: center;
     }
 
     &::before,
@@ -482,16 +514,23 @@ $white: #ffffff;
   }
 
   .sidebar-cta {
-    margin-top: 40px;
+    margin: 40px auto 0 auto;
     padding: 30px 20px;
     max-width: 100%;
+    display: block;
 
     .cta-title {
       font-size: 24px;
+      text-align: center;
     }
 
     .cta-description {
       font-size: 13px;
+      text-align: center;
+    }
+
+    .cta-button {
+      text-align: center;
     }
 
     &::before,

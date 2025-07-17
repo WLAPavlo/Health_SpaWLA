@@ -150,15 +150,15 @@ $all_events_query = new WP_Query([
                     <?php
                     $event_date = get_field('event_date', $featured_event->ID);?>
                     <?php if ($event_date): ?>
-                    <?php
-                    $timestamp = strtotime($event_date);
-                    if ($timestamp) {
-                        $month = strtoupper(date('M', $timestamp));
-                        $day = date('j', $timestamp);
-                    ?>
-                    <div class="event-month"><?php echo esc_html($month); ?></div>
-                    <div class="event-day"><?php echo esc_html($day); ?></div>
-                    <?php } ?>
+                        <?php
+                        $timestamp = strtotime($event_date);
+                        if ($timestamp) {
+                            $month = strtoupper(date('M', $timestamp));
+                            $day = date('j', $timestamp);
+                            ?>
+                            <div class="event-month"><?php echo esc_html($month); ?></div>
+                            <div class="event-day"><?php echo esc_html($day); ?></div>
+                        <?php } ?>
                     <?php endif; ?>
                 </div>
                 <div class="event-content">
@@ -183,7 +183,6 @@ $all_events_query = new WP_Query([
                         </div>
                     <?php else: ?>
                         <div class="event-description">
-                            <?php echo wp_kses_post($featured_event->post_excerpt ?: wp_trim_words($featured_event->post_content, 30)); ?>
                         </div>
                     <?php endif; ?>
 
@@ -199,11 +198,9 @@ $all_events_query = new WP_Query([
                         </a>
                     <?php endif; ?>
                 </div>
-
                 <?php if ($event_logo): ?>
                     <div class="event-logo">
-                        <img src="<?php echo esc_url($event_logo['url']); ?>"
-                             alt="<?php echo esc_attr($event_logo['alt'] ?: $featured_event->post_title); ?>">
+                        <img src="<?php echo esc_url($event_logo['url']); ?>" alt="<?php echo esc_attr($event_logo['alt']); ?>">
                     </div>
                 <?php endif; ?>
             </div>
@@ -289,7 +286,6 @@ wp_reset_postdata();
 
 <!-- Stories Section -->
 <?php
-// Отримуємо кількість постів з налаштувань адмінки
 $stories_count = get_option('spa_stories_count', 3);
 
 $stories_query = new WP_Query([

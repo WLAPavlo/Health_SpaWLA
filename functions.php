@@ -140,31 +140,8 @@ if (class_exists('theme\DynamicAdmin') && is_admin()) {
 }
 
 // Apply lazyload to whole page content
-if (class_exists('theme\CreateLazyImg')) {
-    add_action('template_redirect', function () {
-        ob_start(function ($html) {
-            $lazy = new CreateLazyImg();
-            $buffer = $lazy->ignoreScripts($html);
-            $buffer = $lazy->ignoreNoscripts($buffer);
-            $html = $lazy->lazyloadImages($html, $buffer);
-            $html = $lazy->lazyloadPictures($html, $buffer);
-
-            return $lazy->lazyloadBackgroundImages($html, $buffer);
-        });
-    });
-}
-
-/** ========================================================================
- * PUT YOU FUNCTIONS BELOW.
- */
-
-// Auto-populate month and day fields based on date picker
+// Auto-populate month and day fields from event_date
 add_action('acf/save_post', function($post_id) {
-    // Check if this is a spa_event post
-    if (get_post_type($post_id) !== 'spa_event') {
-        return;
-    }
-
     // Only auto-populate if month and day fields are empty
     $current_month = get_field('event_month', $post_id);
     $current_day = get_field('event_day', $post_id);
@@ -355,39 +332,23 @@ add_action('admin_footer', function() {
     }
 });
 
-// Custom media library's image sizes
-add_image_size('full_hd', 1920, 0, ['center', 'center']);
-add_image_size('large_high', 1024, 0, false);
-
-// Settings for Stories count from admin
-add_action('admin_init', function() {
-    add_settings_section(
-        'spa_stories_settings',
-        'SPA Stories Settings',
-        null,
-        'reading'
-    );
-
-    add_settings_field(
-        'spa_stories_count',
-        'Stories Count on Homepage',
-        function() {
-            $value = get_option('spa_stories_count', 3);
-            echo '<input type="number" name="spa_stories_count" value="' . esc_attr($value) . '" min="1" max="10" />';
-            echo '<p class="description">Number of stories to display on homepage</p>';
-        },
-        'reading',
-        'spa_stories_settings'
-    );
-
-    register_setting('reading', 'spa_stories_count', [
-        'type' => 'integer',
-        'default' => 3,
-        'sanitize_callback' => function($value) {
-            return max(1, min(10, intval($value)));
-        }
-    ]);
-});
-
 // Disable gutenberg
 add_filter('use_block_editor_for_post_type', '__return_false');
+
+/// Ensure Events page uses archive-spa_event.php
+add_filter('page_template', function($template) {
+    global $post;
+
+    if ($post && $post->post_name === 'events') {
+        $new_template = locate_template(array('archive-spa_event.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
+    }
+
+    return $template;
+});
+
+
+
+

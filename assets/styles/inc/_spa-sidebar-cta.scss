@@ -41,6 +41,7 @@
   .cta-title {
     font-size: 1.25rem;
     font-weight: 700;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
@@ -96,13 +97,22 @@
   }
 }
 
-@include breakpoint(small down) {
+@include breakpoint(medium down) {
   .sidebar-cta {
-    margin-top: 3rem;
+    margin: 3rem auto 0 auto;
+    max-width: 300px;
+    width: 100%;
+    display: block;
 
     &::before,
     &::after {
       display: none;
+    }
+
+    .cta-title,
+    .cta-description,
+    .cta-button {
+      text-align: center;
     }
   }
 }

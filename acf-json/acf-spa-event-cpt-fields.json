@@ -5,10 +5,10 @@
     "fields": [
       {
         "key": "field_event_date",
-        "label": "Дата події",
+        "label": "Event Date",
         "name": "event_date",
         "type": "date_picker",
-        "instructions": "Дата проведення події (опціонально - для автозаповнення місяця та дня)",
+        "instructions": "Event date (optional - for auto-filling month and day)",
         "required": 1,
         "conditional_logic": 0,
         "wrapper": {
@@ -22,10 +22,10 @@
       },
       {
         "key": "field_event_month",
-        "label": "Місяць (скорочено)",
+        "label": "Month (abbreviated)",
         "name": "event_month",
         "type": "text",
-        "instructions": "Скорочена назва місяця (наприклад: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC)",
+        "instructions": "Abbreviated month name (e.g.: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC)",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -41,10 +41,10 @@
       },
       {
         "key": "field_event_day",
-        "label": "День",
+        "label": "Day",
         "name": "event_day",
         "type": "number",
-        "instructions": "День місяця (1-31)",
+        "instructions": "Day of the month (1-31)",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -62,10 +62,10 @@
       },
       {
         "key": "field_event_location",
-        "label": "Місце проведення",
+        "label": "Location",
         "name": "event_location",
         "type": "text",
-        "instructions": "Місто або місце проведення події",
+        "instructions": "City or venue where the event takes place",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -81,10 +81,10 @@
       },
       {
         "key": "field_event_type",
-        "label": "Тип події",
+        "label": "Event Type",
         "name": "event_type",
         "type": "select",
-        "instructions": "Тип події",
+        "instructions": "Type of event",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -109,10 +109,10 @@
       },
       {
         "key": "field_event_subtitle",
-        "label": "Підзаголовок",
+        "label": "Subtitle",
         "name": "event_subtitle",
         "type": "text",
-        "instructions": "Короткий підзаголовок події",
+        "instructions": "Short event subtitle",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -128,10 +128,10 @@
       },
       {
         "key": "field_event_description",
-        "label": "Опис події",
+        "label": "Event Description",
         "name": "event_description",
         "type": "textarea",
-        "instructions": "Детальний опис події",
+        "instructions": "Detailed event description",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -147,10 +147,10 @@
       },
       {
         "key": "field_event_featured_image",
-        "label": "Головне зображення",
+        "label": "Featured Image",
         "name": "event_featured_image",
         "type": "image",
-        "instructions": "Головне зображення для події",
+        "instructions": "Main image for the event",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -171,10 +171,10 @@
       },
       {
         "key": "field_event_logo",
-        "label": "Логотип події",
+        "label": "Event Logo",
         "name": "event_logo",
         "type": "image",
-        "instructions": "Логотип або іконка події",
+        "instructions": "Logo or icon for the event",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -195,10 +195,10 @@
       },
       {
         "key": "field_event_link",
-        "label": "Посилання на подію",
+        "label": "Event Link",
         "name": "event_link",
         "type": "link",
-        "instructions": "Посилання на детальну сторінку або реєстрацію",
+        "instructions": "Link to detailed page or registration",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -210,10 +210,10 @@
       },
       {
         "key": "field_is_featured",
-        "label": "Головна подія",
+        "label": "Featured Event",
         "name": "is_featured",
         "type": "true_false",
-        "instructions": "Відмітити як головну подію для відображення",
+        "instructions": "Mark as featured event for display",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -221,11 +221,11 @@
           "class": "",
           "id": ""
         },
-        "message": "Це головна подія",
+        "message": "This is a featured event",
         "default_value": 0,
         "ui": 1,
-        "ui_on_text": "Так",
-        "ui_off_text": "Ні"
+        "ui_on_text": "Yes",
+        "ui_off_text": "No"
       }
     ],
     "location": [
@@ -244,6 +244,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Поля для Custom Post Type SPA Event"
+    "description": "Fields for Custom Post Type SPA Event"
   }
 ]

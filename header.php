@@ -39,13 +39,10 @@ use theme\FoundationNavigation;
 
                 <!-- Navigation Menu -->
                 <?php if (has_nav_menu('header-menu')) { ?>
-                    <!-- Mobile menu toggle -->
-                    <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
-                        <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
-                            <span></span>
-                        </button>
-                        <div class="title-bar-title">Menu</div>
-                    </div>
+                    <!-- Кастомний мобільний бургер -->
+                    <button class="mobile-menu-toggle hide-for-medium" type="button" aria-label="Menu" aria-controls="main-menu">
+                        <span></span>
+                    </button>
 
                     <!-- Desktop/Mobile Navigation -->
                     <nav class="top-bar" id="main-menu">
@@ -53,7 +50,7 @@ use theme\FoundationNavigation;
                             <?php wp_nav_menu([
                                 'theme_location' => 'header-menu',
                                 'menu_class' => 'menu header-menu',
-                                'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
+                                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                                 'walker' => new FoundationNavigation(),
                             ]); ?>
                         </div>

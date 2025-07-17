@@ -8,7 +8,7 @@
         "label": "Hero Section",
         "name": "hero_section",
         "type": "group",
-        "instructions": "Налаштування головної секції домашньої сторінки",
+        "instructions": "Settings for the main hero section of the home page",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -20,10 +20,10 @@
         "sub_fields": [
           {
             "key": "field_hero_title",
-            "label": "Заголовок",
+            "label": "Title",
             "name": "title",
             "type": "text",
-            "instructions": "Основний заголовок секції",
+            "instructions": "Main section title",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -39,10 +39,10 @@
           },
           {
             "key": "field_hero_subtitle",
-            "label": "Підзаголовок",
+            "label": "Subtitle",
             "name": "subtitle",
             "type": "text",
-            "instructions": "Підзаголовок секції",
+            "instructions": "Section subtitle",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -58,10 +58,10 @@
           },
           {
             "key": "field_hero_description",
-            "label": "Опис",
+            "label": "Description",
             "name": "description",
             "type": "wysiwyg",
-            "instructions": "Основний текст опису",
+            "instructions": "Main description text",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -78,10 +78,10 @@
           },
           {
             "key": "field_hero_video",
-            "label": "Відео",
+            "label": "Video",
             "name": "video",
             "type": "group",
-            "instructions": "Налаштування відео в головній секції",
+            "instructions": "Video settings for the hero section",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -93,10 +93,10 @@
             "sub_fields": [
               {
                 "key": "field_video_thumbnail",
-                "label": "Превью відео",
+                "label": "Video Thumbnail",
                 "name": "thumbnail",
                 "type": "image",
-                "instructions": "Зображення-превью для відео",
+                "instructions": "Preview image for the video",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -117,10 +117,10 @@
               },
               {
                 "key": "field_video_url",
-                "label": "URL відео",
+                "label": "Video URL",
                 "name": "url",
                 "type": "url",
-                "instructions": "Посилання на відео (YouTube, Vimeo тощо)",
+                "instructions": "Video link (YouTube, Vimeo, etc.)",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -135,10 +135,10 @@
           },
           {
             "key": "field_hero_buttons",
-            "label": "Кнопки дій",
+            "label": "Action Buttons",
             "name": "buttons",
             "type": "repeater",
-            "instructions": "Кнопки під описом (READ MORE, тощо)",
+            "instructions": "Buttons below the description (READ MORE, etc.)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -150,11 +150,11 @@
             "min": 0,
             "max": 3,
             "layout": "table",
-            "button_label": "Додати кнопку",
+            "button_label": "Add Button",
             "sub_fields": [
               {
                 "key": "field_hero_button_text",
-                "label": "Текст кнопки",
+                "label": "Button Text",
                 "name": "text",
                 "type": "text",
                 "instructions": "",
@@ -173,7 +173,7 @@
               },
               {
                 "key": "field_hero_button_link",
-                "label": "Посилання",
+                "label": "Link",
                 "name": "link",
                 "type": "url",
                 "instructions": "",
@@ -189,7 +189,7 @@
               },
               {
                 "key": "field_hero_button_style",
-                "label": "Стиль кнопки",
+                "label": "Button Style",
                 "name": "style",
                 "type": "select",
                 "instructions": "",
@@ -219,10 +219,10 @@
       },
       {
         "key": "field_sidebar_cta",
-        "label": "Бічна панель CTA",
+        "label": "Sidebar CTA",
         "name": "sidebar_cta",
         "type": "group",
-        "instructions": "Налаштування бічної панелі з закликом до дії",
+        "instructions": "Settings for the sidebar call-to-action section",
         "required": 0,
         "conditional_logic": 0,
         "wrapper": {
@@ -234,10 +234,10 @@
         "sub_fields": [
           {
             "key": "field_cta_title",
-            "label": "Заголовок CTA",
+            "label": "CTA Title",
             "name": "title",
             "type": "text",
-            "instructions": "Заголовок блоку заклику до дії",
+            "instructions": "Title for the call-to-action block",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -253,10 +253,10 @@
           },
           {
             "key": "field_cta_description",
-            "label": "Опис CTA",
+            "label": "CTA Description",
             "name": "description",
             "type": "textarea",
-            "instructions": "Текст опису в блоці CTA",
+            "instructions": "Description text for the CTA block",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -272,10 +272,10 @@
           },
           {
             "key": "field_cta_button",
-            "label": "Кнопка CTA",
+            "label": "CTA Button",
             "name": "button",
             "type": "link",
-            "instructions": "Налаштування кнопки заклику до дії",
+            "instructions": "Settings for the call-to-action button",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -304,6 +304,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Поля для налаштування домашньої сторінки"
+    "description": "Fields for configuring the home page"
   }
 ]

@@ -7,29 +7,8 @@ import './plugins/modernizr.min';
 import 'slick-carousel';
 import 'jquery-match-height';
 import objectFitImages from 'object-fit-images';
-// import '@fancyapps/fancybox/dist/jquery.fancybox.min';
-// import { jarallax, jarallaxElement } from 'jarallax';
-// import ScrollOut from 'scroll-out';
 
 /* global google */
-
-/**
- * Import scripts from Custom Divi blocks
- */
-// eslint-disable-next-line import/no-unresolved
-// import '../blocks/divi/**/index.js';
-
-/**
- * Import scripts from Custom Elementor widgets
- */
-// eslint-disable-next-line import/no-unresolved
-// import '../blocks/elementor/**/index.js';
-
-/**
- * Import scripts from Custom ACF Gutenberg blocks
- */
-// eslint-disable-next-line import/no-unresolved
-// import '../blocks/gutenberg/**/index.js';
 
 /**
  * Init foundation
@@ -77,55 +56,6 @@ $(document).on('ready', function () {
   if ($('.of-cover').length) {
     objectFitImages('.of-cover');
   }
-
-  /**
-   * Add fancybox to images
-   */
-  // $('.gallery-item')
-  //   .find('a[href$="jpg"], a[href$="png"], a[href$="gif"]')
-  //   .attr('rel', 'gallery')
-  //   .attr('data-fancybox', 'gallery');
-  // $(
-  //   '.fancybox, a[rel*="album"], a[href$="jpg"], a[href$="png"], a[href$="gif"]'
-  // ).fancybox({
-  //   minHeight: 0,
-  //   helpers: {
-  //     overlay: {
-  //       locked: false,
-  //     },
-  //   },
-  // });
-
-  /**
-   * Init parallax
-   */
-  // jarallaxElement();
-  // jarallax(document.querySelectorAll('.jarallax'), {
-  //   speed: 0.5,
-  // });
-
-  /**
-   * Detect element appearance in viewport
-   */
-  // ScrollOut({
-  //   offset: function() {
-  //     return window.innerHeight - 200;
-  //   },
-  //   once: true,
-  //   onShown: function(element) {
-  //     if ($(element).is('.ease-order')) {
-  //       $(element)
-  //         .find('.ease-order__item')
-  //         .each(function(i) {
-  //           let $this = $(this);
-  //           $(this).attr('data-scroll', '');
-  //           window.setTimeout(function() {
-  //             $this.attr('data-scroll', 'in');
-  //           }, 300 * i);
-  //         });
-  //     }
-  //   },
-  // });
 
   /**
    * Remove placeholder on click
@@ -176,27 +106,65 @@ $(document).on('ready', function () {
     }
   );
 
-  /**
-   * Add `is-active` class to menu-icon button on Responsive menu toggle
-   * And remove it on breakpoint change
-   */
-  $(window)
-    .on('toggled.zf.responsiveToggle', function () {
-      $('.menu-icon').toggleClass('is-active');
-    })
-    .on('changed.zf.mediaquery', function () {
-      $('.menu-icon').removeClass('is-active');
-    });
+  function toggleMobileMenu() {
+    const $menuToggle = $('.mobile-menu-toggle');
+    const $menu = $('#main-menu');
 
-  /**
-   * Close responsive menu on orientation change
-   */
-  $(window).on('orientationchange', function () {
-    setTimeout(function () {
-      if ($('.menu-icon').hasClass('is-active') && window.innerWidth < 641) {
-        $('[data-responsive-toggle="main-menu"]').foundation('toggleMenu');
+    const isActive = $menuToggle.hasClass('is-active');
+
+    if (isActive) {
+      $menuToggle.removeClass('is-active');
+      $menu.removeClass('expanded').slideUp(300);
+    } else {
+      $menuToggle.addClass('is-active');
+      $menu.addClass('expanded').slideDown(300);
+    }
+  }
+
+  function closeMobileMenu() {
+    $('.mobile-menu-toggle').removeClass('is-active');
+    $('#main-menu').removeClass('expanded').slideUp(300);
+  }
+
+  $(document).on('click', '.mobile-menu-toggle', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  $(document).on('click', '.header-menu a', function () {
+    if (window.innerWidth < 640) {
+      closeMobileMenu();
+    }
+  });
+
+  $(document).on('click', function (e) {
+    if (window.innerWidth < 640) {
+      if (
+        !$(e.target).closest('.header').length &&
+        $('.mobile-menu-toggle').hasClass('is-active')
+      ) {
+        closeMobileMenu();
       }
-    }, 200);
+    }
+  });
+
+  $(window).on('resize', function () {
+    if (window.innerWidth >= 640) {
+      $('.mobile-menu-toggle').removeClass('is-active');
+      $('#main-menu').removeClass('expanded').show();
+    } else {
+      $('#main-menu').hide();
+    }
+  });
+
+  $(window).on('orientationchange', function () {
+    if (
+      $('.mobile-menu-toggle').hasClass('is-active') &&
+      window.innerWidth < 641
+    ) {
+      closeMobileMenu();
+    }
   });
 
   resizeVideo();
@@ -206,8 +174,6 @@ $(document).on('ready', function () {
  * Scripts which runs after all elements load
  */
 $(window).on('load', function () {
-  // jQuery code goes here
-
   let $preloader = $('.preloader');
   if ($preloader.length) {
     $preloader.addClass('preloader--hidden');
@@ -225,8 +191,6 @@ $(window).on('load', function () {
  * Scripts which runs at window resize
  */
 $(window).on('resize', function () {
-  // jQuery code goes here
-
   resizeVideo();
 });
 
@@ -236,6 +200,7 @@ $(window).on('resize', function () {
 $(window).on('scroll', function () {
   // jQuery code goes here
 });
+
 document.addEventListener('DOMContentLoaded', function () {
   const yearInput = document.querySelector('input[name="event_year"]');
   if (yearInput) {
