@@ -2,6 +2,13 @@
 /**
  * Template Name: Events Page
  */
+
+// Disable debug output
+if (!is_admin()) {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+}
+
 get_header(); ?>
 
     <main class="main-content events-page">
@@ -49,6 +56,29 @@ get_header(); ?>
                                 $event_link = get_field('event_link');
                                 $event_logo = get_field('event_logo');
                                 $featured_image = get_field('featured_image');
+                                $event_month = get_field('event_month');
+                                $event_day = get_field('event_day');
+                                $event_year = get_field('event_year');
+
+                                // Fallback to post date if ACF fields are empty
+                                if (!$event_month || !$event_day) {
+                                    $post_date = get_the_date();
+                                    $timestamp = strtotime($post_date);
+                                    if (!$event_month) {
+                                        $event_month = strtoupper(date('M', $timestamp));
+                                    }
+                                    if (!$event_day) {
+                                        $event_day = date('j', $timestamp);
+                                    }
+                                    if (!$event_year) {
+                                        $event_year = date('Y', $timestamp);
+                                    }
+                                }
+
+                                // Set default year if still empty
+                                if (!$event_year) {
+                                    $event_year = date('Y');
+                                }
                                 ?>
 
                                 <div class="event-item">
@@ -65,6 +95,9 @@ get_header(); ?>
                                                     <div class="event-month"><?php echo esc_html($month); ?></div>
                                                     <div class="event-day"><?php echo esc_html($day); ?></div>
                                                 <?php } ?>
+                                            <?php elseif ($event_month && $event_day): ?>
+                                                <div class="event-month"><?php echo esc_html($event_month); ?></div>
+                                                <div class="event-day"><?php echo esc_html($event_day); ?></div>
                                             <?php endif; ?>
                                         </div>
 

@@ -2,6 +2,13 @@
 /**
  * Single SPA Event Template - Fixed Structure According to Design
  */
+
+// Disable debug output
+if (!is_admin()) {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+}
+
 get_header(); ?>
 
 <main class="main-content single-event-page">
@@ -34,6 +41,14 @@ get_header(); ?>
                         if (!$event_day) {
                             $event_day = date('j', $timestamp);
                         }
+                        if (!$event_year) {
+                            $event_year = date('Y', $timestamp);
+                        }
+                    }
+
+                    // Set default year if still empty
+                    if (!$event_year) {
+                        $event_year = date('Y');
                     }
                     ?>
 

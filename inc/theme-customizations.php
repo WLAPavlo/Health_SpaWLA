@@ -291,6 +291,25 @@ add_filter('wpseo_metabox_prio', function () {
     return 'low';
 });
 
+// Disable WordPress debug output on frontend
+if (!is_admin() && !defined('WP_CLI')) {
+    ini_set('display_errors', 0);
+    ini_set('log_errors', 1);
+    error_reporting(0);
+
+    // Hide all PHP errors from frontend
+    add_action('init', function() {
+        if (!current_user_can('administrator')) {
+            ini_set('display_errors', 0);
+            error_reporting(0);
+        }
+    });
+}
+
+// Remove WordPress version and other meta info
+remove_action('wp_head', 'wp_generator');
+add_filter('the_generator', '__return_empty_string');
+
 // Disable Robin Image optimizer backup
 add_filter('wbcr/factory/populate_option_backup_origin_images', function () {
     return !empty(get_option('wbcr_io_backup_origin_images')) ? get_option('wbcr_io_backup_origin_images') : 0;
@@ -324,11 +343,11 @@ add_filter(
             if (is_array($size)) {
                 $image[1] = $size[0];
                 $image[2] = $size[1];
-            //            } elseif (($xml = simplexml_load_file($image[0])) !== false) {
-            //                $attr = $xml->attributes();
-            //                $viewbox = explode(' ', $attr->viewBox);
-            //                $image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[2] : null);
-            //                $image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[3] : null);
+                //            } elseif (($xml = simplexml_load_file($image[0])) !== false) {
+                //                $attr = $xml->attributes();
+                //                $viewbox = explode(' ', $attr->viewBox);
+                //                $image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[2] : null);
+                //                $image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[3] : null);
             } else {
                 $image[1] = $image[2] = null;
             }

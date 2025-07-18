@@ -24,6 +24,14 @@ use theme\FoundationNavigation;
 <body <?php body_class('no-outline fwp'); ?>>
 <?php wp_body_open(); ?>
 
+<?php
+// Hide debug output on frontend
+if (!is_admin() && !current_user_can('administrator')) {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+}
+?>
+
 <!-- BEGIN of header -->
 <header class="header">
     <div class="menu-grid-container">
@@ -60,4 +68,22 @@ use theme\FoundationNavigation;
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const blockedLinks = ['/stories', '/offer', '/people', '/partners', '/contact'];
+
+        document.querySelectorAll('.header-menu a').forEach(function (link) {
+            const href = link.getAttribute('href');
+            if (href && blockedLinks.some(path => href.includes(path))) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+                link.setAttribute('href', '#');
+            }
+        });
+    });
+</script>
+
 <!-- END of header -->

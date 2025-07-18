@@ -2,7 +2,7 @@
    SPA Events Section - Updated Styling
 ----------------------------------------- */
 
-.spa-events-section {
+.spa-layout .spa-events-section {
   background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
   position: relative;
   overflow: visible;
@@ -29,7 +29,7 @@
 }
 
 /* White background container for all events */
-.spa-events-white-container {
+.spa-layout .spa-events-white-container {
   background: #ffffff;
   position: relative;
   z-index: 10;

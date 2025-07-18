@@ -2,74 +2,90 @@
    SPA Layout & Grid System
 ----------------------------------------- */
 
-// Container
-.spa-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-
-  @include breakpoint(medium) {
-    padding: 0 1.5rem;
+// Hide any debug output elements
+.spa-layout {
+  .php-error,
+  .error,
+  .notice,
+  .warning,
+  pre.xdebug-var-dump,
+  .xdebug-error {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 
-// Grid system
-.spa-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 calc(1rem * -0.5);
+// SPA specific layout fixes
+.spa-layout {
+  // Container
+  .spa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 
-  @include breakpoint(medium) {
-    margin: 0 calc(1.5rem * -0.5);
+    @include breakpoint(medium) {
+      padding: 0 1.5rem;
+    }
   }
-}
 
-.spa-col {
-  flex: 1;
-  padding: 0 calc(1rem * 0.5);
+  // Grid system
+  .spa-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(1rem * -0.5);
 
-  @include breakpoint(medium) {
-    padding: 0 calc(1.5rem * 0.5);
+    @include breakpoint(medium) {
+      margin: 0 calc(1.5rem * -0.5);
+    }
   }
-}
 
-.spa-col-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 calc(1rem * 0.5);
+  .spa-col {
+    flex: 1;
+    padding: 0 calc(1rem * 0.5);
 
-  @include breakpoint(medium) {
-    padding: 0 calc(1.5rem * 0.5);
+    @include breakpoint(medium) {
+      padding: 0 calc(1.5rem * 0.5);
+    }
   }
-}
 
-.spa-col-8 {
-  flex: 0 0 66.666667%;
-  max-width: 66.666667%;
-  padding: 0 calc(1rem * 0.5);
+  .spa-col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 calc(1rem * 0.5);
 
-  @include breakpoint(medium) {
-    padding: 0 calc(1.5rem * 0.5);
+    @include breakpoint(medium) {
+      padding: 0 calc(1.5rem * 0.5);
+    }
   }
-}
 
-.spa-col-4 {
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-  padding: 0 calc(1rem * 0.5);
-
-  @include breakpoint(medium) {
-    padding: 0 calc(1.5rem * 0.5);
-  }
-}
-
-@include breakpoint(medium down) {
-  .spa-col,
-  .spa-col-4,
-  .spa-col-6,
   .spa-col-8 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    padding: 0 calc(1rem * 0.5);
+
+    @include breakpoint(medium) {
+      padding: 0 calc(1.5rem * 0.5);
+    }
+  }
+
+  .spa-col-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 0 calc(1rem * 0.5);
+
+    @include breakpoint(medium) {
+      padding: 0 calc(1.5rem * 0.5);
+    }
+  }
+
+  @include breakpoint(medium down) {
+    .spa-col,
+    .spa-col-4,
+    .spa-col-6,
+    .spa-col-8 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   }
 }
 

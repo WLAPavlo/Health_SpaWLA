@@ -335,6 +335,21 @@ add_action('admin_footer', function() {
 // Disable gutenberg
 add_filter('use_block_editor_for_post_type', '__return_false');
 
+// Disable debug output on frontend
+if (!is_admin()) {
+    ini_set('display_errors', 0);
+    ini_set('log_errors', 1);
+    error_reporting(0);
+}
+
+// Hide PHP errors, warnings and notices
+add_action('init', function() {
+    if (!is_admin() && !WP_DEBUG) {
+        ini_set('display_errors', 0);
+        error_reporting(0);
+    }
+});
+
 /// Ensure Events page uses archive-spa_event.php
 add_filter('page_template', function($template) {
     global $post;
