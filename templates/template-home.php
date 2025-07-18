@@ -428,7 +428,7 @@ get_header(); ?>
             </div>
         </section>
     <?php endif; wp_reset_postdata(); ?>
-
+<section class='home-twitter'>
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell">
@@ -443,6 +443,7 @@ get_header(); ?>
             </div>
         </div>
     </div>
+</section>
 </div>
 <!-- END of main content -->
 
