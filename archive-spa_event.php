@@ -56,28 +56,19 @@ get_header(); ?>
                                 $event_link = get_field('event_link');
                                 $event_logo = get_field('event_logo');
                                 $featured_image = get_field('featured_image');
-                                $event_month = get_field('event_month');
-                                $event_day = get_field('event_day');
-                                $event_year = get_field('event_year');
+                                $start_date = get_field('start_date');
+                                $end_date = get_field('end_date');
 
-                                // Fallback to post date if ACF fields are empty
-                                if (!$event_month || !$event_day) {
-                                    $post_date = get_the_date();
-                                    $timestamp = strtotime($post_date);
-                                    if (!$event_month) {
-                                        $event_month = strtoupper(date('M', $timestamp));
-                                    }
-                                    if (!$event_day) {
-                                        $event_day = date('j', $timestamp);
-                                    }
-                                    if (!$event_year) {
-                                        $event_year = date('Y', $timestamp);
-                                    }
-                                }
-
-                                // Set default year if still empty
-                                if (!$event_year) {
-                                    $event_year = date('Y');
+                                // Extract start date components for blue date block
+                                if ($start_date) {
+                                    $start_timestamp = strtotime($start_date);
+                                    $event_month = strtoupper(date('M', $start_timestamp));
+                                    $event_day = date('j', $start_timestamp);
+                                    $event_year = date('Y', $start_timestamp);
+                                } else {
+                                    $event_month = '';
+                                    $event_day = '';
+                                    $event_year = '';
                                 }
                                 ?>
 
@@ -85,17 +76,7 @@ get_header(); ?>
                                     <div class="event-item-wrapper">
                                         <!-- Event Date Block - Left side, outside content -->
                                         <div class="event-date-block">
-                                            <?php if ($event_date): ?>
-                                                <?php
-                                                $timestamp = strtotime($event_date);
-                                                if ($timestamp) {
-                                                    $month = strtoupper(date('M', $timestamp));
-                                                    $day = date('j', $timestamp);
-                                                    ?>
-                                                    <div class="event-month"><?php echo esc_html($month); ?></div>
-                                                    <div class="event-day"><?php echo esc_html($day); ?></div>
-                                                <?php } ?>
-                                            <?php elseif ($event_month && $event_day): ?>
+                                            <?php if ($event_month && $event_day): ?>
                                                 <div class="event-month"><?php echo esc_html($event_month); ?></div>
                                                 <div class="event-day"><?php echo esc_html($event_day); ?></div>
                                             <?php endif; ?>
@@ -153,21 +134,19 @@ get_header(); ?>
                                                         ?>
                                                         <div class="detail-value">
                                                             <?php
-                                                            $event_year = get_field('event_year');
-                                                            $event_time_start = get_field('event_time_start');
-                                                            $event_time_end = get_field('event_time_end');
-                                                            $when_full_date = get_field('when_full_date');
-                                                            $when_time_range = get_field('when_time_range');
+                                                            $start_date_field = get_field('start_date');
+                                                            $end_date_field = get_field('end_date');
                                                             ?>
-                                                            <?php if ($when_full_date): ?>
-                                                                <?php echo esc_html($when_full_date); ?><br>
-                                                            <?php elseif ($event_month && $event_day): ?>
-                                                                <?php echo esc_html($event_month . ' ' . $event_day); ?>, <?php echo esc_html($event_year); ?><br>
-                                                            <?php endif; ?>
-                                                            <?php if ($when_time_range): ?>
-                                                                <?php echo esc_html($when_time_range); ?>
-                                                            <?php else: ?>
-                                                                <?php echo esc_html($event_time_start . ' - ' . $event_time_end); ?>
+                                                            <?php if ($start_date_field): ?>
+                                                                <?php
+                                                                $start_formatted = date('M j, Y', strtotime($start_date_field));
+                                                                echo esc_html($start_formatted);
+
+                                                                if ($end_date_field && $end_date_field !== $start_date_field) {
+                                                                    $end_formatted = date('M j, Y', strtotime($end_date_field));
+                                                                    echo ' - ' . esc_html($end_formatted);
+                                                                }
+                                                                ?>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
@@ -175,12 +154,16 @@ get_header(); ?>
                                                         <div class="detail-label"><?= __('Where', 'fwp'); ?></div>
                                                         <div class="detail-value">
                                                             <?php
-                                                            $event_venue_name = get_field('event_venue_name') ?: get_field('where_venue_name') ?: 'Biomedicum Helsinki 1';
+                                                            $event_venue_name = get_field('event_venue_name') ?: get_field('where_venue_name');
                                                             $event_venue_address = get_field('event_venue_address');
                                                             $where_address_line1 = get_field('where_address_line1');
                                                             $where_address_line2 = get_field('where_address_line2');
                                                             ?>
-                                                            <?php echo esc_html($event_venue_name); ?><br>
+                                                            <?php if ($event_venue_name): ?>
+                                                                <?php echo esc_html($event_venue_name); ?><br>
+                                                            <?php else: ?>
+                                                                Biomedicum Helsinki 1<br>
+                                                            <?php endif; ?>
                                                             <?php if ($event_venue_address): ?>
                                                                 <?php echo esc_html($event_venue_address); ?>
                                                             <?php elseif ($where_address_line1): ?>
@@ -197,10 +180,14 @@ get_header(); ?>
                                                         <div class="detail-label"><?= __('Attedence', 'fwp'); ?></div>
                                                         <div class="detail-value">
                                                             <?php
-                                                            $event_attendance_info = get_field('event_attendance_info') ?: get_field('attendance_text') ?: 'The event is free, but seating is limited to 50.';
+                                                            $event_attendance_info = get_field('event_attendance_info') ?: get_field('attendance_text');
                                                             $event_registration_link = get_field('event_registration_link') ?: get_field('signup_button_link');
                                                             ?>
-                                                            <?php echo nl2br(esc_html($event_attendance_info)); ?><br>
+                                                            <?php if ($event_attendance_info): ?>
+                                                                <?php echo nl2br(esc_html($event_attendance_info)); ?><br>
+                                                            <?php else: ?>
+                                                                The event is free, but seating is limited to 50.<br>
+                                                            <?php endif; ?>
 
                                                             <?php
                                                             if ($event_registration_link):

@@ -142,32 +142,25 @@ if (class_exists('theme\DynamicAdmin') && is_admin()) {
 // Apply lazyload to whole page content
 // Auto-populate month and day fields from event_date
 add_action('acf/save_post', function($post_id) {
-    // Only auto-populate if month and day fields are empty
-    $current_month = get_field('event_month', $post_id);
-    $current_day = get_field('event_day', $post_id);
-
-    // If both month and day are manually set, don't override them
-    if (!empty($current_month) && !empty($current_day)) {
+    // Check if this is a spa_event post type
+    if (get_post_type($post_id) !== 'spa_event') {
         return;
     }
 
-    // Get the date picker value only if month/day fields are empty
-    $event_date = get_field('event_date', $post_id);
+    // Auto-populate legacy fields from start_date for backward compatibility
+    $start_date = get_field('start_date', $post_id);
 
-    if ($event_date && (empty($current_month) || empty($current_day))) {
-        // Convert date to timestamp
-        $timestamp = strtotime($event_date);
+    if ($start_date) {
+        $timestamp = strtotime($start_date);
 
-        // Only update empty fields
-        if (empty($current_month)) {
-            $month = strtoupper(date('M', $timestamp));
-            update_field('event_month', $month, $post_id);
-        }
+        // Update legacy fields for backward compatibility
+        $month = strtoupper(date('M', $timestamp));
+        $day = date('j', $timestamp);
+        $year = date('Y', $timestamp);
 
-        if (empty($current_day)) {
-            $day = date('j', $timestamp);
-            update_field('event_day', $day, $post_id);
-        }
+        update_field('event_month', $month, $post_id);
+        update_field('event_day', $day, $post_id);
+        update_field('event_year', $year, $post_id);
     }
 }, 20);
 
@@ -178,117 +171,16 @@ add_action('admin_footer', function() {
         ?>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
-                // Function to update month and day fields only if they are empty for specific post
-                function updateDateFields(postId) {
-                    var dateSelector = postId ? 'input[data-name="event_date"][data-post-id="' + postId + '"]' : 'input[data-name="event_date"]';
-                    var monthSelector = postId ? 'input[data-name="event_month"][data-post-id="' + postId + '"]' : 'input[data-name="event_month"]';
-                    var daySelector = postId ? 'input[data-name="event_day"][data-post-id="' + postId + '"]' : 'input[data-name="event_day"]';
-
-                    var dateValue = $(dateSelector).val();
-                    var monthField = $(monthSelector);
-                    var dayField = $(daySelector);
-
-                    // Only update if fields are empty
-                    if (dateValue && (!monthField.val() || !dayField.val())) {
-                        // Handle different date formats
-                        var date;
-                        if (dateValue.includes('/')) {
-                            // Format: dd/mm/yyyy
-                            var parts = dateValue.split('/');
-                            date = new Date(parts[2], parts[1] - 1, parts[0]);
-                        } else if (dateValue.includes('-')) {
-                            // Format: yyyy-mm-dd
-                            date = new Date(dateValue);
-                        } else {
-                            date = new Date(dateValue);
-                        }
-
-                        var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
-                            'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                        var month = months[date.getMonth()];
-                        var day = date.getDate();
-
-                        // Only update if field is empty
-                        if (!monthField.val()) {
-                            monthField.val(month);
-                        }
-                        if (!dayField.val()) {
-                            dayField.val(day);
-                        }
-                    }
-                }
-
-                // Add button to sync date fields manually for each event
-                function addSyncButton() {
-                    $('input[data-name="event_date"]').each(function() {
-                        var $this = $(this);
-                        var dateField = $this.closest('.acf-field');
-                        var postId = $this.closest('form').find('input[name="post_ID"]').val() || 'new';
-
-                        if (dateField.length && !dateField.find('.sync-date-btn').length) {
-                            var syncBtn = $('<button type="button" class="button sync-date-btn" style="margin-top: 5px;" data-post-id="' + postId + '">Sync Month & Day from Date</button>');
-                            dateField.append(syncBtn);
-
-                            syncBtn.on('click', function(e) {
-                                e.preventDefault();
-                                var currentPostId = $(this).data('post-id');
-                                var dateSelector = 'input[data-name="event_date"]';
-                                var monthSelector = 'input[data-name="event_month"]';
-                                var daySelector = 'input[data-name="event_day"]';
-
-                                // If we have multiple events on page, target specific ones
-                                if ($('input[data-name="event_date"]').length > 1) {
-                                    dateSelector = 'input[data-name="event_date"]';
-                                    monthSelector = 'input[data-name="event_month"]';
-                                    daySelector = 'input[data-name="event_day"]';
-
-                                    // Find the closest form container
-                                    var formContainer = $(this).closest('.acf-fields, form, .post-body');
-                                    dateSelector = formContainer.find('input[data-name="event_date"]');
-                                    monthSelector = formContainer.find('input[data-name="event_month"]');
-                                    daySelector = formContainer.find('input[data-name="event_day"]');
-                                } else {
-                                    dateSelector = $(dateSelector);
-                                    monthSelector = $(monthSelector);
-                                    daySelector = $(daySelector);
-                                }
-
-                                var dateValue = dateSelector.val();
-                                if (dateValue) {
-                                    var date;
-                                    if (dateValue.includes('/')) {
-                                        var parts = dateValue.split('/');
-                                        date = new Date(parts[2], parts[1] - 1, parts[0]);
-                                    } else if (dateValue.includes('-')) {
-                                        date = new Date(dateValue);
-                                    } else {
-                                        date = new Date(dateValue);
-                                    }
-
-                                    var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
-                                        'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                                    var month = months[date.getMonth()];
-                                    var day = date.getDate();
-
-                                    monthSelector.val(month);
-                                    daySelector.val(day);
-
-                                    alert('Month and Day fields updated for this event!');
-                                }
-                            });
-                        }
-                    });
-                }
-
-                // Update on date change only if fields are empty - handle each event separately
-                $(document).on('change', 'input[data-name="event_date"]', function() {
+                // Update legacy fields when start_date changes
+                $(document).on('change', 'input[data-name="start_date"]', function() {
                     var $this = $(this);
                     var formContainer = $this.closest('.acf-fields, form, .post-body');
                     var monthField = formContainer.find('input[data-name="event_month"]');
                     var dayField = formContainer.find('input[data-name="event_day"]');
+                    var yearField = formContainer.find('input[data-name="event_year"]');
+                    var eventDateField = formContainer.find('input[data-name="event_date"]');
 
-                    // Only update if fields are empty
-                    if ($this.val() && (!monthField.val() || !dayField.val())) {
+                    if ($this.val()) {
                         var dateValue = $this.val();
                         var date;
                         if (dateValue.includes('/')) {
@@ -304,27 +196,32 @@ add_action('admin_footer', function() {
                             'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
                         var month = months[date.getMonth()];
                         var day = date.getDate();
+                        var year = date.getFullYear();
 
-                        // Only update if field is empty
-                        if (!monthField.val()) {
-                            monthField.val(month);
-                        }
-                        if (!dayField.val()) {
-                            dayField.val(day);
-                        }
+                        // Update legacy fields for backward compatibility
+                        monthField.val(month);
+                        dayField.val(day);
+                        yearField.val(year);
+                        eventDateField.val(dateValue);
                     }
                 });
 
-                // Add sync button on page load
-                setTimeout(function() {
-                    addSyncButton();
-                }, 1000);
+                // Also update when end_date changes (for validation purposes)
+                $(document).on('change', 'input[data-name="end_date"]', function() {
+                    // You can add validation here to ensure end_date is after start_date
+                    var $this = $(this);
+                    var formContainer = $this.closest('.acf-fields, form, .post-body');
+                    var startDateField = formContainer.find('input[data-name="start_date"]');
 
-                // Re-add sync buttons when new fields are added (for repeater fields or AJAX)
-                $(document).on('acf/setup_fields', function() {
-                    setTimeout(function() {
-                        addSyncButton();
-                    }, 500);
+                    if ($this.val() && startDateField.val()) {
+                        var startDate = new Date(startDateField.val());
+                        var endDate = new Date($this.val());
+
+                        if (endDate < startDate) {
+                            alert('End date cannot be before start date!');
+                            $this.val('');
+                        }
+                    }
                 });
             });
         </script>

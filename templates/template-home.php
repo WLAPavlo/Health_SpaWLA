@@ -37,31 +37,31 @@ get_header(); ?>
                 <?php
                 $sidebar_cta = get_field('sidebar_cta');
                 if ($sidebar_cta): ?>
-                <section class='cta-block'>
-                    <div class="cell large-4">
-                        <div class="sidebar-cta">
-                            <?php if ($sidebar_cta['title']): ?>
-                                <h3 class="cta-title"><?php echo esc_html($sidebar_cta['title']); ?></h3>
-                            <?php endif; ?>
+                    <section class='cta-block'>
+                        <div class="cell large-4">
+                            <div class="sidebar-cta">
+                                <?php if ($sidebar_cta['title']): ?>
+                                    <h3 class="cta-title"><?php echo esc_html($sidebar_cta['title']); ?></h3>
+                                <?php endif; ?>
 
-                            <?php if ($sidebar_cta['description']): ?>
-                                <div class="cta-description">
-                                    <?php echo nl2br(esc_html($sidebar_cta['description'])); ?>
-                                </div>
-                            <?php endif; ?>
+                                <?php if ($sidebar_cta['description']): ?>
+                                    <div class="cta-description">
+                                        <?php echo nl2br(esc_html($sidebar_cta['description'])); ?>
+                                    </div>
+                                <?php endif; ?>
 
-                            <?php if ($sidebar_cta['button']): ?>
-                                <div class="cta-button">
-                                    <a href="<?php echo esc_url($sidebar_cta['button']['url']); ?>"
-                                       class="btn-cta"
-                                       <?php if ($sidebar_cta['button']['target']): ?>target="<?php echo esc_attr($sidebar_cta['button']['target']); ?>"<?php endif; ?>>
-                                        <?php echo esc_html($sidebar_cta['button']['title']); ?>
-                                    </a>
-                                </div>
-                            <?php endif; ?>
+                                <?php if ($sidebar_cta['button']): ?>
+                                    <div class="cta-button">
+                                        <a href="<?php echo esc_url($sidebar_cta['button']['url']); ?>"
+                                           class="btn-cta"
+                                           <?php if ($sidebar_cta['button']['target']): ?>target="<?php echo esc_attr($sidebar_cta['button']['target']); ?>"<?php endif; ?>>
+                                            <?php echo esc_html($sidebar_cta['button']['title']); ?>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
                 <?php endif; ?>
             <?php endif; ?>
         </div>
@@ -158,17 +158,17 @@ get_header(); ?>
                 <div class="featured-event">
                     <div class="event-date-block">
                         <?php
-                        $event_date = get_field('event_date', $featured_event->ID);?>
-                        <?php if ($event_date): ?>
-                            <?php
-                            $timestamp = strtotime($event_date);
-                            if ($timestamp) {
-                                $month = strtoupper(date('M', $timestamp));
-                                $day = date('j', $timestamp);
-                                ?>
-                                <div class="event-month"><?php echo esc_html($month); ?></div>
-                                <div class="event-day"><?php echo esc_html($day); ?></div>
-                            <?php } ?>
+                        $start_date = get_field('start_date', $featured_event->ID);
+                        if ($start_date): ?>
+                        <?php
+                        $timestamp = strtotime($start_date);
+                        if ($timestamp) {
+                        $month = strtoupper(date('M', $timestamp));
+                        $day = date('j', $timestamp);
+                        ?>
+                        <div class="event-month"><?php echo esc_html($month); ?></div>
+                        <div class="event-day"><?php echo esc_html($day); ?></div>
+                        <?php } ?>
                         <?php endif; ?>
                     </div>
                     <div class="event-content">
@@ -225,10 +225,11 @@ get_header(); ?>
                     <?php foreach ($regular_events as $event): ?>
                         <div class="regular-event">
                             <div class="event-date-block">
-                                <?php $event_date = get_field('event_date', $featured_event->ID);?>
-                                <?php if ($event_date): ?>
+                                <?php
+                                $start_date = get_field('start_date', $event->ID);
+                                if ($start_date): ?>
                                     <?php
-                                    $timestamp = strtotime($event_date);
+                                    $timestamp = strtotime($start_date);
                                     if ($timestamp) {
                                         $month = strtoupper(date('M', $timestamp));
                                         $day = date('j', $timestamp);
@@ -296,11 +297,9 @@ get_header(); ?>
 
     <!-- Stories Section -->
     <?php
-    $stories_count = get_option('spa_stories_count', 3);
-
     $stories_query = new WP_Query([
         'post_type' => 'post',
-        'posts_per_page' => $stories_count,
+        'posts_per_page' => get_option('posts_per_page'),
         'post_status' => 'publish'
     ]);
 
@@ -404,22 +403,22 @@ get_header(); ?>
             </div>
         </section>
     <?php endif; wp_reset_postdata(); ?>
-<section class='home-twitter'>
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-            <div class="cell">
-                <?php if (have_posts()) { ?>
-                    <?php while (have_posts()) {
-                        the_post(); ?>
-                        <div class="page-content">
-                            <?php the_content(); ?>
-                        </div>
+    <section class='home-twitter'>
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="cell">
+                    <?php if (have_posts()) { ?>
+                        <?php while (have_posts()) {
+                            the_post(); ?>
+                            <div class="page-content">
+                                <?php the_content(); ?>
+                            </div>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 <!-- END of main content -->
 
