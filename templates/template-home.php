@@ -341,42 +341,19 @@ get_header(); ?>
                                     <div class="story-content">
                                         <div class="story-meta">
                                             <?php
-                                            $story_date = get_field('story_date');
-                                            $story_category = get_field('story_category');
-                                            $story_author = get_field('story_author');
-                                            $story_news = get_field('story_news');
+                                            $post_date = get_the_date('Y-m-d');
+                                            $timestamp = strtotime($post_date);
+                                            $story_date = strtoupper(date('M', $timestamp)) . ' ' . date('j', $timestamp);
 
-                                            if (!$story_date) {
-                                                $story_date = get_the_date('Y-m-d');
-                                            }
+                                            $categories = get_the_category();
+                                            $story_category = !empty($categories) ? strtoupper($categories[0]->name) : '';
 
-                                            if ($story_date) {
-                                                $timestamp = strtotime($story_date);
-                                                if ($timestamp) {
-                                                    $month = strtoupper(date('M', $timestamp));
-                                                    $day = date('j', $timestamp);
-                                                    $story_date = $month . ' ' . $day;
-                                                    echo '<div class="story-date">';
-                                                    echo '</div>';
-                                                }
-                                            }
+                                            $story_author = get_the_author();
 
-
-                                            if(!$story_news) {
-                                                $story_news = '';
-                                            }
-
-                                            if (!$story_author) {
-                                                $story_author = get_the_author();
-                                            }
-
-                                            if (!$story_category) {
-                                                $categories = get_the_category();
-                                                if (!empty($categories)) {
-                                                    $story_category = strtoupper($categories[0]->name);
-                                                } else {
-                                                    $story_category = '';
-                                                }
+                                            $tags = get_the_tags();
+                                            $story_news = '';
+                                            if ($tags) {
+                                                $story_news = strtoupper($tags[0]->name);
                                             }
                                             ?>
 
@@ -389,14 +366,16 @@ get_header(); ?>
                                                     <?php if ($story_date): ?>
                                                         <span class="story-separator">|</span>
                                                     <?php endif; ?>
-                                                    <span class="story-category"><?php echo esc_html($story_news); ?></span>
+                                                    <span
+                                                        class="story-category"><?php echo esc_html($story_news); ?></span>
                                                 <?php endif; ?>
 
                                                 <?php if ($story_category): ?>
                                                     <?php if ($story_date || $story_news): ?>
                                                         <span class="story-separator">|</span>
                                                     <?php endif; ?>
-                                                    <span class="story-category"><?php echo esc_html($story_category); ?></span>
+                                                    <span
+                                                        class="story-category"><?php echo esc_html($story_category); ?></span>
                                                 <?php endif; ?>
                                             </div>
 
@@ -409,16 +388,11 @@ get_header(); ?>
 
                                         <div class="story-excerpt">
                                             <?php
-                                            $story_excerpt = get_field('story_excerpt');
-                                            if ($story_excerpt) {
-                                                echo wp_kses_post($story_excerpt);
-                                            } else {
-                                                $excerpt = get_the_excerpt();
-                                                if (strlen($excerpt) > 120) {
-                                                    $excerpt = substr($excerpt, 0, 120) . '<span style="color: #f75097;">...</span>';
-                                                }
-                                                echo $excerpt;
+                                            $excerpt = get_the_excerpt();
+                                            if (strlen($excerpt) > 120) {
+                                                $excerpt = substr($excerpt, 0, 120) . '<span style="color: #f75097;">...</span>';
                                             }
+                                            echo $excerpt;
                                             ?>
                                         </div>
                                     </div>
