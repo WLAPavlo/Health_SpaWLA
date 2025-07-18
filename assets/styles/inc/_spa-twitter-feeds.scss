@@ -1,298 +1,229 @@
 /* -----------------------------------------
-   Custom Twitter Feeds Plugin Styling - SPA Design
+   SPA Twitter Feeds Styling - Clean Layout
 ----------------------------------------- */
 
-// Twitter Feed Container
-#sb_instagram,
-.ctf,
-.ctf-tweets {
-  background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%) !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  font-family: 'Open Sans', sans-serif !important;
-  position: relative;
-  overflow: hidden;
-
-  // Header with Twitter icon and username
-  .ctf-header {
-    background: transparent !important;
-    padding: 1.5rem 1.5rem 1rem 1.5rem !important;
-    border-bottom: none !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-
-    .ctf-header-text {
-      color: #ffffff !important;
-      font-size: 1.125rem !important;
-      font-weight: 700 !important;
-      margin: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 0.5rem !important;
-
-      &::before {
-        content: '🐦' !important;
-        font-size: 1.25rem !important;
-        margin-right: 0.25rem !important;
-      }
-    }
-
-    .ctf-header-link {
-      color: #ffffff !important;
-      text-decoration: none !important;
-
-      &:hover {
-        color: rgba(255, 255, 255, 0.9) !important;
-      }
-    }
-  }
-
-  // Individual Tweet Styling
-  .ctf-tweet {
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 1rem 1.5rem !important;
-    margin: 0 !important;
-    color: #ffffff !important;
-
-    &:last-child {
-      border-bottom: none !important;
-    }
-
-    // Tweet Header (Avatar, Name, Handle, Time)
-    .ctf-author {
-      display: flex !important;
-      align-items: flex-start !important;
-      gap: 0.75rem !important;
-      margin-bottom: 0.75rem !important;
-
-      .ctf-author-img {
-        width: 32px !important;
-        height: 32px !important;
-        border-radius: 50% !important;
-        flex-shrink: 0 !important;
-      }
-
-      .ctf-author-text {
-        flex: 1 !important;
-        min-width: 0 !important;
-
-        .ctf-author-name {
-          color: #ffffff !important;
-          font-weight: 700 !important;
-          font-size: 0.875rem !important;
-          margin: 0 !important;
-          line-height: 1.2 !important;
-        }
-
-        .ctf-author-screenname {
-          color: rgba(255, 255, 255, 0.8) !important;
-          font-size: 0.75rem !important;
-          margin: 0 !important;
-          line-height: 1.2 !important;
-        }
-      }
-
-      .ctf-tweet-time {
-        color: rgba(255, 255, 255, 0.7) !important;
-        font-size: 0.75rem !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-        flex-shrink: 0 !important;
-      }
-    }
-
-    // Tweet Content
-    .ctf-tweet-text {
-      color: #ffffff !important;
-      font-size: 0.875rem !important;
-      line-height: 1.5 !important;
-      margin: 0 0 0.75rem 0 !important;
-      word-wrap: break-word !important;
-
-      // Links in tweets
-      a {
-        color: rgba(255, 255, 255, 0.9) !important;
-        text-decoration: underline !important;
-
-        &:hover {
-          color: #ffffff !important;
-        }
-      }
-
-      // Hashtags and mentions
-      .ctf-hashtag,
-      .ctf-mention {
-        color: rgba(255, 255, 255, 0.9) !important;
-        font-weight: 600 !important;
-      }
-    }
-
-    // Tweet Actions (Reply, Retweet, Like)
-    .ctf-tweet-actions {
-      display: flex !important;
-      gap: 1rem !important;
-      margin-top: 0.5rem !important;
-
-      .ctf-tweet-action {
-        color: rgba(255, 255, 255, 0.6) !important;
-        font-size: 0.75rem !important;
-        text-decoration: none !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.25rem !important;
-
-        &:hover {
-          color: rgba(255, 255, 255, 0.8) !important;
-        }
-      }
-    }
-
-    // Media in tweets
-    .ctf-tweet-media {
-      margin: 0.75rem 0 !important;
-      border-radius: 8px !important;
-      overflow: hidden !important;
-
-      img {
-        width: 100% !important;
-        height: auto !important;
-        display: block !important;
-      }
-    }
-  }
-
-  // Load More Button
-  .ctf-load-more {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    padding: 0.75rem 1.5rem !important;
-    margin: 1rem !important;
-    border-radius: 4px !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    font-size: 0.75rem !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.2) !important;
-      border-color: rgba(255, 255, 255, 0.3) !important;
-    }
-  }
-
-  // Error messages
-  .ctf-error {
-    color: rgba(255, 255, 255, 0.8) !important;
-    padding: 1.5rem !important;
-    text-align: center !important;
-    font-size: 0.875rem !important;
-  }
-
-  // Loading state
-  .ctf-loading {
-    color: rgba(255, 255, 255, 0.8) !important;
-    padding: 2rem !important;
-    text-align: center !important;
-    font-size: 0.875rem !important;
-  }
-}
-
-// Widget specific styling
+/* Main Twitter Widget Container */
 .widget_ctf_widget {
-  .widget-title {
-    display: none !important; // Hide widget title as we show it in the feed
+  background-color: #065481;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.widget_ctf_widget .widget-title {
+  display: none;
+}
+
+/* Main CTF Container */
+.ctf {
+  background-color: #065481;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header with Twitter icon and @HEALTHSPAFI */
+.ctf .ctf-header {
+  background-color: #065481;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.ctf .ctf-header .ctf-header-text,
+.ctf .ctf-header .twitter-username {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ctf .ctf-header .ctf-header-text::before,
+.ctf .ctf-header .twitter-username::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  display: block;
+}
+
+.ctf .ctf-header .twitter-logo {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Container for tweets - 3 columns layout with equal heights */
+.ctf .ctf-tweets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background-color: #065481;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  list-style: none;
+  align-items: stretch;
+}
+
+/* Individual tweet styling */
+.ctf .ctf-tweet {
+  background-color: #065481;
+  border: none;
+  padding: 1.5rem 1rem;
+  margin: 0;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* Tweet time/date header */
+.ctf .ctf-tweet .ctf-tweet-time {
+  color: #17c8ff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  font-family: 'Open Sans', sans-serif;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Tweet text content */
+.ctf .ctf-tweet .ctf-tweet-text {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.ctf .ctf-tweet .ctf-tweet-text p {
+  color: #ffffff;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ctf .ctf-tweet .ctf-tweet-text a {
+  color: #17c8ff;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ctf .ctf-tweet .ctf-tweet-text a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Hide footer elements */
+.ctf .ctf-load-more,
+.ctf .ctf-more,
+.ctf .ctf-footer,
+.ctf .ctf-show-more,
+.ctf .ctf-no-more,
+.ctf .ctf-end,
+.ctf .ctf-bottom,
+.ctf .ctf-follow-btn,
+.ctf .ctf-header .ctf-follow-btn,
+.ctf .ctf-header-follow,
+.ctf .ctf-share,
+.ctf .ctf-follow,
+.ctf .ctf-no-more-tweets,
+.ctf .ctf-end-message,
+.ctf .ctf-loading-more,
+.ctf .ctf-loader,
+.ctf .ctf-more-wrap,
+.ctf .ctf-credit,
+.ctf .ctf-powered-by,
+.ctf .ctf-attribution {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ctf .ctf-tweets {
+    grid-template-columns: 1fr;
+  }
+
+  .ctf .ctf-tweet {
+    padding: 1.25rem 1rem;
+    height: auto;
   }
 }
 
-// Sidebar specific adjustments
-.sidebar-wrapper {
-  .ctf {
-    margin-bottom: 2rem !important;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
+@media (max-width: 480px) {
+  .ctf .ctf-tweet {
+    padding: 1rem 0.75rem;
+  }
+
+  .ctf .ctf-tweet .ctf-tweet-text {
+    font-size: 12px;
+  }
+
+  .ctf .ctf-tweet .ctf-tweet-time {
+    font-size: 10px;
   }
 }
 
-// Responsive adjustments
-@include breakpoint(small down) {
-  .ctf {
-    .ctf-header {
-      padding: 1rem 1rem 0.75rem 1rem !important;
-
-      .ctf-header-text {
-        font-size: 1rem !important;
-      }
-    }
-
-    .ctf-tweet {
-      padding: 0.75rem 1rem !important;
-
-      .ctf-author {
-        gap: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-
-        .ctf-author-img {
-          width: 28px !important;
-          height: 28px !important;
-        }
-
-        .ctf-author-text {
-          .ctf-author-name {
-            font-size: 0.8rem !important;
-          }
-
-          .ctf-author-screenname {
-            font-size: 0.7rem !important;
-          }
-        }
-
-        .ctf-tweet-time {
-          font-size: 0.7rem !important;
-        }
-      }
-
-      .ctf-tweet-text {
-        font-size: 0.8rem !important;
-        line-height: 1.4 !important;
-      }
-    }
-
-    .ctf-load-more {
-      margin: 0.75rem !important;
-      padding: 0.5rem 1rem !important;
-      font-size: 0.7rem !important;
-    }
-  }
+/* Force override critical styles only when necessary */
+.widget_ctf_widget {
+  background-color: #065481;
+  border: none;
 }
 
-// Alternative styling if the plugin uses different classes
-.twitter-feed,
-.twitter-timeline,
-.twitter-widget {
-  @extend .ctf;
+.ctf {
+  background-color: #065481;
+  color: #ffffff;
+  border: none;
 }
 
-// Custom header for HEALTHSPAFI
-.ctf-header-text {
-  &::after {
-    content: '@HEALTHSPAFI' !important;
-    display: block !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    margin-top: 0.25rem !important;
-  }
+.ctf .ctf-tweet {
+  background-color: #065481;
+  color: #ffffff;
+  border: none;
 }
 
-// Hide default Twitter branding if present
-.twitter-branding,
-.ctf-branding,
-.twitter-logo {
-  display: none !important;
+/* Additional fixes for white lines */
+.ctf *,
+.ctf *::before,
+.ctf *::after {
+  border: none;
+  outline: none;
+}
+
+.ctf .ctf-tweets::before,
+.ctf .ctf-tweets::after,
+.ctf .ctf-tweet::before,
+.ctf .ctf-tweet::after {
+  display: none;
 }
