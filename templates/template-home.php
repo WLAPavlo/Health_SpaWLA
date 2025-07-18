@@ -37,6 +37,7 @@ get_header(); ?>
                 <?php
                 $sidebar_cta = get_field('sidebar_cta');
                 if ($sidebar_cta): ?>
+                <section class='cta-block'>
                     <div class="cell large-4">
                         <div class="sidebar-cta">
                             <?php if ($sidebar_cta['title']): ?>
@@ -60,6 +61,7 @@ get_header(); ?>
                             <?php endif; ?>
                         </div>
                     </div>
+                </section>
                 <?php endif; ?>
             <?php endif; ?>
         </div>

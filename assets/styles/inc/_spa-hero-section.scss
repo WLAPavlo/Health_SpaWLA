@@ -398,7 +398,7 @@ $white: #ffffff;
 
 // Responsive Design
 @include breakpoint(large) {
-  .cell.large-4 {
+  .cta-block {
     display: flex;
     align-items: center;
     justify-content: center;
